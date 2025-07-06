@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const LOCAL: string = 'en-EN';
+
+const celestialBodies = await getCollection("celestial-bodies");
+
+const bodiesWithoutMoons = celestialBodies.filter((celestialBody) => celestialBody.data.type !== "satélite");
+const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout>
+    <h1>Sistema Solar</h1>
+    {
+        bodiesSorted.map((celestialBody) => {
+            const { slug, data } = celestialBody;
+            const { name, mass, diameter_km, gravity } = data;
+            const planetMoons = celestialBodies.filter((celestialBody) => celestialBody.data.type === "satélite" && celestialBody.data.parent_planet === slug);
+            return (
+                <div class="flex flex-col m-8 space-y-1">
+                    <h2>{name}</h2>
+                    <span>Masa: <span set:html={mass}></span> kg</span>
+                    <span>Diámetro: {diameter_km.toLocaleString(LOCAL)} km | Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</span>
+                    <span>Gravedad: {gravity} m/s<sup>2</sup></span>
+                    {
+                        planetMoons.length > 0 ? (
+                            <>
+                                <h1>Lunas:</h1>
+                                {
+                                    planetMoons.map((moon) => {
+                                        const { slug, data } = moon;
+                                        const { name, mass, diameter_km, gravity } = data;
+
+                                        return (
+                                            <h1>{name}</h1>
+                                        )
+                                    })
+                                }
+                            </>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div>
+            )
+        })
+    }
+</Layout>
