@@ -16,3 +16,5 @@ temperature:
 perihelion_km: 363300
 aphelion_km: 405500
 ---
+
+La Luna es el único satélite natural de la Tierra.
