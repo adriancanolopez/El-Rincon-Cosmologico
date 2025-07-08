@@ -1,0 +1,86 @@
+---
+const { properties } = Astro.props;
+
+const { mass, diameter_km, gravity, 
+        orbital_period, orbital_velocity_kmh, 
+        escape_velocity_kmh, age, temperature, 
+        perihelion_km, aphelion_km, mean_earth_distance_AU
+    } = properties;
+
+const LOCAL: string = 'en-EN';
+const UA = 149597870.7
+---
+
+<div>
+    <span>Masa:</span>
+    <span><span set:html={mass}></span> kg</span>
+</div>
+<div>
+    <span>Diámetro y radio:</span>
+    <span>Diámetro: {diameter_km.toLocaleString(LOCAL)} km | Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</span> {/* Con toLocaleString formateamos a: 4,856.36 */}
+</div>
+<div>
+    <span>Gravedad:</span>
+    <span>{gravity} m/s<sup>2</sup></span>
+</div>
+<div>
+    <span>Período orbital:</span>
+    <span>{orbital_period}</span>
+</div>
+<div>
+    <span>Velocidad orbital:</span>
+    <span>{orbital_velocity_kmh.toLocaleString(LOCAL)} km/h = {(orbital_velocity_kmh / 3600).toFixed(2)} km/s</span>
+</div>
+<div>
+    <span>Velocidad de escape:</span>
+    <span>{escape_velocity_kmh.toLocaleString(LOCAL)} km/h = {(escape_velocity_kmh / 3600).toFixed(2)} km/s</span>
+</div>
+<div>
+    <span>Edad:</span>
+    <span>{age}</span>
+</div>
+<div>
+    <span>Temperaturas:</span>
+    <div>
+        {
+            temperature.min && (
+                <span>Mínima: {temperature.min} ºC</span>
+            )
+        }
+        {
+            temperature.max && (
+                <span>Máxima: {temperature.max} ºC</span>
+            )
+        }
+        {
+            temperature.surface && (
+                <span>Superfície: {(temperature.surface).toLocaleString(LOCAL)} ºC</span>
+            )
+        }
+        {
+            temperature.core && (
+                <span>Núcleo: {(temperature.core).toLocaleString(LOCAL)} ºC</span>
+            )
+        }
+    </div>
+</div>
+<div class="flex flex-col my-4">
+    Distancias:
+    {
+        perihelion_km && (
+            <span>Perihelio: {perihelion_km.toLocaleString(LOCAL)} km</span>
+        )
+    }
+    {
+        aphelion_km && (
+            <span>Afelio: {aphelion_km.toLocaleString(LOCAL)} km</span>
+        )
+    }
+    {
+        mean_earth_distance_AU && (
+            <span>Distancia media a la Tierra:<br/> {mean_earth_distance_AU} UA = {((mean_earth_distance_AU * UA).toLocaleString(LOCAL, {
+                maximumFractionDigits: 0}))} km
+            </span>
+        )
+    }
+</div>

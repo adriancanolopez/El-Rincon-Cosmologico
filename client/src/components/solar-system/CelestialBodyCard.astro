@@ -1,0 +1,42 @@
+---
+import { render } from "astro:content";
+import BodyProperties from "./BodyProperties.astro";
+import MoonCard from "./MoonCard.astro";
+
+const { celestialBody, moons } = Astro.props;
+
+const { slug, data } = celestialBody;
+
+const { name } = data;
+
+const { Content } = await render(celestialBody);
+
+---
+
+<article class="mb-20">
+    <h2>{name}</h2>
+    <div class="flex flex-row justify-center">
+        <section class="w-1/2 leading-relaxed content">
+            <Content />
+        </section>
+        <section class="w-1/2 properties">
+            <BodyProperties properties={data}/>
+        </section>
+    </div>
+    {
+        moons.length > 0 ? (
+            <section>
+                <h1>Lunas:</h1>
+                    {
+                        moons.map((moon : Object) => {
+                            return (
+                                <MoonCard moon={moon}/>
+                            )
+                        })
+                    }
+            </section>
+        ) : (
+            ""
+        )
+    }
+</article>

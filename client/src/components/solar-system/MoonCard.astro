@@ -1,0 +1,25 @@
+---
+import { render } from "astro:content";
+import BodyProperties from "./BodyProperties.astro";
+
+const { moon } = Astro.props;
+
+const { slug, data } = moon;
+
+const { name } = data;
+
+const { Content } = await render(moon);
+---
+
+
+<details class="p-4 ml-8 ">
+    <summary class="">{name}</summary>
+    <div class="flex flex-row justify-center">
+        <section class="w-1/2 leading-relaxed content">
+            <Content />
+        </section>
+        <section class="w-1/2 properties">
+            <BodyProperties properties={data}/>
+        </section>
+    </div>
+</details>
