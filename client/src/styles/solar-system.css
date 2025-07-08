@@ -1,0 +1,19 @@
+.content p {
+    margin: 1em;
+}
+
+.content strong {
+    font-size: 18px;
+}
+
+.content li {
+    list-style: disc;
+    margin-left: 2em;
+}
+
+.properties > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 7px;
+}
