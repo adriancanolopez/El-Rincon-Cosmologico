@@ -9,6 +9,12 @@ const { slug, data } = celestialBody;
 
 const { name } = data;
 
+let moonsSorted;
+
+if (moons.length > 0) {
+    moonsSorted = moons.sort((a, b) => a.data.order - b.data.order );
+}
+
 const { Content } = await render(celestialBody);
 
 ---
@@ -24,19 +30,17 @@ const { Content } = await render(celestialBody);
         </section>
     </div>
     {
-        moons.length > 0 ? (
+        moonsSorted && (
             <section>
                 <h1>Lunas:</h1>
                     {
-                        moons.map((moon : Object) => {
+                        moonsSorted.map((moon : Object) => {
                             return (
                                 <MoonCard moon={moon}/>
                             )
                         })
                     }
             </section>
-        ) : (
-            ""
         )
     }
 </article>

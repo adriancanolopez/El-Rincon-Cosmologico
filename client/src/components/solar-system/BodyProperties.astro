@@ -1,7 +1,7 @@
 ---
 const { properties } = Astro.props;
 
-const { mass, diameter_km, gravity, 
+const { type, mass, diameter_km, gravity, 
         orbital_period, orbital_velocity_kmh, 
         escape_velocity_kmh, age, temperature, 
         perihelion_km, aphelion_km, mean_earth_distance_AU
@@ -68,12 +68,12 @@ const UA = 149597870.7
     Distancias:
     {
         perihelion_km && (
-            <span>Perihelio: {perihelion_km.toLocaleString(LOCAL)} km</span>
+            <span>{type !== "satélite" ? "Perihelio" : "Perigeo"}: {perihelion_km.toLocaleString(LOCAL)} km</span>
         )
     }
     {
         aphelion_km && (
-            <span>Afelio: {aphelion_km.toLocaleString(LOCAL)} km</span>
+            <span>{type !== "satélite" ? "Afelio" : "Apogeo"}: {aphelion_km.toLocaleString(LOCAL)} km</span>
         )
     }
     {
