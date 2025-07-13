@@ -6,7 +6,7 @@ const { moon } = Astro.props;
 
 const { slug, data } = moon;
 
-const { name } = data;
+const { name, images } = data;
 
 const { Content } = await render(moon);
 ---
@@ -19,6 +19,20 @@ const { Content } = await render(moon);
             <Content />
         </section>
         <section class="w-1/2 properties">
+            {
+                images && (
+                    <div class="images">
+                    {
+                        images.map((image : {url : string, description: string}) => (
+                            <figure>
+                                <img src={`solar-system/images/${image.url}`} alt={`Imagen de ${name}`}/>
+                                <figcaption>{image.description}</figcaption>
+                            </figure>
+                        ))
+                    }
+                    </div>
+                )
+            }
             <BodyProperties properties={data}/>
         </section>
     </div>

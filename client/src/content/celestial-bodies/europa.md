@@ -15,4 +15,7 @@ temperature:
     max: -148
 perihelion_km: 664862
 aphelion_km: 676938
+images:
+  - url: "europa.jpg"
+    description: "Europa"
 ---

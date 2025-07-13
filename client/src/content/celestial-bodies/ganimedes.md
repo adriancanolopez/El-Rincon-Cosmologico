@@ -15,4 +15,9 @@ temperature:
     max: -121
 perihelion_km: 1069200
 aphelion_km: 1071600
+images:
+  - url: "ganimedes-1.jpg"
+    description: "Ganímedes 1"
+  - url: "ganimedes-2.jpg"
+    description: "Ganímedes 2"
 ---

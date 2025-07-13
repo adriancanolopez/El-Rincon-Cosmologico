@@ -8,13 +8,16 @@ gravity: 3.71
 orbital_period: "687 días terrestres (1 año y 10 meses)"
 orbital_velocity_kmh: 86677.2
 escape_velocity_kmh: 18097.2
-age: "4,603 miles de millones de años"
+age: "4.603 miles de millones de años"
 temperature:
     min: -140
     max: 20
 perihelion_km: 206669009.6
 aphelion_km: 249209258.5
 mean_earth_distance_AU: 1.5
+images:
+  - url: "marte.jpg"
+    description: "Marte"
 ---
 
 Marte es el cuarto planeta más cercano al Sol. Tiene dos lunas: Fobos y Deimos. Se espera que se envíen astronautas en la década de 2030.

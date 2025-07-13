@@ -8,11 +8,14 @@ gravity: 274
 orbital_period: "225 millones de años"
 orbital_velocity_kmh: 828000
 escape_velocity_kmh: 2224080
-age: "4,603 miles de millones de años"
+age: "4.603 miles de millones de años"
 temperature:
     surface: 5498.85
     core: 15000000
 mean_earth_distance_AU: 1
+images:
+  - url: "sol.jpg"
+    description: "El Sol"
 ---
 
 El Sol es la estrella del Sistema solar. Se encuentra en el centro de él.

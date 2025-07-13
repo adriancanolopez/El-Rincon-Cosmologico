@@ -22,6 +22,12 @@ const celestialBodies = defineCollection({
         perihelion_km: z.number().optional(),
         aphelion_km: z.number().optional(),
         mean_earth_distance_AU: z.number().optional(),
+        images: z.array(
+            z.object({
+                url: z.string(),
+                description: z.string(),
+            })
+        ).optional()
     })
 });
 

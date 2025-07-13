@@ -8,12 +8,15 @@ gravity: 9.807
 orbital_period: "365 días terrestres (1 año)"
 orbital_velocity_kmh: 107280
 escape_velocity_kmh: 40269.6
-age: "4,543 miles de millones de años"
+age: "4.543 miles de millones de años"
 temperature:
     min: -89.15
     max: 56.7
 perihelion_km: 147098290.7
 aphelion_km: 152098232
+images:
+  - url: "tierra.jpg"
+    description: "La Tierra"
 ---
 
 La Tierra es el tercer planeta más cercano al Sol. Tiene un satélite natural, la Luna, y 5.465 satélites artificiales.

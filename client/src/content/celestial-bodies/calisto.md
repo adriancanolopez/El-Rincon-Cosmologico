@@ -15,4 +15,7 @@ temperature:
     max: -108
 perihelion_km: 1869000
 aphelion_km: 1897000
+images:
+  - url: "calisto.jpg"
+    description: "Calisto"
 ---

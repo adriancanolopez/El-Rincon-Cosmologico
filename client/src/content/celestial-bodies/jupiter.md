@@ -8,13 +8,18 @@ gravity: 24.79
 orbital_period: "12 años terrestres"
 orbital_velocity_kmh: 47050.92
 escape_velocity_kmh: 214344
-age: "4,603 miles de millones de años"
+age: "4.603 miles de millones de años"
 temperature:
     min: -163
     max: 121
 perihelion_km: 740573637.5
 aphelion_km: 816520736.5
 mean_earth_distance_AU: 4.2
+images:
+  - url: "jupiter-1.jpg"
+    description: "Júpiter"
+  - url: "jupiter-2.jpg"
+    description: "Júpiter 2"
 ---
 
 Júpiter es el quinto planeta y el más grande del Sistema solar. Tiene 79 lunas conocidas. Se espera que se envíe una sonda espacial llamada Europa Clipper para explorar Europa (una de sus lunas) hacia octubre de 2024.
