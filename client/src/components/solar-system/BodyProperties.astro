@@ -11,76 +11,80 @@ const LOCAL: string = 'en-EN';
 const UA = 149597870.7
 ---
 
-<div>
-    <span>Masa:</span>
-    <span><span set:html={mass}></span> kg</span>
-</div>
-<div>
-    <span>Diámetro y radio:</span>
-    <span>Diámetro: {diameter_km.toLocaleString(LOCAL)} km | Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</span> {/* Con toLocaleString formateamos a: 4,856.36 */}
-</div>
-<div>
-    <span>Gravedad:</span>
-    <span>{gravity} m/s<sup>2</sup></span>
-</div>
-<div>
-    <span>Período orbital:</span>
-    <span>{orbital_period}</span>
-</div>
-<div>
-    <span>Velocidad orbital:</span>
-    <span>{orbital_velocity_kmh.toLocaleString(LOCAL)} km/h = {(orbital_velocity_kmh / 3600).toFixed(2)} km/s</span>
-</div>
-<div>
-    <span>Velocidad de escape:</span>
-    <span>{escape_velocity_kmh.toLocaleString(LOCAL)} km/h = {(escape_velocity_kmh / 3600).toFixed(2)} km/s</span>
-</div>
-<div>
-    <span>Edad:</span>
-    <span>{age}</span>
-</div>
-<div>
-    <span>Temperaturas:</span>
-    <div>
+<dl class="properties">
+    <dt>Masa:</dt>
+    <dd><span set:html={mass}></span> kg</dd>
+
+    <dt>Diámetro y radio:</dt>
+    <dd>Diámetro: {diameter_km.toLocaleString(LOCAL)} km | Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</dd> {/* Con toLocaleString formateamos a: 4,856.36 */}
+    
+    <dt>Gravedad:</dt>
+    <dd>{gravity} m/s<sup>2</sup></dd>
+
+    <dt>Período orbital:</dt>
+    <dd>{orbital_period}</dd>
+
+    <dt>Velocidad orbital:</dt>
+    <dd>{orbital_velocity_kmh.toLocaleString(LOCAL)} km/h = {(orbital_velocity_kmh / 3600).toFixed(2)} km/s</dd>
+
+    <dt>Velocidad de escape:</dt>
+    <dd>{escape_velocity_kmh.toLocaleString(LOCAL)} km/h = {(escape_velocity_kmh / 3600).toFixed(2)} km/s</dd>
+
+    <dt>Edad:</dt>
+    <dd>{age}</dd>
+
+    <dt>Temperaturas:</dt>
+    <dd>
+        <dl class="sublist">
         {
             temperature.min && (
-                <span>Mínima: {temperature.min} ºC</span>
+                <dt>Mínima:</dt>
+                <dd>{temperature.min} ºC</dd>
             )
         }
         {
             temperature.max && (
-                <span>Máxima: {temperature.max} ºC</span>
+                <dt>Máxima:</dt>
+                <dd>{temperature.max} ºC</dd>
             )
         }
         {
             temperature.surface && (
-                <span>Superfície: {(temperature.surface).toLocaleString(LOCAL)} ºC</span>
+                <dt>Superfície:</dt>
+                <dd>{(temperature.surface).toLocaleString(LOCAL)} ºC</dd>
             )
         }
         {
             temperature.core && (
-                <span>Núcleo: {(temperature.core).toLocaleString(LOCAL)} ºC</span>
+                <dt>Núcleo:</dt>
+                <dd>{(temperature.core).toLocaleString(LOCAL)} ºC</dd>
             )
         }
-    </div>
-</div>
-<div class="flex flex-col my-4">
-    Distancias:
-    {
-        perihelion_km && (
-            <span>{type !== "satélite" ? "Perihelio" : "Perigeo"}: {perihelion_km.toLocaleString(LOCAL)} km</span>
-        )
-    }
-    {
-        aphelion_km && (
-            <span>{type !== "satélite" ? "Afelio" : "Apogeo"}: {aphelion_km.toLocaleString(LOCAL)} km</span>
-        )
-    }
-    {
-        mean_earth_distance_AU && (
-            <span>Distancia media a la Tierra:<br/> {mean_earth_distance_AU} UA = {((mean_earth_distance_AU * UA).toLocaleString(LOCAL, {
-                maximumFractionDigits: 0}))} km
-            </span>
-        )
-    }
-</div>
+        </dl>
+    </dd>
+
+    <dt>Distancias:</dt>
+    <dd>
+        <dl class="sublist">
+        {
+            perihelion_km && (
+                <dt>{type !== "satélite" ? "Perihelio" : "Perigeo"}:</dt>
+                <dd>{perihelion_km.toLocaleString(LOCAL)} km</dd>
+            )
+        }
+        {
+            aphelion_km && (
+                <dt>{type !== "satélite" ? "Afelio" : "Apogeo"}:</dt>
+                <dd>{aphelion_km.toLocaleString(LOCAL)} km</dd>
+            )
+        }
+        {
+            mean_earth_distance_AU && (
+                <dt>Distancia media a la Tierra:</dt>
+                <dd>{mean_earth_distance_AU} UA = {((mean_earth_distance_AU * UA).toLocaleString(LOCAL, {
+                    maximumFractionDigits: 0}))} km
+                </dd>
+            )
+        }
+    </dd>
+</dl>

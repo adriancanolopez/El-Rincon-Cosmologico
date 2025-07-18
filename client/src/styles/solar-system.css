@@ -11,14 +11,40 @@
     margin-left: 2em;
 }
 
-.properties > div {
+.images {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.properties {
     text-align: center;
     padding: 7px;
 }
 
-.properties > .images {
-    display: flex;
-    flex-direction: row;
+.properties dt {
+    font-weight: bold;
+    border-top: 1px solid black;
+}
+
+.properties dd {
+    border-bottom: 1px solid black;
+}
+
+.properties dt, .properties dd {
+    padding: 6px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.sublist > dt, .sublist > dd {
+    border-left: 0;
+    border-right: 0;
+}
+
+.sublist > dd {
+    border-bottom: 0;
+}
+
+.sublist > dt {
+    border-top: 0;
 }
