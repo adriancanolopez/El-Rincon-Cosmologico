@@ -1,7 +1,13 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import BodyProperties from "./BodyProperties.astro";
 import MoonCard from "./MoonCard.astro";
+
+type Props = {
+    celestialBody: CollectionEntry<"celestial-bodies">,
+    moons: CollectionEntry<"celestial-bodies">[]
+}
 
 const { celestialBody, moons } = Astro.props;
 
@@ -25,7 +31,7 @@ const { Content } = await render(celestialBody);
         <section class="w-1/2 leading-relaxed content">
             <Content />
         </section>
-        <section class="w-1/2 properties">
+        <section class="w-1/2">
             {
                 images && (
                     <div class="images">
@@ -48,7 +54,7 @@ const { Content } = await render(celestialBody);
             <section>
                 <h1>Lunas:</h1>
                     {
-                        moonsSorted.map((moon : Object) => {
+                        moonsSorted.map((moon) => {
                             return (
                                 <MoonCard moon={moon}/>
                             )

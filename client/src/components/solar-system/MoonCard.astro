@@ -1,6 +1,11 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 import BodyProperties from "./BodyProperties.astro";
+
+type Props = {
+    moon: CollectionEntry<"celestial-bodies">
+}
 
 const { moon } = Astro.props;
 
@@ -23,7 +28,7 @@ const { Content } = await render(moon);
                 images && (
                     <div class="images">
                     {
-                        images.map((image : {url : string, description: string}) => (
+                        images.map((image) => (
                             <figure>
                                 <img src={`solar-system/images/${image.url}`} alt={`Imagen de ${name}`}/>
                                 <figcaption>{image.description}</figcaption>

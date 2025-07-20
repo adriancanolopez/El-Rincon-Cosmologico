@@ -1,4 +1,9 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+    properties: CollectionEntry<"celestial-bodies">["data"]
+}
 const { properties } = Astro.props;
 
 const { type, mass, diameter_km, gravity, 
