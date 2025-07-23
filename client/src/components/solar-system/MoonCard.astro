@@ -17,13 +17,13 @@ const { Content } = await render(moon);
 ---
 
 
-<details class="p-4 ml-8 ">
-    <summary class="">{name}</summary>
-    <div class="flex flex-row justify-center">
-        <section class="w-1/2 leading-relaxed content">
+<details class="p-2 ml-8">
+    <summary class="rounded-md p-2 hover:bg-slate-600 hover:text-white transition-colors duration-400 cursor-pointer" id={slug}>{name}</summary>
+    <div class="flex flex-row justify-center bg-gray-600 rounded-md p-4 text-white">
+        <section class="content">
             <Content />
         </section>
-        <section class="w-1/2">
+        <section class="images-properties">
             {
                 images && (
                     <div class="images">
