@@ -10,8 +10,8 @@ const celestialBodies = defineCollection({
         diameter_km: z.number(),
         gravity: z.number(),
         orbital_period: z.string(),
-        orbital_velocity_kmh: z.number(),
-        escape_velocity_kmh: z.number(),
+        orbital_velocity_kms: z.number(),
+        escape_velocity_kms: z.number(),
         age: z.string(),
         temperature: z.object({
             min: z.number().optional(),

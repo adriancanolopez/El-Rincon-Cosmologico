@@ -7,8 +7,8 @@ type Props = {
 const { properties } = Astro.props;
 
 const { type, mass, diameter_km, gravity, 
-        orbital_period, orbital_velocity_kmh, 
-        escape_velocity_kmh, age, temperature, 
+        orbital_period, orbital_velocity_kms, 
+        escape_velocity_kms, age, temperature, 
         perihelion_km, aphelion_km, mean_earth_distance_AU
     } = properties;
 
@@ -30,10 +30,10 @@ const UA = 149597870.7
     <dd>{orbital_period}</dd>
 
     <dt>Velocidad orbital:</dt>
-    <dd>{orbital_velocity_kmh.toLocaleString(LOCAL)} km/h = {(orbital_velocity_kmh / 3600).toFixed(2)} km/s</dd>
+    <dd>{orbital_velocity_kms.toLocaleString(LOCAL, {maximumFractionDigits: 4})} km/s = {(orbital_velocity_kms * 3600).toLocaleString(LOCAL, {maximumFractionDigits: 2})} km/h</dd>
 
     <dt>Velocidad de escape:</dt>
-    <dd>{escape_velocity_kmh.toLocaleString(LOCAL)} km/h = {(escape_velocity_kmh / 3600).toFixed(2)} km/s</dd>
+    <dd>{escape_velocity_kms.toLocaleString(LOCAL, {maximumFractionDigits: 4})} km/s = {(escape_velocity_kms * 3600).toLocaleString(LOCAL, {maximumFractionDigits: 2})} km/h</dd>
 
     <dt>Edad:</dt>
     <dd>{age}</dd>

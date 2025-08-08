@@ -6,8 +6,8 @@ mass: "1.9891 x 10 <sup>30</sup>"
 diameter_km: 1392700
 gravity: 274
 orbital_period: "225 millones de años"
-orbital_velocity_kmh: 828000
-escape_velocity_kmh: 2224080
+orbital_velocity_kms: 230
+escape_velocity_kms: 617.8
 age: "4.603 miles de millones de años"
 temperature:
     surface: 5498.85
