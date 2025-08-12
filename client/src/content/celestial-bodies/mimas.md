@@ -1,0 +1,23 @@
+---
+name: "Mimas"
+type: "satélite"
+parent_planet: saturno
+order: 7
+mass: "3.75 x 10 <sup>19</sup>"
+diameter_km: 396.4
+gravity: 0.064
+orbital_period: "22 horas y 37 minutos terrestres"
+orbital_velocity_kms: 14.28
+escape_velocity_kms: 0.159
+age: "4.1 - 4.4 miles de millones de años (no se conoce con certeza)"
+temperature:
+    min: -196
+    max: -181
+perihelion_km: 181902
+aphelion_km: 189176
+images:
+  - url: "mimas.jpg"
+    description: "Mimas"
+---
+
+La séptima luna más grande del planeta.

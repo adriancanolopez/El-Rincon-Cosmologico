@@ -16,6 +16,7 @@ const celestialBodies = defineCollection({
         temperature: z.object({
             min: z.number().optional(),
             max: z.number().optional(),
+            average: z.number().optional(), // En caso de que no se conozca la temperatura mínima, la máxima o ambas
             surface: z.number().optional(),
             core: z.number().optional(),
         }),

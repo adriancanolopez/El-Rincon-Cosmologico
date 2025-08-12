@@ -54,6 +54,12 @@ const UA = 149597870.7
             )
         }
         {
+            temperature.average && (
+                <dt>Media:</dt>
+                <dd>{temperature.average} ºC</dd>
+            )
+        }
+        {
             temperature.surface && (
                 <dt>Superfície:</dt>
                 <dd>{(temperature.surface).toLocaleString(LOCAL)} ºC</dd>
