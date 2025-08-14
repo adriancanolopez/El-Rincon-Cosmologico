@@ -13,8 +13,8 @@ age: "4.53 miles de millones de años"
 temperature:
     min: -249
     max: 127
-perihelion_km: 363300
-aphelion_km: 405500
+periapsis_km: 363300
+apoapsis_km: 405500
 images:
   - url: "luna.jpg"
     description: "La Luna"

@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -223
     max: -148
-perihelion_km: 664862
-aphelion_km: 676938
+periapsis_km: 664862
+apoapsis_km: 676938
 images:
   - url: "europa.jpg"
     description: "Europa"

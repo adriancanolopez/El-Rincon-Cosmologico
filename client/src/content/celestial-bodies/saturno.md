@@ -12,8 +12,8 @@ age: "4.503 miles de millones de años"
 temperature:
     min: -163
     max: 121
-perihelion_km: 1353572955.9
-aphelion_km: 1513325782.9
+periapsis_km: 1353572955.9
+apoapsis_km: 1513325782.9
 mean_earth_distance_AU: 8.69
 images:
   - url: "saturno-1.jpg"

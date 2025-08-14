@@ -12,8 +12,8 @@ age: "4.503 miles de millones de años"
 temperature:
     min: -45.15
     max: 499.85
-perihelion_km: 107477094.2
-aphelion_km: 108939114.2
+periapsis_km: 107477094.2
+apoapsis_km: 108939114.2
 mean_earth_distance_AU: 0.3
 images:
   - url: "venus.jpg"

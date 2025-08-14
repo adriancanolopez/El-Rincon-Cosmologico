@@ -12,8 +12,8 @@ age: "4.503 miles de millones de años"
 temperature:
     min: -163
     max: 121
-perihelion_km: 2748938461
-aphelion_km: 3004419704
+periapsis_km: 2748938461
+apoapsis_km: 3004419704
 mean_earth_distance_AU: 29.1
 images:
   - url: "neptuno-1.jpg"

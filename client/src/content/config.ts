@@ -20,8 +20,8 @@ const celestialBodies = defineCollection({
             surface: z.number().optional(),
             core: z.number().optional(),
         }),
-        perihelion_km: z.number().optional(),
-        aphelion_km: z.number().optional(),
+        periapsis_km: z.number().optional(), // Distancia mínima entre el cuerpo celeste y el cuerpo primario
+        apoapsis_km: z.number().optional(), // Distancia máxima entre el cuerpo celeste y el cuerpo primario
         mean_earth_distance_AU: z.number().optional(),
         images: z.array(
             z.object({

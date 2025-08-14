@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -183
     max: -179
-perihelion_km: 1186680
-aphelion_km: 1257060
+periapsis_km: 1186680
+apoapsis_km: 1257060
 images:
   - url: "titan.jpg"
     description: "Titán"

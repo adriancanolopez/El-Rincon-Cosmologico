@@ -13,8 +13,8 @@ age: "4.564 miles de millones de años"
 temperature:
     min: -183
     max: -143
-perihelion_km: 3456518
-aphelion_km: 3665184
+periapsis_km: 3456518
+apoapsis_km: 3665184
 images:
   - url: "japeto.jpg"
     description: "Jápeto"

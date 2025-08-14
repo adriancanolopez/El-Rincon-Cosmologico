@@ -13,8 +13,8 @@ age: "4.2 - 4.5 miles de millones de años (no se conoce con certeza)"
 temperature:
     min: -240
     max: -128
-perihelion_km: 236950
-aphelion_km: 239090
+periapsis_km: 236950
+apoapsis_km: 239090
 images:
   - url: "encelado.jpg"
     description: "Encélado"

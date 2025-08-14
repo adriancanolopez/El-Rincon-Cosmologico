@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -193
     max: -108
-perihelion_km: 1869000
-aphelion_km: 1897000
+periapsis_km: 1869000
+apoapsis_km: 1897000
 images:
   - url: "calisto.jpg"
     description: "Calisto"

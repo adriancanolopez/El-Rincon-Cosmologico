@@ -9,7 +9,7 @@ const { properties } = Astro.props;
 const { type, mass, diameter_km, gravity, 
         orbital_period, orbital_velocity_kms, 
         escape_velocity_kms, age, temperature, 
-        perihelion_km, aphelion_km, mean_earth_distance_AU
+        periapsis_km, apoapsis_km, mean_earth_distance_AU
     } = properties;
 
 const LOCAL: string = 'en-EN';
@@ -78,15 +78,15 @@ const UA = 149597870.7
     <dd>
         <dl class="sublist">
         {
-            perihelion_km && (
-                <dt>{type !== "satélite" ? "Perihelio" : "Perigeo"}:</dt>
-                <dd>{perihelion_km.toLocaleString(LOCAL)} km</dd>
+            periapsis_km && (
+                <dt>{type !== "satélite" ? "Perihelio" : "Periastro"}:</dt>
+                <dd>{periapsis_km.toLocaleString(LOCAL)} km</dd>
             )
         }
         {
-            aphelion_km && (
-                <dt>{type !== "satélite" ? "Afelio" : "Apogeo"}:</dt>
-                <dd>{aphelion_km.toLocaleString(LOCAL)} km</dd>
+            apoapsis_km && (
+                <dt>{type !== "satélite" ? "Afelio" : "Apoastro"}:</dt>
+                <dd>{apoapsis_km.toLocaleString(LOCAL)} km</dd>
             )
         }
         {

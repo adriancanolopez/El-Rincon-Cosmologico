@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años (no se conoce con certeza)"
 temperature:
     min: -220
     max: -174
-perihelion_km: 526500
-aphelion_km: 527600
+periapsis_km: 526500
+apoapsis_km: 527600
 images:
   - url: "rea.jpg"
     description: "Rea"

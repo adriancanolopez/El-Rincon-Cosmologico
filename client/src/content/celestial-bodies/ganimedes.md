@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -203
     max: -121
-perihelion_km: 1069200
-aphelion_km: 1071600
+periapsis_km: 1069200
+apoapsis_km: 1071600
 images:
   - url: "ganimedes-1.jpg"
     description: "Ganímedes 1"

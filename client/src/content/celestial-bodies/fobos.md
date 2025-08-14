@@ -13,7 +13,7 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -112
     max: -4
-perihelion_km: 6000
+periapsis_km: 6000
 images:
   - url: "fobos.jpg"
     description: "Fobos"

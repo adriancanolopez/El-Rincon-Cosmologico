@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años (no se conoce con certeza)"
 temperature:
     min: -203
     max: -187
-perihelion_km: 294619
-aphelion_km: 295049
+periapsis_km: 294619
+apoapsis_km: 295049
 images:
   - url: "tetis.jpg"
     description: "Tetis"

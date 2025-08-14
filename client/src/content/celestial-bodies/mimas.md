@@ -13,8 +13,8 @@ age: "4.1 - 4.4 miles de millones de años (no se conoce con certeza)"
 temperature:
     min: -196
     max: -181
-perihelion_km: 181902
-aphelion_km: 189176
+periapsis_km: 181902
+apoapsis_km: 189176
 images:
   - url: "mimas.jpg"
     description: "Mimas"

@@ -12,8 +12,8 @@ escape_velocity_kms: 0.51
 age: "4.1 - 4.4 miles de millones de años (no se conoce con certeza)"
 temperature:
     average: -186
-perihelion_km: 376566
-aphelion_km: 378226
+periapsis_km: 376566
+apoapsis_km: 378226
 images:
   - url: "dione.jpg"
     description: "Dione"

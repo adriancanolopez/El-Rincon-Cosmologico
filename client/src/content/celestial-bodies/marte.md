@@ -12,8 +12,8 @@ age: "4.603 miles de millones de años"
 temperature:
     min: -140
     max: 20
-perihelion_km: 206669009.6
-aphelion_km: 249209258.5
+periapsis_km: 206669009.6
+apoapsis_km: 249209258.5
 mean_earth_distance_AU: 1.5
 images:
   - url: "marte.jpg"

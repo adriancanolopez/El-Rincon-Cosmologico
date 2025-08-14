@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -112
     max: -3
-perihelion_km: 23455.5
-aphelion_km: 23470.9
+periapsis_km: 23455.5
+apoapsis_km: 23470.9
 images:
   - url: "deimos.jpg"
     description: "Deimos"

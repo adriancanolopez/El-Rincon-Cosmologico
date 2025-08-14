@@ -13,8 +13,8 @@ age: "4.5 miles de millones de años"
 temperature:
     min: -183
     max: 1649
-perihelion_km: 420000
-aphelion_km: 423400
+periapsis_km: 420000
+apoapsis_km: 423400
 ---
 
 La luna galileana más cercana al planeta.

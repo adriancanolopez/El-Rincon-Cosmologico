@@ -12,8 +12,8 @@ age: "4.603 miles de millones de años"
 temperature:
     min: -163
     max: 121
-perihelion_km: 740573637.5
-aphelion_km: 816520736.5
+periapsis_km: 740573637.5
+apoapsis_km: 816520736.5
 mean_earth_distance_AU: 4.2
 images:
   - url: "jupiter-1.jpg"

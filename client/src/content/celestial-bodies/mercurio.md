@@ -12,8 +12,8 @@ age: "4.503 miles de millones de años"
 temperature:
     min: -185
     max: 427
-perihelion_km: 46001195.6
-aphelion_km: 69816877.5
+periapsis_km: 46001195.6
+apoapsis_km: 69816877.5
 mean_earth_distance_AU: 0.6
 images:
   - url: "mercurio.jpg"
