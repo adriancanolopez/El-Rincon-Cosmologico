@@ -17,10 +17,11 @@ const { Content } = await render(moon);
 ---
 
 
-<details class="p-2 ml-8">
+<details class="p-1.5">
     <summary class="rounded-md p-2 hover:bg-slate-600 hover:text-white transition-colors duration-400 cursor-pointer" id={slug}>{name}</summary>
-    <div class="flex flex-row justify-center bg-gray-600 rounded-md p-4 text-white">
+    <div class="flex flex-col md:flex-row justify-center bg-gray-700 rounded-md p-3 text-white ring-2 ring-neutral-400">
         <section class="content">
+            <h2 class="text-2xl font-bold text-amber-400 text-center">{name}</h2>
             <Content />
         </section>
         <section class="images-properties">
