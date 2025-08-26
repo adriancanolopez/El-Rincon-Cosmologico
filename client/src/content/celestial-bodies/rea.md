@@ -17,7 +17,8 @@ periapsis_km: 526500
 apoapsis_km: 527600
 images:
   - url: "rea.jpg"
-    description: "Rea"
+    description: "Fotografía realizada por la sonda Cassini el 21 de noviembre de 2009, a una distancia de 30,000 km de Rea."
+    credits: "NASA/JPL/Space Science Institute"
 ---
 
 La segunda luna más grande del planeta.

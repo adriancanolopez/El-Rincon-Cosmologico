@@ -17,7 +17,8 @@ periapsis_km: 129730
 apoapsis_km: 130070
 images:
   - url: "miranda.jpg"
-    description: "Miranda"
+    description: "Fotografía de Miranda realizada por la sonda Voyager 2 el 24 de enero de 1986."
+    credits: "NASA/JPL-Caltech"
 ---
 
 La quinta luna más grande del planeta.

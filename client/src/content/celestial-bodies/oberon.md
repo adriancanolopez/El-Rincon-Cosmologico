@@ -17,7 +17,8 @@ periapsis_km: 582700
 apoapsis_km: 584300
 images:
   - url: "oberon.jpg"
-    description: "Oberón"
+    description: "Fotografía tomada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de 660,000 km de Oberón."
+    credits: "NASA/JPL"
 ---
 
 La segunda luna más grande del planeta.

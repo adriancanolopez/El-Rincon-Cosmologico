@@ -17,9 +17,11 @@ apoapsis_km: 816520736.5
 mean_earth_distance_AU: 4.2
 images:
   - url: "jupiter-1.jpg"
-    description: "Júpiter"
+    description: "Imagen creada a partir de cuatro imágenes tomadas por la sonda Cassini el 7 de diciembre del 2000. Se puede observar la sombra proyectada por la luna Europa."
+    credits: "NASA/JPL/University of Arizona"
   - url: "jupiter-2.jpg"
-    description: "Júpiter 2"
+    description: "Fotografía de Júpiter, la Gran Mancha Roja, y tres de las lunas galileanas: Ío, Europa y Calisto. Fue realizada por la sonda Voyager 1 el 5 de febrero de 1979."
+    credits: "NASA/JPL"
 ---
 
 Júpiter es el quinto planeta y el más grande del Sistema solar. Tiene 79 lunas conocidas. Se espera que se envíe una sonda espacial llamada Europa Clipper para explorar Europa (una de sus lunas) hacia octubre de 2024.

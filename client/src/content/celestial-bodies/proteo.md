@@ -16,7 +16,8 @@ periapsis_km: 117584
 apoapsis_km: 117709
 images:
   - url: "proteo.webp"
-    description: "Proteo"
+    description: "Fotografía de Proteo realizada por la sonda Voyager 2."
+    credits: "NASA/JPL"
 ---
 
 La segunda luna más grande del planeta.

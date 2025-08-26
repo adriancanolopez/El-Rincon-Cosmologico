@@ -17,7 +17,9 @@ periapsis_km: 1069200
 apoapsis_km: 1071600
 images:
   - url: "ganimedes-1.jpg"
-    description: "Ganímedes 1"
+    description: "Imagen compuesta por fotografías realizadas por la sonda Galileo el 29 de marzo de 1998, a una distancia de 918,000 km de Ganímedes."
+    credits: "NASA/JPL/DLR"
   - url: "ganimedes-2.jpg"
-    description: "Ganímedes 2"
+    description: "Fotografía tomada por la sonda Voyager 1 el 4 de marzo de 1979, a una distancia de 2.6 millones de km de Ganímedes."
+    credits: "NASA/JPL"
 ---

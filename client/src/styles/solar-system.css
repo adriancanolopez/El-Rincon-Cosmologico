@@ -39,8 +39,14 @@
 }
 
 .images figure > figcaption {
+    max-width: 400px;
     text-align: center;
     font-style: italic;
+    @apply pt-2 md:pt-1;
+}
+
+.credits {
+    @apply text-sm text-neutral-200 m-1;
 }
 
 .properties {

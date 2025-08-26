@@ -15,7 +15,8 @@ temperature:
 mean_earth_distance_AU: 1
 images:
   - url: "sol.jpg"
-    description: "El Sol"
+    description: "Imagen creada a partir de la combinación de múltiples imágenes captadas por el Solar Dynamics Observatory (SDO) el 20 de junio de 2013."
+    credits: "NASA Goddard Space Flight Center (GSFC)"
 ---
 
 El Sol es la estrella del Sistema solar. Se encuentra en el centro de él.

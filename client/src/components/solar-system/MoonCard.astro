@@ -32,7 +32,10 @@ const { Content } = await render(moon);
                         images.map((image) => (
                             <figure>
                                 <img src={`solar-system/images/${image.url}`} alt={`Imagen de ${name}`}/>
-                                <figcaption>{image.description}</figcaption>
+                                <figcaption>
+                                    <p>{image.description}</p>
+                                    <p class="credits">(Créditos: {image.credits})</p>
+                                </figcaption>
                             </figure>
                         ))
                     }

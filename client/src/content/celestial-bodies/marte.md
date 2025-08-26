@@ -17,7 +17,8 @@ apoapsis_km: 249209258.5
 mean_earth_distance_AU: 1.5
 images:
   - url: "marte.jpg"
-    description: "Marte"
+    description: "Fotografía de Marte tomada por el telescopio espacial Hubble entre el 27 de abril y 6 de mayo de 1997, cuando el planeta se encontraba a 87 millones de km de la Tierra."
+    credits: "Steve Lee University of Colorado, Jim Bell Cornell University, Mike Wolff Space Science Institute, and NASA"
 ---
 
 Marte es el cuarto planeta más cercano al Sol. Tiene dos lunas: Fobos y Deimos. Se espera que se envíen astronautas en la década de 2030.

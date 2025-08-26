@@ -17,7 +17,8 @@ periapsis_km: 181902
 apoapsis_km: 189176
 images:
   - url: "mimas.jpg"
-    description: "Mimas"
+    description: "Imagen tomada por la sonda Cassini el 2 de agosto de 2005, a una distancia de 228,000 km de Mimas."
+    credits: "NASA/JPL/Space Science Institute"
 ---
 
 La séptima luna más grande del planeta.

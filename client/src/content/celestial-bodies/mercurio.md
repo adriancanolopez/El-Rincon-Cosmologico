@@ -17,5 +17,6 @@ apoapsis_km: 69816877.5
 mean_earth_distance_AU: 0.6
 images:
   - url: "mercurio.jpg"
-    description: "Mercurio"
+    description: "Imagen tomada por la sonda MESSENGER el 6 de octubre de 2008, a una distancia de 27,000 km de Mercurio, durante su segundo sobrevuelo."
+    credits: "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington"
 ---

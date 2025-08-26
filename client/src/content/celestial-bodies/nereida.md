@@ -16,7 +16,8 @@ periapsis_km: 1371700
 apoapsis_km: 9655100
 images:
   - url: "nereida.jpg"
-    description: "Fotografía de Nereida tomada por la Voyager 2"
+    description: "Fotografía tomada por la sonda Voyager 2 el 24 de agosto de 1989, a una distancia de 4.7 millones de km de Nereida."
+    credits: "NASA/JPL"
 ---
 
 La tercera luna más grande del planeta.

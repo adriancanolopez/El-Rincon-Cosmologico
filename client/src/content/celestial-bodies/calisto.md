@@ -17,5 +17,6 @@ periapsis_km: 1869000
 apoapsis_km: 1897000
 images:
   - url: "calisto.jpg"
-    description: "Calisto"
+    description: "Imagen realizada a partir de tres imágenes tomadas por la sonda Voyager 1 el 5 de marzo de 1979, a una distancia de 1.2 millones de km de Calisto."
+    credits: "NASA/JPL"
 ---

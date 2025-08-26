@@ -16,7 +16,8 @@ temperature:
 periapsis_km: 6000
 images:
   - url: "fobos.jpg"
-    description: "Fobos"
+    description: "Fotografía realizada por la sonda Mars Reconnaissance Orbiter el 23 de marzo de 2008, a una distancia de 6,800 km de Fobos."
+    credits: "NASA/JPL-Caltech/University of Arizona"
 ---
 
 La luna más cercana al planeta.

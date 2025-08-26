@@ -27,6 +27,7 @@ const celestialBodies = defineCollection({
             z.object({
                 url: z.string(),
                 description: z.string(),
+                credits: z.string(),
             })
         ).optional()
     })

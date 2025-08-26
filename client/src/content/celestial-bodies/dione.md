@@ -16,7 +16,8 @@ periapsis_km: 376566
 apoapsis_km: 378226
 images:
   - url: "dione.jpg"
-    description: "Dione"
+    description: "Fotografía realizada por la sonda Cassini el 24 de julio de 2006, a una distancia de 263,000 km de Dione."
+    credits: "NASA/JPL/Space Science Institute"
 ---
 
 La cuarta luna más grande del planeta.

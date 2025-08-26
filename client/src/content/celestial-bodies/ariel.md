@@ -17,7 +17,8 @@ periapsis_km: 190670
 apoapsis_km: 191130
 images:
   - url: "ariel.jpg"
-    description: "Ariel"
+    description: "Fotografía tomada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de unos 130,000 km de Ariel."
+    credits: "NASA/JPL"
 ---
 
 La cuarta luna más grande del planeta.

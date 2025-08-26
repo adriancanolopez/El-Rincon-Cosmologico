@@ -17,7 +17,8 @@ periapsis_km: 265000
 apoapsis_km: 267000
 images:
   - url: "umbriel.jpg"
-    description: "Umbriel"
+    description: "Fotografía realizada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de 557,000 km de Umbriel."
+    credits: "NASA/JPL"
 ---
 
 La tercera luna más grande del planeta.

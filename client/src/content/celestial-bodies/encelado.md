@@ -17,7 +17,8 @@ periapsis_km: 236950
 apoapsis_km: 239090
 images:
   - url: "encelado.jpg"
-    description: "Encélado"
+    description: "Fotografía realizada por la sonda Cassini el 28 de octubre de 2015, a una distancia de unos 96,000 km de Encélado."
+    credits: "NASA/JPL-Caltech/Space Science Institute"
 ---
 
 La sexta luna más grande del planeta.

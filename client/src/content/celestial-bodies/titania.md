@@ -17,7 +17,8 @@ periapsis_km: 435800
 apoapsis_km: 436800
 images:
   - url: "titania.jpg"
-    description: "Titania"
+    description: "Fotografía realizada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de unos 500,000 km de Titania."
+    credits: "NASA/JPL"
 ---
 
 La luna más grande del planeta.

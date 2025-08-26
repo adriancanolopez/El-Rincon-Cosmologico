@@ -16,7 +16,8 @@ periapsis_km: 354753
 apoapsis_km: 354765
 images:
   - url: "triton.jpg"
-    description: "Tritón"
+    description: "Fotografía tomada por la sonda Voyager 2 el 20 de agosto de 1989, a una distancia de 5.4 millones de km de Neptuno."
+    credits: "NASA/JPL"
 ---
 
 La luna más grande del planeta.

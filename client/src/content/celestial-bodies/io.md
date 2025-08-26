@@ -15,6 +15,10 @@ temperature:
     max: 1649
 periapsis_km: 420000
 apoapsis_km: 423400
+images:
+  - url: "io.jpg"
+    description: "Imagen creada a partir de fotografías tomadas por la sonda Galileo el 4 de abril de 1997, a una distancia de 600,000 km de Ío."
+    credits: "NASA/JPL/University of Arizona"
 ---
 
 La luna galileana más cercana al planeta.

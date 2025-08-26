@@ -17,5 +17,6 @@ apoapsis_km: 3004419704
 mean_earth_distance_AU: 18.2
 images:
   - url: "urano.jpg"
-    description: "Urano"
+    description: "Fotografía de Urano tomada por la sonda Voyager 2 en 1986."
+    credits: "NASA/JPL-Caltech"
 ---

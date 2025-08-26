@@ -17,7 +17,8 @@ periapsis_km: 3456518
 apoapsis_km: 3665184
 images:
   - url: "japeto.jpg"
-    description: "Jápeto"
+    description: "Imagen creada a partir de la combinación de fotografías tomadas por la sonda Cassini el 10 de septiembre de 2007, a una distancia de unos 73,000 km de Jápeto."
+    credits: "NASA/JPL/Space Science Institute"
 ---
 
 La tercera luna más grande del planeta.

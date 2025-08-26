@@ -16,7 +16,8 @@ periapsis_km: 147098290.7
 apoapsis_km: 152098232
 images:
   - url: "tierra.jpg"
-    description: "La Tierra"
+    description: "La Tierra fotografiada por la sonda Galileo el 11 de diciembre de 1990, a una distancia de 2.4 millones de km del planeta."
+    credits: "NASA/JPL"
 ---
 
 La Tierra es el tercer planeta más cercano al Sol. Tiene un satélite natural, la Luna, y 5.465 satélites artificiales.

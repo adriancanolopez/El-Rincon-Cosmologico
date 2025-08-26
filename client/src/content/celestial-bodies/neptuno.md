@@ -17,7 +17,9 @@ apoapsis_km: 3004419704
 mean_earth_distance_AU: 29.1
 images:
   - url: "neptuno-1.jpg"
-    description: "Neptuno"
+    description: "Imagen creada a partir de unas fotografías completas del planeta tomadas por la sonda Voyager 2 a una distancia de 7 millones de km del mismo."
+    credits: "NASA/JPL"
   - url: "neptuno-2.jpg"
-    description: "Neptuno 2"
+    description: "Imagen creada a partir de dos imágenes tomadas por la sonda Voyager 2."
+    credits: "NASA/JPL"
 ---
