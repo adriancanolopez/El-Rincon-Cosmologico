@@ -11,7 +11,19 @@ const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.ord
 ---
 
 <Layout>
-    <h1>Sistema Solar</h1>
+    <section class="relative">
+        <h1 class="absolute top-8 text-3xl md:text-4xl font-bold text-center w-full z-1">El Sistema Solar</h1>
+        <video autoplay loop muted playsinline class="w-screen h-dvh object-cover z-0">
+            <source src="solar-system/videos/sistema-solar.mp4" type="video/mp4">
+        </video>
+        <div class="absolute bottom-8 w-full flex flex-col items-center text-center z-1">
+            <h2 class="text-lg font-bold px-4 py-2">¡Baja para empezar tu viaje por los diferentes astros del Sistema solar!</h2>
+            <a href="#astros">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down text-white hover:cursor-pointer"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+        </div>
+    </section>
+    <section id="astros">
     {
         bodiesSorted.map((celestialBody) => {
             const { slug, data } = celestialBody;
@@ -21,4 +33,5 @@ const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.ord
             )
         })
     }
+    </section>
 </Layout>
