@@ -29,7 +29,8 @@ const celestialBodies = defineCollection({
                 description: z.string(),
                 credits: z.string(),
             })
-        ).optional()
+        ).optional(),
+        iconImage: z.string().optional()
     })
 });
 

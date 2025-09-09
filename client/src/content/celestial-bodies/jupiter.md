@@ -22,6 +22,7 @@ images:
   - url: "jupiter-2.jpg"
     description: "Fotografía de Júpiter, la Gran Mancha Roja, y tres de las lunas galileanas: Ío, Europa y Calisto. Fue realizada por la sonda Voyager 1 el 5 de febrero de 1979."
     credits: "NASA/JPL"
+iconImage: "jupiter-1.jpg"
 ---
 
 Júpiter es el quinto planeta y el más grande del Sistema solar. Tiene 79 lunas conocidas. Se espera que se envíe una sonda espacial llamada Europa Clipper para explorar Europa (una de sus lunas) hacia octubre de 2024.

@@ -22,4 +22,5 @@ images:
   - url: "neptuno-2.jpg"
     description: "Imagen creada a partir de dos imágenes tomadas por la sonda Voyager 2."
     credits: "NASA/JPL"
+iconImage: "neptuno-1.jpg"
 ---

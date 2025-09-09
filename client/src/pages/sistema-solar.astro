@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import '../styles/solar-system.css';
 import { getCollection } from "astro:content";
 import CelestialBodyCard from "../components/solar-system/CelestialBodyCard.astro";
+import ImageNavLink from "../components/solar-system/ImageNavLink.astro";
 
 const celestialBodies = await getCollection("celestial-bodies");
 
@@ -17,7 +18,7 @@ const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.ord
             <source src="solar-system/videos/sistema-solar.mp4" type="video/mp4">
         </video>
         <div class="absolute bottom-8 w-full flex flex-col items-center text-center z-1">
-            <h2 class="text-lg font-bold px-4 py-2">¡Baja para empezar tu viaje por los diferentes astros del Sistema solar!</h2>
+            <h2 class="text-lg font-bold px-4 py-2">¡Baja o utiliza la barra lateral para empezar tu viaje por los diferentes astros del Sistema solar!</h2>
             <a href="#astros">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down text-white hover:cursor-pointer"><path d="m6 9 6 6 6-6"/></svg>
             </a>
@@ -34,4 +35,42 @@ const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.ord
         })
     }
     </section>
+    <nav class="fixed inactive top-0 flex flex-col justify-center w-14 h-screen bg-transparent" id="sidebar-planets">
+        <button class="md:hidden absolute right-full top-1/2 -translate-y-1/2 bg-black pl-2 py-6 rounded-l-xl hover:cursor-pointer" id="btn-sidebar"></button>
+        <div class="flex flex-col gap-2 bg-black rounded-lg p-2">
+            {
+                bodiesSorted.map((celestialBody) => {
+                    const { slug, data } = celestialBody;
+                    const image = data.iconImage;
+                    const name = data.name;
+                    return (
+                        <ImageNavLink link={`#${slug}`} urlImage={image} bodyName={name}/>
+                    )
+                })
+            }
+        </div>
+    </nav>
 </Layout>
+
+<script>
+    const btnSidebar = document.getElementById('btn-sidebar') as HTMLButtonElement;
+    const sidebarPlanets = document.getElementById('sidebar-planets') as HTMLElement;
+    const iconBtnSidebar: string = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open-icon lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m10 15-3-3 3-3"/></svg>`;
+    
+    let sidebarStatus: boolean = false;
+    btnSidebar.innerHTML = iconBtnSidebar;
+
+    btnSidebar.addEventListener('click', function() {
+        if (sidebarStatus) { // Si la barra lateral está desplegada
+            sidebarPlanets.classList.remove('active');
+            sidebarPlanets.classList.add('inactive');
+            btnSidebar.innerHTML = iconBtnSidebar;
+        }
+        else {
+            sidebarPlanets.classList.remove('inactive');
+            sidebarPlanets.classList.add('active');
+            btnSidebar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close-icon lucide-panel-right-close"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>`;
+        }
+        sidebarStatus = !sidebarStatus;
+    });
+</script>

@@ -1,0 +1,14 @@
+---
+type Props = {
+    link: string,
+    urlImage: string | undefined,
+    bodyName: string
+}
+
+const { link, urlImage, bodyName } = Astro.props;
+---
+
+
+<a href={link} title=`Ir a ${bodyName}`>
+    <img src={`solar-system/images/${urlImage}`} alt=`Ir a ${bodyName}` class="w-16 h-12 object-contain transition-transform duration-300 hover:scale-110"/>
+</a>

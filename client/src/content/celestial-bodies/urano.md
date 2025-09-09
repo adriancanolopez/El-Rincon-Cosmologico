@@ -19,4 +19,5 @@ images:
   - url: "urano.jpg"
     description: "Fotografía de Urano tomada por la sonda Voyager 2 en 1986."
     credits: "NASA/JPL-Caltech"
+iconImage: "urano.jpg"
 ---

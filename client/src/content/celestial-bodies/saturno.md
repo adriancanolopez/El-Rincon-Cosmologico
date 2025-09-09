@@ -22,6 +22,7 @@ images:
   - url: "saturno-2.jpg"
     description: "Fotografía realizada por la sonda Voyager 2 el 21 de julio de 1981. La luna Rea aparece al sur del planeta y Dione al sureste."
     credits: "NASA/JPL"
+iconImage: "saturno-1.jpg"
 ---
 
 Saturno es el sexto planeta y el segundo más grande del Sistema solar. Tiene 79 lunas conocidas. Se espera que se envíe una sonda espacial llamada Europa Clipper para explorar Europa (una de sus lunas) hacia octubre de 2024.
