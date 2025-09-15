@@ -113,3 +113,20 @@ details {
 .active {
     @apply -right-0;
 }
+
+#planet-links li {
+    @apply px-1.5;
+}
+
+
+#dwarf-planet-links {
+    display: none;
+    width: 100%;
+    position: absolute;
+    right: 100%;
+    bottom: 0%;
+}
+
+#planet-links >:last-child:hover #dwarf-planet-links {
+    display: block;
+}

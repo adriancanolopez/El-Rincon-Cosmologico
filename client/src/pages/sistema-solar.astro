@@ -3,12 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import '../styles/solar-system.css';
 import { getCollection } from "astro:content";
 import CelestialBodyCard from "../components/solar-system/CelestialBodyCard.astro";
+import SidebarContent from "../components/solar-system/SidebarContent.astro";
 import ImageNavLink from "../components/solar-system/ImageNavLink.astro";
 
 const celestialBodies = await getCollection("celestial-bodies");
 
 const bodiesWithoutMoons = celestialBodies.filter((celestialBody) => celestialBody.data.type !== "satélite");
 const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.order); //Orden ascendente
+const bodiesInSidebar = bodiesSorted.filter((celestialBody) => celestialBody.data.type !== "planeta enano");
+const dwarfPlanets = bodiesSorted.filter((celestialBody) => celestialBody.data.type === "planeta enano");
 ---
 
 <Layout title="Sistema solar">
@@ -35,20 +38,14 @@ const bodiesSorted = bodiesWithoutMoons.sort((a, b) => a.data.order - b.data.ord
         })
     }
     </section>
-    <nav class="fixed inactive top-0 flex flex-col justify-center w-14 h-screen bg-transparent" id="sidebar-planets">
+    <nav class="fixed inactive top-0 flex flex-col justify-center w-14 h-dvh bg-transparent z-5" id="sidebar-planets">
         <button class="md:hidden absolute right-full top-1/2 -translate-y-1/2 bg-black pl-2 py-6 rounded-l-xl hover:cursor-pointer" id="btn-sidebar"></button>
-        <div class="flex flex-col gap-2 bg-black rounded-lg p-2">
-            {
-                bodiesSorted.map((celestialBody) => {
-                    const { slug, data } = celestialBody;
-                    const image = data.iconImage;
-                    const name = data.name;
-                    return (
-                        <ImageNavLink link={`#${slug}`} urlImage={image} bodyName={name}/>
-                    )
-                })
-            }
-        </div>
+        <SidebarContent celestialBodies={bodiesInSidebar} id="planet-links">
+            <li>
+                <ImageNavLink link={"#pluton"} urlImage={"planetas-enanos.webp"} bodyName={"planetas enanos"}/>
+                <SidebarContent celestialBodies={dwarfPlanets} id="dwarf-planet-links" />
+            </li>
+        </SidebarContent>
     </nav>
 </Layout>
 

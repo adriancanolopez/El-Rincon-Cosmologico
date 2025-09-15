@@ -3,7 +3,7 @@ import { defineCollection, z } from "astro:content";
 const celestialBodies = defineCollection({
     schema : z.object({
         name: z.string(),
-        type: z.enum(["estrella", "planeta", "satélite"]),
+        type: z.enum(["estrella", "planeta", "planeta enano", "satélite"]),
         parent_planet: z.string().optional(),
         order: z.number(),
         mass: z.string(),

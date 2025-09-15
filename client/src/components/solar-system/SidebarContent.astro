@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ImageNavLink from './ImageNavLink.astro';
+
+type Props = {
+    celestialBodies : CollectionEntry<"celestial-bodies">[],
+    id: string,
+}
+
+const { celestialBodies, id } = Astro.props;
+---
+
+
+<ul class="flex flex-col gap-2 bg-black rounded-lg py-2" id={id}>
+    {
+        celestialBodies.map((celestialBody) => {
+            const { slug, data } = celestialBody;
+            const image = data.iconImage;
+            const name = data.name;
+            return (
+                <li>
+                    <ImageNavLink link={`#${slug}`} urlImage={image} bodyName={name}/>
+                </li>
+            )
+        })
+    }
+    <slot />
+</ul>
