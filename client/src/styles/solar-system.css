@@ -26,7 +26,8 @@
 
 .images {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @apply md:flex-row;
     justify-content: center;
     align-items: center;
     gap: 10px;
