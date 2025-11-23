@@ -1,1 +1,80 @@
 @import "tailwindcss";
+
+:root {
+    --oscuro: rgb(24, 24, 24);
+    --gris-oscuro: rgb(31, 30, 30);
+    --gris-intermedio: rgb(45, 45, 45);
+}
+
+#header {
+    position: relative;
+    z-index: 5;
+    background-color: var(--oscuro);
+}
+
+#btn-nav-menu {
+    transition: rotate 0.4s ease-in-out;
+}
+
+#nav-menu {
+    transition: all 0.6s ease;
+}
+
+#nav-menu > ul {
+    @apply flex flex-col md:flex-row items-start md:items-center gap-4 md:p-2 md:rounded-lg md:shadow-sm md:shadow-gray-400;
+}
+
+#nav-menu > ul > li {
+    @apply md:p-1 md:text-center md:transition-transform md:duration-300 md:ease-in-out hover:text-gray-300 md:hover:scale-105;
+}
+
+#nav-menu > ul > li > svg{
+    @apply md:inline;
+}
+
+#nav-menu li {
+    @apply p-2 rounded-t-md transition-colors duration-300;
+}
+
+#nav-menu li > ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    @apply min-w-36 max-w-40 rounded-lg;
+    background-color: var(--oscuro);
+    color: white;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#nav-menu li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+#nav-menu li ul li {
+    position: relative;
+    @apply border-b-2 border-white ml-1 text-left;
+}
+
+#nav-menu li ul li:hover {
+    background-color: var(--gris-intermedio);
+}
+
+#nav-menu li ul li ul {
+    @apply left-full top-0;
+}
+
+@media screen and (max-width:768px) {
+    #nav-menu {
+        height: 0vh;
+        width: 0px;
+        opacity: 0;
+        overflow: hidden;
+    }
+
+    #nav-menu.open {
+        height: 60vh;
+        width: auto;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,37 @@
+---
+import type { NavMenuLink } from '../../types/nav-menu-link';
+
+type Props = {
+    linksList: NavMenuLink[],
+}
+
+const { linksList } = Astro.props;
+---
+
+<ul>
+    {
+        linksList.map((link) => {
+            return (
+                <li>
+                    {
+                        link.icon && (
+                            <link.icon class="w-5 h-5 text-white inline"/>
+                        )
+                    }
+                    {
+                        link.url ? (
+                            <a href={link.url}>{link.title}</a>
+                        ) : (
+                            link.title
+                        )
+                    }
+                    {
+                        link.subMenu && (
+                            <Astro.self linksList={link.subMenu}/>
+                        )
+                    }
+                </li>
+            )
+        })
+    }
+</ul>
