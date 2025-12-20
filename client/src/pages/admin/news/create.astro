@@ -1,0 +1,74 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/forms.css";
+---
+
+<Layout title="Crear Noticia">
+    <section class="flex flex-col items-center">
+        <h1 id="form-title">Crear una nueva noticia</h1>
+        <form action="" method="post" class="form" id="createForm" enctype="multipart/form-data">
+            <div class="form-field">
+                <label for="title">Título:</label>
+                <input type="text" name="title" id="title" placeholder="Título de la noticia..."/>
+            </div>
+            <div class="form-field">
+                <label for="description">Descripción:</label>
+                <textarea name="description" id="description" rows="10" placeholder="Descripción de la noticia..."></textarea>
+            </div>
+            <div class="form-field">
+                <label for="image">Imagen:</label>
+                <input type="file" name="image" id="image">
+            </div>
+            <div class="flex flex-row gap-2 p-2">
+                <label for="published">Publicar:</label>
+                <input type="checkbox" name="published" class="checkbox" id="published" checked>
+            </div>
+            <div class="form-field items-center">
+                <input type="submit" value="Crear noticia" id="submit">
+                <span id="message" class="text-md"></span>
+            </div>
+        </form>
+    </section>
+</Layout>
+
+<script>
+    import { createNews, createNewsWithImage } from '../../../api/NewsRequests';
+
+    const form = document.querySelector("#createForm") as HTMLFormElement;
+
+    form.addEventListener('submit', async function(event: Event) {
+        event.preventDefault();
+        
+        const messageElement = document.querySelector('#message') as HTMLSpanElement;
+        const formData = new FormData(form);
+
+        const title = formData.get('title') as string;
+        const description = formData.get('description') as string;
+        const formFile = formData.get('image') as File | null;
+        const publishedValue = formData.get('published') as string;
+
+        const published: boolean = publishedValue === "on" ? true : false;
+        
+        console.log(formFile);
+        const image: File | null = formFile !== null && formFile.size > 0 ? formFile : null;
+        
+        let response;
+        if (image) {
+            response = await createNewsWithImage({ title, description, image, published });
+        }
+        else {
+            response = await createNews({ title, description, image, published });
+        }
+        
+        if (response.ok) {
+            messageElement.classList.remove('error-message');
+            messageElement.classList.add('success-message');
+            messageElement.innerHTML = "Noticia creada correctamente.";
+        }
+        else {
+            messageElement.classList.remove('success-message');
+            messageElement.classList.add('error-message');
+            messageElement.innerHTML = response.message;
+        }
+    });
+</script>
