@@ -7,12 +7,7 @@ export async function createNews(news: News): Promise<CreateResponse> {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            title: news.title,
-            description: news.description,
-            imageUrl: news.image,
-            published: news.published
-        }),
+        body: JSON.stringify(news),
     });
 
     const data = await request.json();
@@ -31,7 +26,7 @@ export async function createNews(news: News): Promise<CreateResponse> {
 export async function createNewsWithImage(news: News): Promise<CreateResponse> {
     
     const formData = new FormData();
-    const image = news.image as File;
+    const image = news.imageUrl as File;
     formData.append('title', news.title);
     formData.append('description', news.description);
     formData.append('image', image);

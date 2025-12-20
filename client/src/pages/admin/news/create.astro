@@ -54,10 +54,10 @@ import "../../../styles/forms.css";
         
         let response;
         if (image) {
-            response = await createNewsWithImage({ title, description, image, published });
+            response = await createNewsWithImage({ title, description, imageUrl: image, published });
         }
         else {
-            response = await createNews({ title, description, image, published });
+            response = await createNews({ title, description, imageUrl: null, published });
         }
         
         if (response.ok) {

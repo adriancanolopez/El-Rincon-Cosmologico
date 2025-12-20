@@ -1,7 +1,7 @@
 export interface News {
     title: string,
     description: string,
-    image: File | null,
+    imageUrl: File | null | string,
     published: boolean
 }
 
