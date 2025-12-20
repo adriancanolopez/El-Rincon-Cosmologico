@@ -11,6 +11,7 @@ connectDB();
 const PORT = process.env.PORT;
 
 const app = express();
+app.use('/uploads', express.static('uploads/'));
 app.use(cors());
 app.use(express.json());
 
