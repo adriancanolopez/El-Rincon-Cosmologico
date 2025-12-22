@@ -1,0 +1,32 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getNews } from "../../../api/NewsRequests";
+import News from "../../../components/news/News.astro";
+
+const newsRequest = await getNews();
+const noNews = newsRequest.ok && newsRequest.data.length === 0;
+const allNews = newsRequest.ok ? newsRequest.data : [];
+---
+
+<Layout title="Noticias">
+    <div class="grid grid-cols-[1fr_auto_1fr] items-center">
+        <h1 class="col-start-2 text-xl text-center">Todas las Noticias</h1>
+        <a href="/admin/news/create" class="col-start-3 justify-self-end mr-4 mt-2 p-2 bg-blue-600 rounded-md hover:cursor-pointer">
+            <button class="hover:cursor-pointer">Crear Noticia</button>
+        </a>
+    </div>
+    {
+        noNews && (
+            <p class="text-center my-32">No hay noticias.</p>
+        )
+    }
+    <section class="grid grid-cols-4 gap-8 p-4" id="news">
+        {
+            allNews.map(news => {
+                return (
+                    <News news={news}/>
+                )
+            })
+        }
+    </section>
+</Layout>

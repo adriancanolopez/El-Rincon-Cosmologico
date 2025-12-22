@@ -1,4 +1,18 @@
-import type { News, CreateResponse } from "../types/news.types";
+import type { News, GetNewsResponse, CreateResponse } from "../types/news.types";
+
+export async function getNews(): Promise<GetNewsResponse> {
+    const request = await fetch('http://localhost:3000/news/get-news');
+    const data = await request.json();
+    let response : GetNewsResponse;
+    if (request.status === 200) {
+        response = {ok: true, data};
+    }
+    else {
+        response = {ok: false, message: data.message};
+    }
+
+    return response;
+}
 
 export async function createNews(news: News): Promise<CreateResponse> {
 
@@ -18,7 +32,7 @@ export async function createNews(news: News): Promise<CreateResponse> {
         response = {ok: true, data: data};
     }
     else {
-        response = {ok: false, message: data.message }
+        response = {ok: false, message: data.message};
     }
     return response;
 }
@@ -47,7 +61,7 @@ export async function createNewsWithImage(news: News): Promise<CreateResponse> {
         response = {ok: true, data: data};
     }
     else {
-        response = {ok: false, message: data.message }
+        response = {ok: false, message: data.message};
     }
     return response;
 }

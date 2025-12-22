@@ -1,0 +1,38 @@
+---
+import type { News } from '../../types/news.types';
+import Delete from "../../assets/icons/delete.svg";
+import Edit from "../../assets/icons/edit.svg";
+import formatDate from "../../utils/formatDate"
+
+type Props = {
+    news: News
+}
+
+const { news } = Astro.props;
+const newsData = news;
+---
+
+<article class="flex flex-col items-center gap-2 bg-gray-300 text-black px-3 py-2 rounded-md">
+    <div class="flex flex-row justify-between w-full">
+        <span class={newsData.published ? 'text-green-500' : 'text-red-500'}>{newsData.published ? 'Publicada' : 'No Publicada'}</span>
+        <div class="flex flex-row gap-2">
+            <Edit class="w-5 hover:cursor-pointer"/>
+            <Delete class="w-7 text-red-500 hover:cursor-pointer"/>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold">{newsData.title}</h3>
+    {
+        newsData.imageUrl !== null && (
+            <img src={`http://localhost:3000/uploads/news/${newsData.imageUrl}`} alt="Imagen de la noticia" class="w-2/3"/>
+        )
+    }
+    <span>
+        <span class="font-bold">Creación: </span>
+        {formatDate(newsData.createdAt as string)}
+    </span>
+    <span>
+        <span class="font-bold">Última modificación: </span>
+        {formatDate(newsData.updatedAt as string)}
+    </span>
+    <p>{newsData.description}</p>
+</article>
