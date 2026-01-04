@@ -16,7 +16,9 @@ const newsData = news;
     <div class="flex flex-row justify-between w-full">
         <span class={newsData.published ? 'text-green-500' : 'text-red-500'}>{newsData.published ? 'Publicada' : 'No Publicada'}</span>
         <div class="flex flex-row gap-2">
-            <Edit class="w-5 hover:cursor-pointer"/>
+            <a href={`/admin/news/${newsData._id}`}>
+                <Edit class="w-5 hover:cursor-pointer"/>
+            </a>
             <Delete class="w-7 text-red-500 hover:cursor-pointer"/>
         </div>
     </div>
