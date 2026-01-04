@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import News from "../models/News.model.ts";
+import fs from 'fs';
 
 export const getNews = async (req: Request, res: Response) => {
     try {
@@ -25,13 +26,19 @@ export const updateNews = async (req: Request, res: Response) => {
     try {
         const idNews = req.params.id;
         const { title, description, imageUrl, published } = req.body;
-        const news = await News.findByIdAndUpdate(idNews, {$set: { title: title, description: description, imageUrl: imageUrl, published: published }}, { new: true });
+        const news = await News.findById(idNews);
 
         if (!news) {
             return res.status(404).json({ message: "Noticia no encontrada." });
         }
+
+        if (news.imageUrl && imageUrl) { // Esa noticia tenia una imagen subida y ahora se ha subido una nueva imagen
+            fs.rmSync(`./uploads/news/${news.imageUrl}`, { recursive: true, force: true });
+        }
+
+        const newsToUpdate = await News.findByIdAndUpdate(idNews, {$set: { title: title, description: description, imageUrl: imageUrl, published: published }}, { new: true });
         
-        return res.status(200).json(news);
+        return res.status(200).json(newsToUpdate);
 
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error);

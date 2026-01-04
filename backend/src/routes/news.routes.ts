@@ -30,7 +30,30 @@ router.post('/create-with-image', (req: Request, res: Response, next: NextFuncti
         next();
     });
 }, createNews);
-router.post('/update/:id', updateNews);
+router.patch('/update/:id', updateNews);
+router.patch('/update-with-image/:id', (req: Request, res: Response, next: NextFunction) => {
+    upload.single('image')(req, res, function(error: unknown) {
+        if (error) {
+            let message;
+            if (error instanceof MulterError) {
+                switch (error.code) {
+                    case 'LIMIT_FILE_SIZE':
+                        message = "Tamaño del archivo no válido. (Máximo 1 MB)."
+                        break;
+                    case 'LIMIT_UNEXPECTED_FILE':
+                        message = "Tipo de fichero no válido. Sólo se permiten imágenes png/jpg/jpeg/webp ."
+                        break;
+                }
+            }
+            else {
+                message = String(error);
+            }
+            return res.status(400).json({message: "No se ha podido editar la noticia. Error al subir el archivo. Error: " + message});
+        }
+        req.body.imageUrl = req.file?.filename;
+        next();
+    });
+}, updateNews);
 router.delete('/delete/:id', deleteNews);
 
 export default router;
