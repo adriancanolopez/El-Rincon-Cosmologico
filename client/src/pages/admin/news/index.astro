@@ -30,3 +30,24 @@ const allNews = newsRequest.ok ? newsRequest.data : [];
         }
     </section>
 </Layout>
+
+<script>
+    import { deleteNews } from '../../../api/NewsRequests';
+    import type { DeleteResponse } from '../../../types/news.types';
+
+    const deleteIcons: NodeListOf<SVGElement> = document.querySelectorAll(".delete-icon");
+
+    deleteIcons.forEach(deleteIcon => {
+        deleteIcon.addEventListener('click', async function() {
+            const idNews = deleteIcon.id.split("-").pop();
+            const response: DeleteResponse = await deleteNews(idNews as string);
+
+            console.log(response);
+
+            if (response.ok) {
+                document.querySelector(`#news-${idNews}`)?.remove();
+            }
+
+        });
+    });
+</script>

@@ -1,4 +1,4 @@
-import type { News, GetNewsResponse, CreateResponse, UpdateResponse } from "../types/news.types";
+import type { News, GetNewsResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
 
 export async function getNews(): Promise<GetNewsResponse> {
     const request = await fetch('http://localhost:3000/news/get-news');
@@ -115,5 +115,18 @@ export async function updateNewsWithImage(news: News): Promise<UpdateResponse> {
     else {
         response = {ok: false, message: data.message};
     }
+    return response;
+}
+
+export async function deleteNews(id: string): Promise<DeleteResponse> {
+    
+    const request = await fetch(`http://localhost:3000/news/delete/${id}`, {
+        method: 'DELETE'
+    });
+
+    const data = await request.json();
+
+    const response: DeleteResponse = {ok: request.ok, message: data.message};
+
     return response;
 }

@@ -59,6 +59,7 @@ const { news } = Astro.props;
             </div>
             <div class="form-field items-center">
                 <input type="submit" value="Actualizar Noticia" id="submit">
+                <button type="button" class="delete-button w-1/2 bg-red-400 border-2 border-black p-2 hover:cursor-pointer" id={`delete-${news._id}`}>Eliminar Noticia</button>
                 <span id="message" class="text-md"></span>
             </div>
         </form>
@@ -66,11 +67,13 @@ const { news } = Astro.props;
 </Layout>
 
 <script>
-    import { updateNews, updateNewsWithImage } from '../../../api/NewsRequests';
-    import type { UpdateResponse } from '../../../types/news.types';
+    import { updateNews, updateNewsWithImage, deleteNews } from '../../../api/NewsRequests';
+    import type { UpdateResponse, DeleteResponse } from '../../../types/news.types';
 
 
     const form = document.querySelector('#updateForm') as HTMLFormElement;
+    const deleteButton = document.querySelector('.delete-button') as HTMLButtonElement;
+    const messageElement = document.querySelector('#message') as HTMLSpanElement;
 
 
     form.addEventListener('submit', async function(event: Event) {
@@ -80,8 +83,6 @@ const { news } = Astro.props;
         const descriptionInput = document.querySelector('#description') as HTMLTextAreaElement;
         const imageInput = document.querySelector('#image') as HTMLInputElement;
         const publishedCheckbox = document.querySelector('#published') as HTMLInputElement;
-
-        const messageElement = document.querySelector('#message') as HTMLSpanElement;
 
         const newsId = window.location.href.split("/").pop();
         const title = titleInput.value;
@@ -112,5 +113,20 @@ const { news } = Astro.props;
             messageElement.innerHTML = response.message;
         }
 
+    });
+
+    deleteButton.addEventListener('click', async function() {
+        const idNews = deleteButton.id.split("-").pop();
+        const response: DeleteResponse = await deleteNews(idNews as string);
+
+        console.log(response);
+
+        if (response.ok) {
+            window.location.href = '/admin/news';
+        } else {
+            messageElement.classList.remove('success-message');
+            messageElement.classList.add('error-message');
+            messageElement.innerHTML = response.message;
+        }
     });
 </script>

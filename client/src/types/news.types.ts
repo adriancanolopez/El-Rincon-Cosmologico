@@ -12,4 +12,6 @@ export type CreateResponse = | { ok: true, data: News } | { ok: false, message: 
 
 export type UpdateResponse = CreateResponse;
 
-export type GetNewsResponse = | { ok: true, data: News[] } | { ok: false, message: string }
+export type DeleteResponse = { ok: boolean, message: string };
+
+export type GetNewsResponse = | { ok: true, data: News[] } | { ok: false, message: string };
