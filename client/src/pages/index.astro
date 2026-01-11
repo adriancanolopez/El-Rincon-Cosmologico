@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/news.css';
-import { getNews } from '../api/NewsRequests';
+import { getNewsPublished } from '../api/NewsRequests';
 import NewsCard from '../components/news/NewsCard.astro';
 
-const newsRequest = await getNews(4);
+const newsRequest = await getNewsPublished(4);
 
 const allNews = newsRequest.ok ? newsRequest.data : [];
 ---

@@ -15,6 +15,21 @@ export async function getNews(limit?: number): Promise<GetNewsResponse> {
     return response;
 }
 
+export async function getNewsPublished(limit?: number): Promise<GetNewsResponse> {
+    const url = limit === undefined ? `http://localhost:3000/news/get-news-published` : `http://localhost:3000/news/get-news-published?limit=${limit}`;
+    const request = await fetch(url);
+    const data = await request.json();
+    let response : GetNewsResponse;
+    if (request.status === 200) {
+        response = {ok: true, data};
+    }
+    else {
+        response = {ok: false, message: data.message};
+    }
+
+    return response;
+}
+
 export async function createNews(news: News): Promise<CreateResponse> {
 
     const request = await fetch('http://localhost:3000/news/create', {
