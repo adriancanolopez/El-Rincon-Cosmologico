@@ -1,7 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import { getNews } from "../../../api/NewsRequests";
-import News from "../../../components/news/News.astro";
+import NewsCard from "../../../components/admin/news/NewsCard.astro";
 
 const newsRequest = await getNews();
 const noNews = newsRequest.ok && newsRequest.data.length === 0;
@@ -24,7 +24,7 @@ const allNews = newsRequest.ok ? newsRequest.data : [];
         {
             allNews.map(news => {
                 return (
-                    <News news={news}/>
+                    <NewsCard news={news}/>
                 )
             })
         }

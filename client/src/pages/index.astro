@@ -1,7 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '../styles/news.css';
+import { getNews } from '../api/NewsRequests';
+import NewsCard from '../components/news/NewsCard.astro';
+
+const newsRequest = await getNews(4);
+
+const allNews = newsRequest.ok ? newsRequest.data : [];
 ---
 
 <Layout title="El Rincón Cosmológico">
-	
+    <h1 class="text-2xl text-center my-2">Últimas Novedades</h1>
+	<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4" id="news">
+        {
+            allNews.map(news => {
+                return (
+                    <NewsCard news={news}/>
+                )
+            })
+        }
+    </section>
 </Layout>

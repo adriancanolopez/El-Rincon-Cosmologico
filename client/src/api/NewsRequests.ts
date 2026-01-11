@@ -1,7 +1,8 @@
 import type { News, GetNewsResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
 
-export async function getNews(): Promise<GetNewsResponse> {
-    const request = await fetch('http://localhost:3000/news/get-news');
+export async function getNews(limit?: number): Promise<GetNewsResponse> {
+    const url = limit === undefined ? `http://localhost:3000/news/get-news` : `http://localhost:3000/news/get-news?limit=${limit}`;
+    const request = await fetch(url);
     const data = await request.json();
     let response : GetNewsResponse;
     if (request.status === 200) {
