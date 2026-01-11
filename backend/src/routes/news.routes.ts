@@ -1,11 +1,12 @@
 import express, { type NextFunction, type Request, type Response } from "express";
-import { getNews, createNews, updateNews, deleteNews } from "../controllers/news.controller.ts";
+import { getNews, getNewsPublished, createNews, updateNews, deleteNews } from "../controllers/news.controller.ts";
 import { upload } from "../config/multer.ts";
 import { MulterError } from "multer";
 
 const router = express.Router();
 
 router.get('/get-news', getNews);
+router.get('/get-news-published', getNewsPublished);
 router.post('/create', createNews);
 router.post('/create-with-image', (req: Request, res: Response, next: NextFunction) => {
     upload.single('image')(req, res, function(error: unknown) {

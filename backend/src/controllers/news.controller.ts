@@ -5,11 +5,22 @@ import fs from 'fs';
 export const getNews = async (req: Request, res: Response) => {
     try {
         const limit = req.query.limit ? Number(req.query.limit) : 0; // En caso de que no se indique un límite, con 0 se obtienen todos los documentos.
-        const news = await News.find().limit(limit);
+        const news = await News.find().limit(limit).sort({ createdAt: -1 });
         return res.status(200).json(news);
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error); // En caso de que sea un error lanzado por mongoose, error será una instancia de Error.
         return res.status(500).json({ message: "Error al obtener las noticias. Error: " + message });
+    }
+}
+
+export const getNewsPublished = async (req: Request, res: Response) => {
+    try {
+        const limit = req.query.limit ? Number(req.query.limit) : 0;
+        const news = await News.find({ published: true }).limit(limit).sort({ createdAt: -1 });
+        return res.status(200).json(news);
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        return res.status(500).json({ message: "Error al obtener las noticias publicadas. Error: " + message });
     }
 }
 
