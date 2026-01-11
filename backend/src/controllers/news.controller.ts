@@ -4,7 +4,8 @@ import fs from 'fs';
 
 export const getNews = async (req: Request, res: Response) => {
     try {
-        const news = await News.find();
+        const limit = req.query.limit ? Number(req.query.limit) : 0; // En caso de que no se indique un límite, con 0 se obtienen todos los documentos.
+        const news = await News.find().limit(limit);
         return res.status(200).json(news);
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error); // En caso de que sea un error lanzado por mongoose, error será una instancia de Error.
