@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getNewsPublished } from "../../api/NewsRequests";
+import formatDateToString from "../../utils/formatDateToString";
+
+export async function getStaticPaths() {
+    const newsRequest = await getNewsPublished();
+    const allNews = newsRequest.ok ? newsRequest.data : [];
+
+    return allNews.map((news) => ({
+        params: {slug: news.slug},
+        props: { news }
+    }));
+}
+
+const { news } = Astro.props;
+---
+
+<Layout title={`Noticia - ${news.title}`}>
+    <section class="flex flex-col mt-4">
+        <a href="/noticias/" class="w-20 text-center bg-blue-600 rounded-md ml-2 mb-2 p-2 transition-colors hover:bg-blue-700">
+            <button class="hover:cursor-pointer">Volver</button>
+        </a>
+        <article class="w-full md:w-1/2 flex flex-col items-center gap-3 bg-gray-400 text-black px-6 py-4 mx-auto">
+            <h1 class="text-3xl font-bold ">{news.title}</h1>
+            {
+                news.imageUrl && (
+                    <img src={`http://localhost:3000/uploads/news/${news.imageUrl}`} alt={`Imagen de la noticia: ${news.title}`} class="w-full max-h-[400px] object-cover"/>
+                )
+            }
+            <div class="flex flex-col">
+                <span class="italic">
+                    <span class="font-bold">Creación: </span>
+                    {formatDateToString(news.createdAt as string)}
+                </span>
+                <span class="italic">
+                    <span class="font-bold">Última modificación: </span>
+                    {formatDateToString(news.updatedAt as string)}
+                </span>
+            </div>
+            <p>{news.description}</p>
+        </article>
+    </section>
+</Layout>

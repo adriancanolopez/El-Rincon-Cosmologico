@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/forms.css";
 import { getNews } from "../../../api/NewsRequests";
-import formatDate from "../../../utils/formatDate";
+import formatDateToString from "../../../utils/formatDateToString";
 
 export async function getStaticPaths() {
     const newsRequest = await getNews();
@@ -30,11 +30,11 @@ const { news } = Astro.props;
         <div class="flex flex-col items-center mb-2">
             <span>
                 <span class="font-bold">Creación: </span>
-                {formatDate(news.createdAt as string)}
+                {formatDateToString(news.createdAt as string)}
             </span>
             <span>
                 <span class="font-bold">Última modificación: </span>
-                {formatDate(news.updatedAt as string)}
+                {formatDateToString(news.updatedAt as string)}
             </span>
         </div>
         <form action="" method="post" class="form" id="updateForm" enctype="multipart/form-data">

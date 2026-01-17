@@ -2,7 +2,7 @@
 import type { News } from "../../../types/news.types";
 import Delete from "../../../assets/icons/delete.svg";
 import Edit from "../../../assets/icons/edit.svg";
-import formatDate from "../../../utils/formatDate";
+import formatDateToString from "../../../utils/formatDateToString";
 
 type Props = {
     news: News
@@ -30,11 +30,11 @@ const newsData = news;
     }
     <span>
         <span class="font-bold">Creación: </span>
-        {formatDate(newsData.createdAt as string)}
+        {formatDateToString(newsData.createdAt as string)}
     </span>
     <span>
         <span class="font-bold">Última modificación: </span>
-        {formatDate(newsData.updatedAt as string)}
+        {formatDateToString(newsData.updatedAt as string)}
     </span>
     <p>{newsData.description}</p>
 </article>

@@ -1,6 +1,7 @@
 export interface News {
     _id?: string,
     title: string,
+    slug?: string,
     description: string,
     imageUrl?: File | null | string,
     published: boolean,
