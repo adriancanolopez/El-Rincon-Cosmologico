@@ -1,3 +1,17 @@
+@import "tailwindcss";
+
 .article-shadow {
     box-shadow: rgba(255, 255, 255, 0.6) 2px 2px 4px;
+}
+
+.news-article .description ol {
+    @apply list-disc list-inside;
+}
+
+.news-article .description h2 {
+    @apply text-2xl;
+}
+
+.news-article .description h3 {
+    @apply text-xl;
 }

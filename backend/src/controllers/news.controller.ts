@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
 import News from "../models/News.model.ts";
+import sanitize from "sanitize-html";
+import { SANITIZE_OPTIONS } from "../consts/sanitizeOptions.ts";
 import fs from 'fs';
 
 export const getNews = async (req: Request, res: Response) => {
@@ -26,6 +28,9 @@ export const getNewsPublished = async (req: Request, res: Response) => {
 
 export const createNews = async (req: Request, res: Response) => {
     try {
+        const descriptionHTML = req.body.description;
+        const cleanHTML = sanitize(descriptionHTML, SANITIZE_OPTIONS);
+        req.body.description = cleanHTML;
         const news = await News.create(req.body);
         return res.status(201).json(news);
     } catch (error: unknown) {
@@ -37,7 +42,7 @@ export const createNews = async (req: Request, res: Response) => {
 export const updateNews = async (req: Request, res: Response) => {
     try {
         const idNews = req.params.id;
-        const { title, description, imageUrl, published } = req.body;
+        const { title, imageUrl, published } = req.body;
         const news = await News.findById(idNews);
 
         if (!news) {
@@ -48,7 +53,11 @@ export const updateNews = async (req: Request, res: Response) => {
             fs.rmSync(`./uploads/news/${news.imageUrl}`, { recursive: true, force: true });
         }
 
-        const newsToUpdate = await News.findByIdAndUpdate(idNews, {$set: { title: title, description: description, imageUrl: imageUrl, published: published }}, { new: true });
+        const descriptionHTML = req.body.description;
+        const cleanHTML = sanitize(descriptionHTML, SANITIZE_OPTIONS);
+        req.body.description = cleanHTML;
+
+        const newsToUpdate = await News.findByIdAndUpdate(idNews, {$set: { title: title, description: req.body.description, imageUrl: imageUrl, published: published }}, { new: true });
         
         return res.status(200).json(newsToUpdate);
 

@@ -11,10 +11,7 @@ import "../../../styles/forms.css";
                 <label for="title">Título:</label>
                 <input type="text" name="title" id="title" placeholder="Título de la noticia..."/>
             </div>
-            <div class="form-field">
-                <label for="description">Descripción:</label>
-                <textarea name="description" id="description" rows="10" placeholder="Descripción de la noticia..."></textarea>
-            </div>
+            <div id="editor"></div>
             <div class="form-field">
                 <label for="image">Imagen:</label>
                 <input type="file" name="image" id="image">
@@ -32,8 +29,9 @@ import "../../../styles/forms.css";
 </Layout>
 
 <script>
+    import { QUILL } from '../../../utils/QuillEditor';
     import { createNews, createNewsWithImage } from '../../../api/NewsRequests';
-
+    
     const form = document.querySelector("#createForm") as HTMLFormElement;
 
     form.addEventListener('submit', async function(event: Event) {
@@ -43,7 +41,7 @@ import "../../../styles/forms.css";
         const formData = new FormData(form);
 
         const title = formData.get('title') as string;
-        const description = formData.get('description') as string;
+        const description = QUILL.root.innerHTML;
         const formFile = formData.get('image') as File | null;
         const publishedValue = formData.get('published') as string;
 

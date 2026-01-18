@@ -1,6 +1,7 @@
 ---
 import type { News } from '../../types/news.types';
 import formatDateToString from '../../utils/formatDateToString';
+import truncate from 'truncate-html';
 
 type Props = {
     news: News
@@ -10,7 +11,7 @@ const { news } = Astro.props;
 const newsData = news;
 ---
 
-<article class="flex flex-col bg-gray-300 text-black rounded-lg transition-transform hover:scale-102 duration-300 article-shadow">
+<article class="flex flex-col bg-gray-300 text-black rounded-lg transition-transform hover:scale-102 duration-300 news-article article-shadow">
     {
         newsData.imageUrl !== null && (
             <div>
@@ -21,7 +22,9 @@ const newsData = news;
     <div class="flex flex-col gap-2 px-5 py-4">
         <h3 class="text-xl font-semibold text-gray-800 hover:text-blue-500 transition-colors">{newsData.title}</h3>
         <span class="text-sm text-gray-600 italic">{formatDateToString(newsData.createdAt as string)}</span>
-        <p class="text-gray-700">{newsData.description.slice(0, 120) + "..."}</p>
+        <div class="text-gray-700 description">
+            <p set:html={truncate(newsData.description, 120, {byWords: false, ellipsis: "..."})}></p>
+        </div>
         <a href={`/noticias/${newsData.slug}`}><button class="w-full lg:w-1/3 bg-blue-600 text-white rounded-md p-2 hover:bg-blue-700 hover:cursor-pointer transition-colors">Leer más</button></a>
     </div>
 </article>

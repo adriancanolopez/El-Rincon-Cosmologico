@@ -22,7 +22,7 @@ const newsData = news;
             <Delete class="w-7 text-red-500 hover:cursor-pointer delete-icon" id={`delete-${newsData._id}`}/>
         </div>
     </div>
-    <h3 class="text-xl font-bold">{newsData.title}</h3>
+    <h3 class="text-xl font-bold text-center">{newsData.title}</h3>
     {
         newsData.imageUrl !== null && (
             <img src={`http://localhost:3000/uploads/news/${newsData.imageUrl}`} alt="Imagen de la noticia" class="w-2/3"/>
@@ -36,5 +36,7 @@ const newsData = news;
         <span class="font-bold">Última modificación: </span>
         {formatDateToString(newsData.updatedAt as string)}
     </span>
-    <p>{newsData.description}</p>
+    <div>
+        <p set:html={newsData.description}></p>
+    </div>
 </article>
