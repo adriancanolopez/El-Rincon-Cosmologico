@@ -1,6 +1,9 @@
 ---
 import { NavMenuLinks } from '../../data/NavMenu';
 import LinksList from './LinksList.astro';
+import UserMenu from './UserMenu.astro';
+
+const { user } = Astro.locals;
 ---
 
 <header class="flex flex-row-reverse md:flex-col justify-between items-center w-full h-auto p-4 shadow-md shadow-gray-900" id="header">
@@ -11,15 +14,25 @@ import LinksList from './LinksList.astro';
         </button>
         <nav class="text-md" id="nav-menu">
             <LinksList linksList={NavMenuLinks}/>
+            {
+                user && (
+                    <UserMenu user={user}/>
+                )
+            }
         </nav>
     </div>
 </header>
 
 <script>
+    import { logout } from "../../api/UsersRequests";
     const titleHeader = document.getElementById('title-header') as HTMLTitleElement;
     const menuNav = document.getElementById('nav-menu') as HTMLElement;
     const btnMenuNav = document.getElementById('btn-nav-menu') as HTMLButtonElement;
     const divMenuNav = menuNav.parentElement as HTMLDivElement;
+
+    const userMenu = document.getElementById('user-menu') as HTMLDivElement;
+    const userMenuDropdown = document.getElementById('user-menu-dropdown') as HTMLElement;
+    const logoutBtn = document.getElementById('logout-btn') as HTMLButtonElement;
     
     btnMenuNav?.addEventListener('click', function () {
         btnMenuNav.classList.toggle('rotate-180');
@@ -28,5 +41,21 @@ import LinksList from './LinksList.astro';
         titleHeader.classList.toggle('w-1/2');
         menuNav.classList.toggle('open');
         menuNav.classList.toggle('mt-3');
+    });
+
+    userMenu?.addEventListener('mouseenter', function() {
+        userMenuDropdown.classList.remove('hidden');
+    });
+
+    userMenu?.addEventListener('mouseleave', function() {
+        userMenuDropdown.classList.add('hidden');
+    });
+
+    logoutBtn?.addEventListener('click', async function() {
+        const response = await logout();
+
+        if (response.ok) {
+            window.location.href = "/admin/login";
+        }
     });
 </script>

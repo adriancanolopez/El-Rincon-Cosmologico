@@ -17,6 +17,7 @@
 }
 
 #nav-menu {
+    @apply flex flex-row;
     transition: all 0.6s ease;
 }
 
@@ -77,4 +78,16 @@
         width: auto;
         opacity: 1;
     }
+}
+
+#user-menu-dropdown {
+    background-color: var(--oscuro);
+}
+
+#user-menu-dropdown li, #user-menu-dropdown button {
+    @apply w-full;
+}
+
+#user-menu-dropdown li {
+    @apply border-b-2 border-gray-50 p-2 transition-colors duration-300 hover:cursor-pointer hover:bg-gray-600;
 }

@@ -1,0 +1,27 @@
+---
+import UserIcon from "../../assets/icons/user.svg";
+import type { User } from "../../types/users.types";
+
+type Props = {
+    user: User
+}
+
+const { user } = Astro.props;
+const { username, role } = user;
+---
+
+<div class="relative flex flex-row items-center gap-1 px-4 hover:cursor-pointer" id="user-menu">
+    <UserIcon />
+    <div class="flex flex-col">
+        <span class="text-sm">{username}</span>
+        <span class="text-sm italic">{role}</span>
+    </div>
+    <nav class="hidden absolute top-full w-36 rounded-sm" id="user-menu-dropdown">
+        <ul>
+            <li><a href="/admin/news" class="">Noticias</a></li>
+            <li>
+                <button id="logout-btn" class="text-left hover:cursor-pointer">Cerrar sesión</button>
+            </li>
+        </ul>
+    </nav>
+</div>
