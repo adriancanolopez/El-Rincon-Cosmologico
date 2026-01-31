@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import connectDB from "./config/db.ts";
 import newsRoutes from "./routes/news.routes.ts";
@@ -18,6 +19,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/test', (req, res) => {
     res.send("Test");
