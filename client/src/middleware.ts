@@ -2,10 +2,11 @@ import { defineMiddleware } from "astro:middleware";
 import { verifyToken } from "./api/UsersRequests";
 
 export const onRequest = defineMiddleware(async (context, next) => {
-    const token = context.cookies.get("token")?.value;
     const isProtectedRoute = context.url.pathname.startsWith("/admin") && !context.url.pathname.includes("/login");
 
     if (isProtectedRoute) {
+        const token = context.cookies.get("token")?.value;
+        
         if (!token) {
             return context.redirect("/admin/login");
         }

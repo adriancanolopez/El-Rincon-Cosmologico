@@ -1,4 +1,4 @@
-import type { News, GetNewsResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
+import type { News, GetNewsResponse, GetOneResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
 
 export async function getNews(limit?: number): Promise<GetNewsResponse> {
     const url = limit === undefined ? `http://localhost:3000/news/get-news` : `http://localhost:3000/news/get-news?limit=${limit}`;
@@ -21,6 +21,36 @@ export async function getNewsPublished(limit?: number): Promise<GetNewsResponse>
     const data = await request.json();
     let response : GetNewsResponse;
     if (request.status === 200) {
+        response = {ok: true, data};
+    }
+    else {
+        response = {ok: false, message: data.message};
+    }
+
+    return response;
+}
+
+export async function getNewsById(id: string): Promise<GetOneResponse> {
+    const request = await fetch('http://localhost:3000/news/' + id);
+    const data = await request.json();
+
+    let response: GetOneResponse;
+    if (request.ok) {
+        response = {ok: true, data};
+    }
+    else {
+        response = {ok: false, message: data.message};
+    }
+
+    return response;
+}
+
+export async function getNewsBySlug(slug: string): Promise<GetOneResponse> {
+    const request = await fetch('http://localhost:3000/news/slug/' + slug);
+    const data = await request.json();
+
+    let response: GetOneResponse;
+    if (request.ok) {
         response = {ok: true, data};
     }
     else {

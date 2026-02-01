@@ -1,20 +1,28 @@
 ---
+export const prerender = false;
+import { getNewsBySlug } from "../../api/NewsRequests";
 import Layout from "../../layouts/Layout.astro";
 import '../../styles/news.css';
-import { getNewsPublished } from "../../api/NewsRequests";
 import formatDateToString from "../../utils/formatDateToString";
 
-export async function getStaticPaths() {
-    const newsRequest = await getNewsPublished();
-    const allNews = newsRequest.ok ? newsRequest.data : [];
+const { slug } = Astro.params;
 
-    return allNews.map((news) => ({
-        params: {slug: news.slug},
-        props: { news }
-    }));
+if (!slug) {
+    return Astro.redirect('/noticias');
 }
 
-const { news } = Astro.props;
+const newsRequest = await getNewsBySlug(slug);
+
+let news;
+
+if (newsRequest.ok) {
+    news = newsRequest.data;
+}
+else {
+    console.log(newsRequest.message);
+    return Astro.redirect('/noticias');
+}
+
 ---
 
 <Layout title={`Noticia - ${news.title}`}>

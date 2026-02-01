@@ -16,3 +16,5 @@ export type UpdateResponse = CreateResponse;
 export type DeleteResponse = { ok: boolean, message: string };
 
 export type GetNewsResponse = | { ok: true, data: News[] } | { ok: false, message: string };
+
+export type GetOneResponse = | { ok: true, data: News } | { ok: false, message: string };

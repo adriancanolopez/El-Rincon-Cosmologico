@@ -1,21 +1,27 @@
 ---
+export const prerender = false;
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/forms.css";
-import { getNews } from "../../../api/NewsRequests";
+import { getNewsById } from "../../../api/NewsRequests";
 import formatDateToString from "../../../utils/formatDateToString";
 
-export async function getStaticPaths() {
-    const newsRequest = await getNews();
-    const allNews = newsRequest.ok ? newsRequest.data : [];
+const { id } = Astro.params;
 
-    return allNews.map((news) => ({
-        params: {id: news._id},
-        props: { news }
-    }));
+if (!id) {
+    return Astro.redirect('/admin/news');
 }
 
-const { news } = Astro.props;
+const newsRequest = await getNewsById(id);
 
+let news;
+
+if (newsRequest.ok) {
+    news = newsRequest.data;
+}
+else {
+    console.log(newsRequest.message);
+    return Astro.redirect('/admin/news');
+}
 
 ---
 
