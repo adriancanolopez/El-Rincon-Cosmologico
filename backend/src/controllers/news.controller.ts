@@ -26,6 +26,38 @@ export const getNewsPublished = async (req: Request, res: Response) => {
     }
 }
 
+export const getNewsById = async (req: Request, res: Response) => {
+    try {
+        const idNews = req.params.id;
+        const news = await News.findById(idNews);
+
+        if (!news) {
+            return res.status(404).json({ message: "Noticia no encontrada." });
+        }
+
+        return res.status(200).json(news);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return res.status(500).json({ message: "Error al obtener la noticia. Error: " + message });
+    }
+}
+
+export const getNewsBySlug = async (req: Request, res: Response) => {
+    try {
+        const slug = req.params.slug;
+        const news = await News.findOne({ slug });
+
+        if (!news) {
+            return res.status(404).json({ message: "Noticia no encontrada." });
+        }
+
+        return res.status(200).json(news);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return res.status(500).json({ message: "Error al obtener la noticia. Error: " + message });
+    }
+}
+
 export const createNews = async (req: Request, res: Response) => {
     try {
         const descriptionHTML = req.body.description;
