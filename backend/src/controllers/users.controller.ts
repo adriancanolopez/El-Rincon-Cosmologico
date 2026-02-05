@@ -76,27 +76,10 @@ export const logout = async (req: Request, res: Response) => {
     return res.sendStatus(200);
 }
 
-export const verifyToken = async (req: Request, res: Response) => {
-    const { token } = req.cookies;
-
-    if (!token) {
-        return res.status(401).json({ message: "No hay token. Autorización denegada." });
-    }
-
+export const verifyTokenResponse = async (req: Request, res: Response) => {
     try {
-        const JWT_SECRET = process.env.JWT_SECRET as string;
-
-        const payload = jwt.verify(token, JWT_SECRET) as UserPayload;
-
-        const user = await User.findOne({email: payload.email});
-
-        if (!user) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
-        }
-
-        return res.status(200).json({username: user.username, email: user.email, role: user.role});
-
+        return res.status(200).json(req.user);
     } catch (error) {
-        return res.status(401).json({ message: "Token inválido o expirado" });
+        return res.status(500).json({ message: "Error al verificar el token. Error: " + String(error)});
     }
 }
