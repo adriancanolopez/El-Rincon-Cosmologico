@@ -1,7 +1,9 @@
+export type Role = "editor" | "admin";
+
 export interface User {
     username: string,
     email: string,
-    role: "editor" | "admin"
+    role: Role
 };
 
 export interface LoginCredentials {

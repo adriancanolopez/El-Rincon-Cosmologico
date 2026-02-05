@@ -1,14 +1,16 @@
 ---
 import type { News } from "../../../types/news.types";
+import type { Role } from "../../../types/users.types";
 import Delete from "../../../assets/icons/delete.svg";
 import Edit from "../../../assets/icons/edit.svg";
 import formatDateToString from "../../../utils/formatDateToString";
 
 type Props = {
-    news: News
+    news: News,
+    role: Role,
 }
 
-const { news } = Astro.props;
+const { news, role } = Astro.props;
 const newsData = news;
 ---
 
@@ -19,7 +21,11 @@ const newsData = news;
             <a href={`/admin/news/${newsData._id}`}>
                 <Edit class="w-5 hover:cursor-pointer"/>
             </a>
-            <Delete class="w-7 text-red-500 hover:cursor-pointer delete-icon" id={`delete-${newsData._id}`}/>
+            {
+                role === "admin" && (
+                    <Delete class="w-7 text-red-500 hover:cursor-pointer delete-icon" id={`delete-${newsData._id}`}/>
+                )
+            }
         </div>
     </div>
     <h3 class="text-xl font-bold text-center">{newsData.title}</h3>

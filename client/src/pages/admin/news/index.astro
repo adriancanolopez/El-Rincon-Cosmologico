@@ -4,9 +4,13 @@ import Layout from "../../../layouts/Layout.astro";
 import { getNews } from "../../../api/NewsRequests";
 import NewsCard from "../../../components/admin/news/NewsCard.astro";
 
-const newsRequest = await getNews();
+const token  = Astro.cookies.get('token')?.value as string;
+
+const newsRequest = await getNews(token);
 const noNews = newsRequest.ok && newsRequest.data.length === 0;
 const allNews = newsRequest.ok ? newsRequest.data : [];
+
+const { user } = Astro.locals;
 ---
 
 <Layout title="Noticias">
@@ -25,7 +29,7 @@ const allNews = newsRequest.ok ? newsRequest.data : [];
         {
             allNews.map(news => {
                 return (
-                    <NewsCard news={news}/>
+                    <NewsCard news={news} role={user!.role}/>
                 )
             })
         }

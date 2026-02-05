@@ -1,8 +1,12 @@
 import type { News, GetNewsResponse, GetOneResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
 
-export async function getNews(limit?: number): Promise<GetNewsResponse> {
+export async function getNews(token: string, limit?: number): Promise<GetNewsResponse> {
     const url = limit === undefined ? `http://localhost:3000/news/get-news` : `http://localhost:3000/news/get-news?limit=${limit}`;
-    const request = await fetch(url);
+    const request = await fetch(url, {
+        headers: {
+            "Cookie": `token=${token}`
+        }
+    });
     const data = await request.json();
     let response : GetNewsResponse;
     if (request.status === 200) {
@@ -67,6 +71,7 @@ export async function createNews(news: News): Promise<CreateResponse> {
         headers: {
             'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(news),
     });
 
@@ -96,6 +101,7 @@ export async function createNewsWithImage(news: News): Promise<CreateResponse> {
 
     const request = await fetch('http://localhost:3000/news/create-with-image', {
         method: 'POST',
+        credentials: 'include',
         body: formData,
     });
 
@@ -119,6 +125,7 @@ export async function updateNews(news: News): Promise<UpdateResponse> {
         headers: {
             'Content-Type': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(news),
     });
 
@@ -148,6 +155,7 @@ export async function updateNewsWithImage(news: News): Promise<UpdateResponse> {
 
     const request = await fetch(`http://localhost:3000/news/update-with-image/${news._id}`, {
         method: 'PATCH',
+        credentials: 'include',
         body: formData,
     });
 
@@ -167,7 +175,8 @@ export async function updateNewsWithImage(news: News): Promise<UpdateResponse> {
 export async function deleteNews(id: string): Promise<DeleteResponse> {
     
     const request = await fetch(`http://localhost:3000/news/delete/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'include'
     });
 
     const data = await request.json();
