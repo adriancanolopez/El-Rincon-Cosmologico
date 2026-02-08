@@ -11,6 +11,8 @@ export interface LoginCredentials {
     password: string
 };
 
-export type LoginResponse = {ok: true, data: User} | {ok: false, message: string };
+type ApiResponse<T> = { ok: true, data: T } | { ok: false, message: string };
 
-export type VerifyTokenResponse = LoginResponse;
+export type LoginResponse = ApiResponse<User>;
+
+export type VerifyTokenResponse = ApiResponse<User>;

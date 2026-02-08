@@ -94,7 +94,7 @@ const { user } = Astro.locals;
         const imageInput = document.querySelector('#image') as HTMLInputElement;
         const publishedCheckbox = document.querySelector('#published') as HTMLInputElement;
 
-        const newsId = window.location.href.split("/").pop();
+        const newsId = window.location.href.split("/").pop() as string;
         const title = titleInput.value;
         const description = QUILL.root.innerHTML;
         const published = publishedCheckbox.checked;
@@ -105,7 +105,7 @@ const { user } = Astro.locals;
 
         if (image) {
             // Se quiere cambiar la imagen
-            response = await updateNewsWithImage({_id: newsId, title, description, imageUrl: image, published});
+            response = await updateNewsWithImage({_id: newsId, title, description, image, published});
 
         }
         else {

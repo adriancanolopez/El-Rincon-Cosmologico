@@ -1,4 +1,4 @@
-import type { News, GetNewsResponse, GetOneResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
+import type { News, CreateNews, UpdateNews, GetNewsResponse, GetOneResponse, CreateResponse, UpdateResponse, DeleteResponse } from "../types/news.types";
 
 export async function getNews(token: string, limit?: number): Promise<GetNewsResponse> {
     const url = limit === undefined ? `http://localhost:3000/news/get-news` : `http://localhost:3000/news/get-news?limit=${limit}`;
@@ -64,7 +64,7 @@ export async function getNewsBySlug(slug: string): Promise<GetOneResponse> {
     return response;
 }
 
-export async function createNews(news: News): Promise<CreateResponse> {
+export async function createNews(news: CreateNews): Promise<CreateResponse> {
 
     const request = await fetch('http://localhost:3000/news/create', {
         method: 'POST',
@@ -88,10 +88,10 @@ export async function createNews(news: News): Promise<CreateResponse> {
     return response;
 }
 
-export async function createNewsWithImage(news: News): Promise<CreateResponse> {
+export async function createNewsWithImage(news: CreateNews): Promise<CreateResponse> {
     
     const formData = new FormData();
-    const image = news.imageUrl as File;
+    const image = news.image as File;
     formData.append('title', news.title);
     formData.append('description', news.description);
     formData.append('image', image);
@@ -118,7 +118,7 @@ export async function createNewsWithImage(news: News): Promise<CreateResponse> {
     return response;
 }
 
-export async function updateNews(news: News): Promise<UpdateResponse> {
+export async function updateNews(news: UpdateNews): Promise<UpdateResponse> {
 
     const request = await fetch(`http://localhost:3000/news/update/${news._id}`, {
         method: 'PATCH',
@@ -142,10 +142,10 @@ export async function updateNews(news: News): Promise<UpdateResponse> {
     return response;
 }
 
-export async function updateNewsWithImage(news: News): Promise<UpdateResponse> {
+export async function updateNewsWithImage(news: UpdateNews): Promise<UpdateResponse> {
     
     const formData = new FormData();
-    const image = news.imageUrl as File;
+    const image = news.image as File;
     formData.append('title', news.title);
     formData.append('description', news.description);
     formData.append('image', image);
