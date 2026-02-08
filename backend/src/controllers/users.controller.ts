@@ -2,7 +2,6 @@ import type { Request, Response } from "express";
 import User from "../models/User.model.ts";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import type { UserPayload } from "../types/userPayload.ts";
 
 export const register = async (req: Request, res: Response) => {
     try {
@@ -22,7 +21,7 @@ export const register = async (req: Request, res: Response) => {
 
         await newUser.save();
 
-        return res.status(201).json(newUser);
+        return res.status(201).json({ username: newUser.username, email: newUser.email, role: newUser.role });
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : String(error);
         return res.status(500).json({ message: "Error al realizar el registro. Error: " + message });

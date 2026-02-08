@@ -20,6 +20,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
             console.log(response.message);
             return context.redirect("/admin/login");
         }
+
+        if (context.url.pathname.startsWith("/admin/users") && context.locals.user.role !== "admin") {
+            return context.redirect("/admin/login");
+        }
     }
 
     return next();

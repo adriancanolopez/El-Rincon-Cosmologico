@@ -1,4 +1,4 @@
-import type { LoginCredentials, LoginResponse, VerifyTokenResponse } from "../types/users.types";
+import type { LoginCredentials, LoginResponse, VerifyTokenResponse, RegisterCredentials, RegisterResponse } from "../types/users.types";
 
 export async function login(credentials: LoginCredentials): Promise<LoginResponse> {
     const request = await fetch("http://localhost:3000/users/login", {
@@ -7,7 +7,7 @@ export async function login(credentials: LoginCredentials): Promise<LoginRespons
             'Content-Type': 'application/json'
         },
         credentials: 'include',
-        body: JSON.stringify({email: credentials.email, password: credentials.password})
+        body: JSON.stringify(credentials)
     });
 
     const data = await request.json();
@@ -49,4 +49,28 @@ export async function verifyToken(token: string): Promise<VerifyTokenResponse> {
     else {
         return {ok: false, message: data.message};
     }
+}
+
+export async function register(credentials: RegisterCredentials): Promise<RegisterResponse> {
+    const request = await fetch("http://localhost:3000/users/register", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(credentials)
+    });
+
+    const data = await request.json();
+
+    let response: RegisterResponse;
+
+    if (request.ok) {
+        response = {ok: true, data};
+    }
+    else {
+        response = {ok: false, message: data.message}
+    }
+
+    return response;
 }
