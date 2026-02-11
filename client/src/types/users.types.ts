@@ -6,6 +6,16 @@ export interface User {
     role: Role
 };
 
+export interface FullUser {
+    _id: string,
+    username: string,
+    email: string,
+    password: string,
+    role: Role,
+    createdAt: string,
+    updatedAt: string
+}
+
 export interface LoginCredentials {
     email: string,
     password: string
@@ -25,3 +35,7 @@ export type LoginResponse = ApiResponse<User>;
 export type RegisterResponse = ApiResponse<User>;
 
 export type VerifyTokenResponse = ApiResponse<User>;
+
+export type GetUsersResponse = ApiResponse<FullUser[]>;
+
+export type ChangeRoleResponse = ApiResponse<FullUser[]>;

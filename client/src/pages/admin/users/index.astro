@@ -1,0 +1,93 @@
+---
+export const prerender = false;
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/users-table.css";
+import { getUsers } from "../../../api/UsersRequests";
+import { formatDate } from "../../../utils/formatDateToString";
+
+const token = Astro.cookies.get('token')?.value as string;
+
+const getUsersResponse = await getUsers(token);
+
+if (!getUsersResponse.ok) {
+    return Astro.redirect("/admin/login");
+}
+
+const users = getUsersResponse.data;
+---
+
+<Layout title="Administrar | Usuarios">
+    <section class="flex flex-col items-center pt-2">
+        <a href="/admin/users/register" class="ml-auto m-2">
+            <button class="p-2 bg-blue-600 rounded-md hover:cursor-pointer">Registrar Usuario</button>
+        </a>
+        <h1 class="text-xl font-bold mb-4">Usuarios</h1>
+        <table class="bg-gray-400 w-full md:w-3/4 text-left text-black border-2 border-white border-collapse">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th>Nombre de usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Fecha registro</th>
+                </tr>
+            </thead>
+            <tbody>
+            {
+                users.map((user => {
+                    return (
+                        <tr>
+                            <td>{user.username}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                {
+                                    user.role === "editor" ? (
+                                        <select name="role" id={`role-${user._id}`} class="role-selector bg-blue-500 rounded-lg px-2 py-1">
+                                            <option value="editor" selected>editor</option>
+                                            <option value="admin">admin</option>
+                                        </select>
+                                    ) : (
+                                        <span class="bg-blue-500 rounded-lg px-2 py-1">{user.role}</span>
+                                    )
+                                }
+                            </td>
+                            <td>{formatDate(user.createdAt)}</td>
+                        </tr>
+                    )
+                }))
+            }
+            </tbody>
+        </table>
+    </section>
+</Layout>
+
+<script>
+    import { changeRole } from "../../../api/UsersRequests";
+    import type { Role } from "../../../types/users.types";
+
+    const roleSelectors = document.querySelectorAll<HTMLSelectElement>(".role-selector");
+
+    function createRoleSpan(newRole: Role): HTMLSpanElement {
+        const newRoleSpan: HTMLSpanElement = document.createElement("span");
+        newRoleSpan.className = "bg-blue-500 rounded-lg px-2 py-1";
+        newRoleSpan.innerHTML = newRole;
+
+        return newRoleSpan;
+    }
+
+    roleSelectors.forEach(selector => {
+        selector.addEventListener('change', async function() {
+            const userId = selector.id.split("-")[1];
+            const newRole = selector.value as Role;
+
+            const response = await changeRole(userId, newRole);
+
+            if (response.ok) {
+                const roleSpan = createRoleSpan(newRole);
+                selector.replaceWith(roleSpan);
+            }
+            else {
+                console.log(response.message);
+            }
+        });
+    });
+</script>

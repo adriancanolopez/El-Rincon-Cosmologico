@@ -3,6 +3,17 @@ import User from "../models/User.model.ts";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+export const getUsers = async (req: Request, res: Response) => {
+    try {
+        const users = await User.find();
+
+        return res.status(200).json(users);
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        return res.status(500).json({ message: "Error al realizar el registro. Error: " + message });
+    }
+}
+
 export const register = async (req: Request, res: Response) => {
     try {
         const { username, email, password, role } = req.body;
@@ -80,5 +91,29 @@ export const verifyTokenResponse = async (req: Request, res: Response) => {
         return res.status(200).json(req.user);
     } catch (error) {
         return res.status(500).json({ message: "Error al verificar el token. Error: " + String(error)});
+    }
+}
+
+export const changeRole = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id;
+        const { newRole } = req.body;
+
+        const userToUpdate = await User.findById(userId);
+
+        if (!userToUpdate) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+
+        if (userToUpdate.role === "admin" && newRole === "editor") {
+            return res.status(403).json({ message: "No tienes permiso para quitar el rol de administrador a otro usuario." });
+        }
+
+        const userUpdated = await User.findByIdAndUpdate(userId, { $set: { role: newRole } }, { new: true, runValidators: true });
+
+        return res.status(200).json(userUpdated);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return res.status(500).json({ message: "Error al cambiar el rol. Error: " + message });
     }
 }

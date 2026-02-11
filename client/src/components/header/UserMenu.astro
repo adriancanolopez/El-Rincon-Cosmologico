@@ -19,6 +19,11 @@ const { username, role } = user;
     <nav class="hidden absolute top-full w-36 rounded-sm" id="user-menu-dropdown">
         <ul>
             <li><a href="/admin/news" class="">Noticias</a></li>
+            {
+                role === "admin" && (
+                    <li><a href="/admin/users">Usuarios</a></li>
+                )
+            }
             <li>
                 <button id="logout-btn" class="text-left hover:cursor-pointer">Cerrar sesión</button>
             </li>
