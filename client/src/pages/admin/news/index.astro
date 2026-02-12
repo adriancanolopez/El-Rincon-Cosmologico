@@ -14,9 +14,9 @@ const { user } = Astro.locals;
 ---
 
 <Layout title="Noticias">
-    <div class="grid grid-cols-[1fr_auto_1fr] items-center">
-        <h1 class="col-start-2 text-xl text-center">Todas las Noticias</h1>
-        <a href="/admin/news/create" class="col-start-3 justify-self-end mr-4 mt-2 p-2 bg-blue-600 rounded-md hover:cursor-pointer">
+    <div class="flex flex-col items-center gap-2 md:grid md:grid-cols-[1fr_auto_1fr] py-4">
+        <h1 class="md:col-start-2 text-2xl font-bold text-center">Todas las Noticias</h1>
+        <a href="/admin/news/create" class=" md:col-start-3 md:justify-self-end md:mt-4 md:mr-4 px-4 py-2 bg-blue-600 rounded-md hover:cursor-pointer">
             <button class="hover:cursor-pointer">Crear Noticia</button>
         </a>
     </div>
@@ -25,7 +25,7 @@ const { user } = Astro.locals;
             <p class="text-center my-32">No hay noticias.</p>
         )
     }
-    <section class="grid grid-cols-4 gap-8 p-4" id="news">
+    <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4" id="news">
         {
             allNews.map(news => {
                 return (

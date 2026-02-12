@@ -1,9 +1,11 @@
 ---
+import "../../../styles/news.css";
 import type { News } from "../../../types/news.types";
 import type { Role } from "../../../types/users.types";
 import Delete from "../../../assets/icons/delete.svg";
 import Edit from "../../../assets/icons/edit.svg";
 import formatDateToString from "../../../utils/formatDateToString";
+import truncate from 'truncate-html';
 
 type Props = {
     news: News,
@@ -14,9 +16,9 @@ const { news, role } = Astro.props;
 const newsData = news;
 ---
 
-<article class="flex flex-col items-center gap-2 bg-gray-300 text-black px-3 py-2 rounded-md" id={`news-${newsData._id}`}>
-    <div class="flex flex-row justify-between w-full">
-        <span class={newsData.published ? 'text-green-500' : 'text-red-500'}>{newsData.published ? 'Publicada' : 'No Publicada'}</span>
+<article class="flex flex-col items-center gap-2 bg-gray-300 text-black rounded-lg transition-transform hover:scale-102 duration-300 news-article" id={`news-${newsData._id}`}>
+    <div class="flex flex-row justify-between w-full px-2 py-2">
+        <span class={newsData.published ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>{newsData.published ? 'Publicada' : 'No Publicada'}</span>
         <div class="flex flex-row gap-2">
             <a href={`/admin/news/${newsData._id}`}>
                 <Edit class="w-5 hover:cursor-pointer"/>
@@ -28,21 +30,27 @@ const newsData = news;
             }
         </div>
     </div>
-    <h3 class="text-xl font-bold text-center">{newsData.title}</h3>
     {
         newsData.imageUrl !== null && (
-            <img src={`http://localhost:3000/uploads/news/${newsData.imageUrl}`} alt="Imagen de la noticia" class="w-2/3"/>
+            <img src={`http://localhost:3000/uploads/news/${newsData.imageUrl}`} alt={`Imagen de la noticia ${newsData.title}`} class="object-cover w-full h-48"/>
         )
     }
-    <span>
-        <span class="font-bold">Creación: </span>
-        {formatDateToString(newsData.createdAt as string)}
-    </span>
-    <span>
-        <span class="font-bold">Última modificación: </span>
-        {formatDateToString(newsData.updatedAt as string)}
-    </span>
-    <div>
-        <p set:html={newsData.description}></p>
+    <div class="content flex flex-col gap-2 px-5 py-4">
+        <h3 class="text-xl font-semibold text-gray-800 hover:text-blue-500 transition-colors">{newsData.title}</h3>
+        <span class="text-sm text-gray-600 italic">
+            <span class="font-bold">Creación: </span>
+            {formatDateToString(newsData.createdAt as string)}
+        </span>
+        {
+            newsData.updatedAt !== newsData.createdAt && (
+                <span class="text-sm text-gray-600 italic">
+                    <span class="font-bold">Actualizado: </span>
+                    {formatDateToString(newsData.updatedAt as string)}
+                </span>
+            )
+        }
+        <div class="text-gray-700 description">
+            <p set:html={truncate(newsData.description, 150, {byWords: false, ellipsis: "..."})}></p>
+        </div>
     </div>
 </article>
