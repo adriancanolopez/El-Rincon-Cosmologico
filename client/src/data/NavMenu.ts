@@ -21,40 +21,51 @@ export const NavMenuLinks: NavMenuLink[] = [
     },
     {
         title: "Misiones espaciales",
+        url: "/misiones",
         subMenu : [
             {
                 title: "Apolo",
+                url: "/misiones/apollo",
                 subMenu: [
                     {
-                        title: "Apolo 11"
+                        title: "Apolo 11",
+                        url: "/misiones/apollo/apollo-11"
                     }
                 ]
             },
             {
                 title: "Artemis",
+                url: "/misiones/artemis",
                 subMenu: [
                     {
-                        title: "Artemis I"
+                        title: "Artemis I",
+                        url: "/misiones/artemis/artemis-i",
                     },
                     {
-                        title: "Artemis II"
+                        title: "Artemis II",
+                        url: "/misiones/artemis/artemis-ii",
                     },
                     {
-                        title: "Artemis III"
+                        title: "Artemis III",
+                        url: "/misiones/artemis/artemis-iii",
                     }
                 ]
             },
             {
-                title: "MARS 2020 - PERSEVERANCE ROVER"
+                title: "MARS 2020 - PERSEVERANCE ROVER",
+                url: "/misiones/mars-2020",
             },
             {
                 title: "Voyager",
+                url: "/misiones/voyager",
                 subMenu: [
                     {
-                        title: "Voyager 1"
+                        title: "Voyager 1",
+                        url: "/misiones/voyager/voyager-1",
                     },
                     {
-                        title: "Voyager 2"
+                        title: "Voyager 2",
+                        url: "/misiones/voyager/voyager-2",
                     }
                 ]
             }

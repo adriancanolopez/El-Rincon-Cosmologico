@@ -1,0 +1,38 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import MissionCard from "../../../components/missions/MissionCard.astro";
+
+export async function getStaticPaths() {
+    const programs = await getCollection("programs");
+
+    return programs.map((program) => ({
+        params: { program: program.slug },
+        props: { program }
+    }));
+}
+
+const { program } = Astro.props;
+const { data, slug } = program;
+const { title, description } = data;
+
+const missions = await getCollection("missions", ({ data }) => data.program?.id === slug);
+const missionsSorted = missions.sort((a, b) => a.data.order - b.data.order); // Orden ascendente
+---
+
+<Layout title={title}>
+    <main class="flex flex-col items-center gap-6">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <p class="text-center">{description}</p>
+        <section class="flex flex-row flex-wrap justify-center gap-8">
+            {
+                missionsSorted.map((mission) => {
+                    const missionSlug = mission.slug;
+                    return (
+                        <MissionCard mission={mission} link={`/misiones/${slug}/${missionSlug}`}/>
+                    )
+                })
+            }
+        </section>
+    </main>
+</Layout>

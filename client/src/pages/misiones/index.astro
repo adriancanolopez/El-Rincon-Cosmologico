@@ -1,0 +1,41 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ProgramCard from "../../components/missions/ProgramCard.astro";
+import MissionCard from "../../components/missions/MissionCard.astro";
+
+const programs = await getCollection("programs");
+const independentMissions = await getCollection("missions", ({ data }) => {
+    return !data.program;
+});
+---
+
+<Layout title="Misiones">
+    <main>
+        <section class="flex flex-col items-center gap-4 p-10">
+            <h2 class="text-3xl text-center">Programas espaciales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                programs.map((program) => {
+                    return (
+                        <ProgramCard program={program} />
+                    )
+                })
+            }
+            </div>
+        </section>
+        <section class="flex flex-col items-center gap-4 p-10">
+            <h2 class="text-3xl text-center">Misiones independientes</h2>
+            <div class="flex flex-row justify-center flex-wrap gap-8">
+            {
+                independentMissions.map((mission) => {
+                    const missionSlug = mission.slug;
+                    return (
+                        <MissionCard mission={mission} link={`/misiones/${missionSlug}`}/>
+                    )
+                })
+            }
+            </div>
+        </section>
+    </main>
+</Layout>

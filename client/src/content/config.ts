@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 const celestialBodies = defineCollection({
     schema : z.object({
@@ -34,4 +34,39 @@ const celestialBodies = defineCollection({
     })
 });
 
-export const collections = { 'celestial-bodies' : celestialBodies };
+const programs = defineCollection({
+    schema: ({ image }) => z.object({
+        title: z.string(),
+        description: z.string(),
+        image: z.object({
+            url: image(),
+            credits: z.string(),
+        }).optional(),
+    })
+});
+
+const missions = defineCollection({
+    schema: ({ image }) => z.object({
+        title: z.string(),
+        program: reference("programs").optional(),
+        order: z.number(),
+        type: z.enum(["Tripulada", "Orbital", "Aterrizaje", "Rover", "Sonda"]),
+        launch_date: z.date().optional(),
+        landing_date: z.date().optional(), // Opcional porque muchas sondas espaciales no aterrizan.
+        status: z.enum(["En curso", "Activa", "Finalizada", "Planificada", "Abortada", "Exitosa", "Fallida"]),
+        destination: z.string(),
+        objective: z.string(),
+        launch_vehicle: z.string(),
+        crew: z.array(z.string()).optional(),
+        images: z.array(
+            z.object({
+                main: z.boolean().default(false),
+                url: image(),
+                description: z.string(),
+                credits: z.string(),
+            })
+        ).optional(),
+    })
+})
+
+export const collections = { 'celestial-bodies' : celestialBodies, programs, missions };

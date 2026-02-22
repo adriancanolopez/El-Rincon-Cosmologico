@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import MissionContent from "../../components/missions/Mission.astro";
+import "../../styles/missions.css";
+
+export async function getStaticPaths() {
+    const independentMissions = await getCollection("missions", ({ data }) => {
+        return !data.program;
+    });
+
+    return independentMissions.map((mission) => ({
+        params: { mission: mission.slug },
+        props: { mission }
+    }));
+}
+
+const { mission } = Astro.props;
+const { data } = mission;
+const { title } = data;
+---
+
+<Layout title={title}>
+    <main class="flex flex-col items-center">
+        <MissionContent mission={mission}/>
+    </main>
+</Layout>

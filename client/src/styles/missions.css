@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+figcaption {
+    @apply text-sm italic py-1;
+}
+
+.mission-data > div > dt {
+    @apply uppercase font-bold;
+}
+
+.mission-description {
+    @apply leading-relaxed text-slate-200;
+}

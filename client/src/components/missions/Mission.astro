@@ -1,0 +1,113 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import ImageCard from './ImageCard.astro';
+import { formatDateOnly } from '../../utils/formatDateToString';
+import getStatusStyles  from "../../utils/missionStatusStyles";
+
+type Props = {
+    mission: CollectionEntry<"missions">,
+}
+
+const { mission } = Astro.props;
+
+const { title, type, status, destination, objective, launch_date, landing_date, launch_vehicle, crew, images } = mission.data;
+
+const mainImage = images?.filter((image) => image.main)[0];
+
+let statusColor = getStatusStyles(status);
+
+const { Content } = await render(mission);
+---
+
+<article class="md:w-4/5 flex flex-col md:flex-row justify-between gap-4 bg-gray-900 p-4">
+    <div class="w-full md:w-3/4 flex flex-col gap-4 mission-description">
+        <h2 class="text-4xl font-bold border-b border-slate-700 p-2">{title}</h2>
+        <Content />
+        {
+            images && (
+                <div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+                {
+                    images?.map((image) => {
+                        return (
+                            <ImageCard image={image} width={400}/>
+                        )
+                    })
+                }
+                </div>
+            )
+        }
+    </div>
+    <aside class="w-full md:w-1/4 bg-gray-700 p-4 rounded-md">
+        <dl class="flex flex-col gap-4 mission-data">
+            {
+                mainImage && (
+                    <ImageCard image={mainImage}/>
+                )
+            }
+
+            <div>
+                <dt>Tipo de misión</dt>
+                <dd>{type}</dd>
+            </div>
+
+            {
+                launch_date && (
+                    <div>
+                        <dt>Fecha de lanzamiento</dt>
+                        <dd>{formatDateOnly(launch_date.toISOString())}</dd>
+                    </div>
+                )
+            }
+
+            {
+                landing_date && (
+                    <div>
+                        <dt>Fecha de aterrizaje</dt>
+                        <dd>{formatDateOnly(landing_date.toISOString())}</dd>
+                    </div>
+                )
+            }
+
+            <div>
+                <dt>Estado</dt>
+                <dd><span class={`${statusColor} font-bold`}>{status}</span></dd>
+            </div>
+
+            <div>
+                <dt>Destino</dt>
+                <dd>{destination}</dd>
+            </div>
+
+            <div>
+                <dt>Objetivo</dt>
+                <dd>{objective}</dd>
+            </div>
+
+            <div>
+                <dt>Vehículo</dt>
+                <dd>{launch_vehicle}</dd>
+            </div>
+
+            {
+                crew && crew.length > 0 && (
+                    <div>
+                        <dt>Tripulación</dt>
+                        <dd>
+                            <ul class="list-disc">
+                                {
+                                    crew.map((member) => {
+                                        return (
+                                            <li>{member}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </dd>
+                    </div>
+                )
+            }
+        </dl>
+    </aside>
+</article>
+

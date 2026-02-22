@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from "astro:assets";
+
+type Props = {
+    program: CollectionEntry<"programs">
+}
+
+const { program } = Astro.props;
+
+const { slug } = program;
+
+const { title, description, image } = program.data;
+
+---
+
+<article class="flex flex-col justify-between gap-4 bg-gray-700 rounded-lg">
+    <div class="flex flex-col items-start gap-4 p-4">
+        <h3 class="text-2xl font-bold">{title}</h3>
+        <p>{description}</p>
+        <a href={`/misiones/${slug}`} class="bg-blue-500 px-4 py-2 rounded-md transition-colors hover:bg-blue-700">
+            <button class="hover:cursor-pointer">Ver misiones</button>
+        </a>
+    </div>
+    {
+        image && (
+            <Image src={image.url} alt={`Imagen del programa ${title}`} class="object-cover w-full h-64" title={`Imagen del programa ${title}. Créditos: ${image.credits}`}/>
+        )
+    }
+</article>
