@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import { getMissionsMenu } from "../../utils/nav-menu/getCollectionMenu";
+import { NavMenuLinks } from "../../data/NavMenu";
+import LinksList from "./LinksList.astro";
+
+const programs = await getCollection("programs");
+const missions = await getCollection("missions");
+const independentMissions = await getCollection("missions", ({ data }) => {
+    return !data.program;
+});
+
+const spaceMissions = getMissionsMenu(programs, missions, independentMissions);
+
+const allMenuLinks = [
+    ...NavMenuLinks.slice(0, 3), // Desde la primera posición hasta la segunda (la 3 no se incluye).
+    spaceMissions, // Añadimos el menú de las misiones espaciales en la tercera posición.
+    ...NavMenuLinks.slice(3) // Desde la tercera posición en adelante.
+];
+---
+
+<LinksList linksList={allMenuLinks} />
