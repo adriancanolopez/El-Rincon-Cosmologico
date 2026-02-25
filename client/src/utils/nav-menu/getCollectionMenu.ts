@@ -1,14 +1,8 @@
 import type { CollectionEntry } from "astro:content";
 import type { NavMenuLink } from "../../types/nav-menu-link";
-import Rocket from "../../assets/icons/rocket.svg";
+import { MISSIONS, ARTICLES, DISCOVERIES } from "../../consts/nav-menu-sections";
 
 export function getMissionsMenu(programs: CollectionEntry<"programs">[], missions: CollectionEntry<"missions">[], independentMissions: CollectionEntry<"missions">[]): NavMenuLink {
-    const urlPath = "/misiones/";
-
-    const menu: NavMenuLink = {
-        title: "Misiones espaciales",
-        url: urlPath,
-    }
 
     const programsAndMissions: NavMenuLink[] = [];
 
@@ -20,13 +14,13 @@ export function getMissionsMenu(programs: CollectionEntry<"programs">[], mission
 
         const navLink: NavMenuLink = {
             title: data.title,
-            url: urlPath + slug,
+            url: MISSIONS.url + slug,
             subMenu: missionsSorted.map((mission) => {
                 const missionData = mission.data;
                 const missionSlug = mission.slug;
                 return {
                     title: missionData.title,
-                    url: urlPath + slug + "/" + missionSlug,
+                    url: MISSIONS.url + slug + "/" + missionSlug,
                 }
             }),
         };
@@ -39,26 +33,19 @@ export function getMissionsMenu(programs: CollectionEntry<"programs">[], mission
 
         const link: NavMenuLink = {
             title: data.title,
-            url: "/misiones/" + slug,
+            url: MISSIONS.url + slug,
         };
 
         programsAndMissions.push(link);
     });
 
-    menu.subMenu = programsAndMissions;
-    menu.icon = Rocket;
+    MISSIONS.subMenu = programsAndMissions;
 
-    return menu;
+    return MISSIONS;
 }
 
 export function getArticlesMenu(categories: CollectionEntry<"categories">[], articles: CollectionEntry<"articles">[]): NavMenuLink {
-    const urlPath = "/articulos/";
-
-    const menu: NavMenuLink = {
-        title: "Artículos",
-        url: urlPath,
-    };
-
+    
     const categoriesAndArticles: NavMenuLink[] = [];
 
     categories.map((category) => {
@@ -68,14 +55,14 @@ export function getArticlesMenu(categories: CollectionEntry<"categories">[], art
 
         const navMenu: NavMenuLink = {
             title: data.title,
-            url: urlPath + slug,
+            url: ARTICLES.url + slug,
             subMenu: categoryArticles.map((article) => {
                 const articleData = article.data;
                 const articleSlug = article.slug;
 
                 return {
                     title: articleData.title,
-                    url: urlPath + slug + "/" + articleSlug,
+                    url: ARTICLES.url + slug + "/" + articleSlug,
                 }
             })
         };
@@ -83,16 +70,11 @@ export function getArticlesMenu(categories: CollectionEntry<"categories">[], art
         categoriesAndArticles.push(navMenu);
     });
 
-    menu.subMenu = categoriesAndArticles;
+    ARTICLES.subMenu = categoriesAndArticles;
 
-    return menu;
+    return ARTICLES;
 };
 
 export function getDiscoveriesMenu(categories: CollectionEntry<"categories">[]): NavMenuLink {
-    const discoveries = categories.filter((category) => category.slug === "descubrimientos");
-
-    return {
-        title: "Últimos descubrimientos",
-        url: "/articulos/descubrimientos",
-    }
+    return DISCOVERIES;
 };
