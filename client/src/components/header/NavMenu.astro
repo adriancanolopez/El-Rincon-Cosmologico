@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getMissionsMenu } from "../../utils/nav-menu/getCollectionMenu";
+import { getMissionsMenu, getArticlesMenu, getDiscoveriesMenu } from "../../utils/nav-menu/getCollectionMenu";
 import { NavMenuLinks } from "../../data/NavMenu";
 import LinksList from "./LinksList.astro";
 
@@ -9,13 +9,20 @@ const missions = await getCollection("missions");
 const independentMissions = await getCollection("missions", ({ data }) => {
     return !data.program;
 });
+const categories = await getCollection("categories");
+const articles = await getCollection("articles");
 
 const spaceMissions = getMissionsMenu(programs, missions, independentMissions);
+const articlesMenu = getArticlesMenu(categories, articles);
+const discoveries = getDiscoveriesMenu(categories);
 
 const allMenuLinks = [
-    ...NavMenuLinks.slice(0, 3), // Desde la primera posición hasta la segunda (la 3 no se incluye).
-    spaceMissions, // Añadimos el menú de las misiones espaciales en la tercera posición.
-    ...NavMenuLinks.slice(3) // Desde la tercera posición en adelante.
+    ...NavMenuLinks.slice(0, 1), // Obtenemos la primera posición (la 1 no se incluye).
+    discoveries,
+    ...NavMenuLinks.slice(1, 2), // Obtenemos la segunda posición.
+    spaceMissions, // Añadimos el menú de las misiones espaciales en la cuarta posición.
+    articlesMenu, // Menú de los artículos y sus categorías en la quinta posición.
+    ...NavMenuLinks.slice(2) // Desde la segunda posición en adelante.
 ];
 ---
 

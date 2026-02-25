@@ -67,6 +67,27 @@ const missions = defineCollection({
             })
         ).optional(),
     })
-})
+});
 
-export const collections = { 'celestial-bodies' : celestialBodies, programs, missions };
+const categories = defineCollection({
+    schema: z.object({
+        title: z.string(),
+    })
+});
+
+const articles = defineCollection({
+    schema: ({ image }) => z.object({
+        title: z.string(),
+        category: reference("categories"),
+        images: z.array(
+            z.object({
+                main: z.boolean().default(false),
+                url: image(),
+                description: z.string(),
+                credits: z.string(),
+            })
+        ).optional(),
+    })
+});
+
+export const collections = { 'celestial-bodies' : celestialBodies, programs, missions, categories, articles };

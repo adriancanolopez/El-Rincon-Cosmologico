@@ -50,3 +50,49 @@ export function getMissionsMenu(programs: CollectionEntry<"programs">[], mission
 
     return menu;
 }
+
+export function getArticlesMenu(categories: CollectionEntry<"categories">[], articles: CollectionEntry<"articles">[]): NavMenuLink {
+    const urlPath = "/articulos/";
+
+    const menu: NavMenuLink = {
+        title: "Artículos",
+        url: urlPath,
+    };
+
+    const categoriesAndArticles: NavMenuLink[] = [];
+
+    categories.map((category) => {
+        const { data, slug } = category;
+
+        const categoryArticles = articles.filter((article) => article.data.category.id === slug);
+
+        const navMenu: NavMenuLink = {
+            title: data.title,
+            url: urlPath + slug,
+            subMenu: categoryArticles.map((article) => {
+                const articleData = article.data;
+                const articleSlug = article.slug;
+
+                return {
+                    title: articleData.title,
+                    url: urlPath + slug + "/" + articleSlug,
+                }
+            })
+        };
+
+        categoriesAndArticles.push(navMenu);
+    });
+
+    menu.subMenu = categoriesAndArticles;
+
+    return menu;
+};
+
+export function getDiscoveriesMenu(categories: CollectionEntry<"categories">[]): NavMenuLink {
+    const discoveries = categories.filter((category) => category.slug === "descubrimientos");
+
+    return {
+        title: "Últimos descubrimientos",
+        url: "/articulos/descubrimientos",
+    }
+};

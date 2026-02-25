@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const categories = await getCollection("categories");
+---
+
+<Layout title="Artículos">
+    <main class="flex flex-col items-center mt-4">
+        <h1 class="text-3xl font-bold">Artículos</h1>
+        <section class="p-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Categorías</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {
+                categories.map((category) => {
+                    const { data, slug } = category;
+                    const { title } = data;
+                    return (
+                        <li class="bg-gray-800 text-center px-12 py-2 rounded-sm transition-colors duration-200 hover:bg-gray-600">
+                            <a href={`/articulos/${slug}`}>{title}</a>
+                        </li>
+                    )
+                })
+            }
+            </ul>
+        </section>
+    </main>
+</Layout>

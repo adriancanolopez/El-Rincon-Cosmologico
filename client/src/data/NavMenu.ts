@@ -11,26 +11,9 @@ export const NavMenuLinks: NavMenuLink[] = [
         icon: Home
     },
     {
-        title: "Últimos descubrimientos",
-    },
-    {
         title: "El Sistema solar",
         url: "/sistema-solar",
         icon: SolarSystem
-    },
-    {
-        title: "Vida extraterrestre",
-        subMenu: [
-            {
-                title: "¿Hay vida en otros planetas y galaxias?"
-            },
-            {
-                title: "¿Vida extraterrestre en el Sistema solar?"
-            },
-            {
-                title: 'SEÑAL "WOW"'
-            }
-        ]
     },
     {
         title : "Galaxias",
