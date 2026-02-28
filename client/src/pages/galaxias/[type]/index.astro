@@ -1,0 +1,36 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import GalaxyCard from "../../../components/galaxies/GalaxyCard.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const galaxyTypes = await getCollection("galaxy-types");
+
+    return galaxyTypes.map((type) => ({
+        params: { type: type.slug },
+        props: { type }
+    }));
+};
+
+const { type } = Astro.props;
+const { data, slug } = type;
+const { name, description } = data;
+
+const galaxies = await getCollection("galaxies", ({ data }) => data.type.id === slug);
+---
+
+<Layout title={`Galaxias - ${name}`}>
+    <main class="flex flex-col items-center gap-4 mt-4">
+        <h1 class="text-3xl font-bold text-center">{name}</h1>
+        <p class="text-center">{description}</p>
+        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
+            {
+                galaxies.map((galaxy) => {
+                    return (
+                        <GalaxyCard galaxy={galaxy}/>
+                    )
+                })
+            }
+        </section>
+    </main>
+</Layout>

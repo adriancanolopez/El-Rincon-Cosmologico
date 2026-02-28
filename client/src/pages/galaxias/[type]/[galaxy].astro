@@ -1,0 +1,154 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import "../../../styles/articles.css";
+import ImageCard from "../../../components/missions/ImageCard.astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+    const galaxies = await getCollection("galaxies");
+
+    return galaxies.map((galaxy) => ({
+        params: { type: galaxy.data.type.id, galaxy: galaxy.slug },
+        props: { galaxy }
+    }));
+};
+
+const { galaxy } = Astro.props;
+const { data, slug } = galaxy;
+const { name, designations, type, hubble_sequence, main_catalogs, diameter_ly, mass_solar_masses, age_gyr, 
+    earth_distance_mly, constellation, apparent_magnitude, stars_count_estimate, images } = data;
+
+const galaxyTypeArray = await getCollection("galaxy-types", ({ slug }) => slug === type.id);
+const galaxyTypeObject = galaxyTypeArray[0];
+const typeName = galaxyTypeObject.data.name;
+
+const { Content } = await render(galaxy);
+
+const mainImage = images?.filter((image) => image.main)[0];
+---
+
+<Layout title={name}>
+    <article class="w-full md:w-4/5 flex flex-col md:flex-row justify-between gap-4 bg-gray-900 p-4 mx-auto mt-4 rounded-sm">
+        <div class="w-full md:w-4/6 flex flex-col gap-4 article-description">
+            <h2 class="text-3xl md:text-4xl text-center md:text-left font-bold border-b border-slate-700 p-2">{name}</h2>
+            <Content />
+            {
+                images && (
+                    <div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {
+                        images?.map((image) => {
+                            return (
+                                <ImageCard image={image} width={400}/>
+                            )
+                        })
+                    }
+                    </div>
+                )
+            }
+        </div>
+        <aside class="w-full md:w-1/3 bg-gray-700 p-4 rounded-md">
+            {
+                mainImage && (
+                    <ImageCard image={mainImage} className="mb-4"/>
+                )
+            }
+            <dl class="flex flex-col gap-4 article-data">
+                {
+                    designations && (
+                        <div>
+                            <dt>Otras designaciones</dt>
+                            <dd>
+                                {
+                                    designations.join(", ")
+                                }
+                            </dd>
+                        </div>
+                    )
+                }
+
+                <div>
+                    <dt>Tipo</dt>
+                    <dd>{typeName}</dd>
+                </div>
+
+                {
+                    hubble_sequence && (
+                        <div>
+                            <dt>Secuencia de Hubble</dt>
+                            <dd>{hubble_sequence}</dd>
+                        </div>
+                    )
+                }
+
+                {
+                    main_catalogs && (
+                        <div>
+                            <dt>Catálogos principales</dt>
+                            <dd>
+                                {
+                                    main_catalogs.join(", ")
+                                }
+                            </dd>
+                        </div>
+                    )
+                }
+
+                <div>
+                    <dt>Diámetro y Radio</dt>
+                    <dd>Diámetro: {diameter_ly.toLocaleString('en-EN')} años luz <br> Radio: {(diameter_ly / 2).toLocaleString('en-EN')} años luz</dd>
+                </div>
+
+                {
+                    mass_solar_masses && (
+                        <div>
+                            <dt>Masa</dt>
+                            <dd>{mass_solar_masses} Masas solares</dd>
+                        </div>
+                    )
+                }
+
+                {
+                    age_gyr && (
+                        <div>
+                            <dt>Edad estimada</dt>
+                            <dd>{age_gyr} mil millones de años</dd>
+                        </div>
+                    )
+                }
+
+                {
+                    earth_distance_mly > 0 && ( // Si es 0, corresponde a la Vía Láctea
+                        <div>
+                            <dt>Distancia a la Tierra</dt>
+                            <dd>{earth_distance_mly} millones de años luz</dd>
+                        </div>
+                    )
+                }
+
+                <div>
+                    <dt>Constelación</dt>
+                    <dd>{constellation}</dd>
+                </div>
+
+                {
+                    apparent_magnitude && (
+                        <div>
+                            <dt>Magnitud aparente</dt>
+                            <dd>{apparent_magnitude}</dd>
+                        </div>
+                    )
+                }
+
+                {
+                    stars_count_estimate && (
+                        <div>
+                            <dt>Número aproximado de estrellas</dt>
+                            <dd>{stars_count_estimate}</dd>
+                        </div>
+                    )
+                }
+            </dl>
+        </aside>
+    </article>
+</Layout>

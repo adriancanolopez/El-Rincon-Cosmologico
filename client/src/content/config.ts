@@ -34,6 +34,40 @@ const celestialBodies = defineCollection({
     })
 });
 
+const galaxyTypes = defineCollection({
+    schema: z.object({
+        name: z.string(),
+        description: z.string(),
+        order: z.number(),
+    })
+});
+
+const galaxies = defineCollection({
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        designations: z.array(z.string()).optional(),
+        type: reference("galaxy-types"),
+        hubble_sequence: z.string().optional(),
+        main_catalogs: z.array(z.enum(["Messier", "NGC", "IC", "Caldwell"])).optional(),
+        diameter_ly: z.number(), // En años luz
+        mass_solar_masses: z.string().optional(),
+        age_gyr: z.number().optional(), // Giga años (miles de millones de años)
+        earth_distance_mly: z.number(), // En millones de años luz
+        constellation: z.string(),
+        apparent_magnitude: z.number().nullable(),
+        stars_count_estimate: z.string().optional(),
+        images: z.array(
+            z.object({
+                main: z.boolean().default(false),
+                url: image(),
+                description: z.string(),
+                alt: z.string(),
+                credits: z.string(),
+            })
+        ).optional(),
+    })
+});
+
 const programs = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
@@ -90,4 +124,4 @@ const articles = defineCollection({
     })
 });
 
-export const collections = { 'celestial-bodies' : celestialBodies, programs, missions, categories, articles };
+export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, programs, missions, categories, articles };

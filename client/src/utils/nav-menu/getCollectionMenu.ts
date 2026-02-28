@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import type { NavMenuLink } from "../../types/nav-menu-link";
-import { MISSIONS, ARTICLES, DISCOVERIES } from "../../consts/nav-menu-sections";
+import { MISSIONS, ARTICLES, DISCOVERIES, GALAXIES } from "../../consts/nav-menu-sections";
 
 export function getMissionsMenu(programs: CollectionEntry<"programs">[], missions: CollectionEntry<"missions">[], independentMissions: CollectionEntry<"missions">[]): NavMenuLink {
 
@@ -78,3 +78,35 @@ export function getArticlesMenu(categories: CollectionEntry<"categories">[], art
 export function getDiscoveriesMenu(categories: CollectionEntry<"categories">[]): NavMenuLink {
     return DISCOVERIES;
 };
+
+export function getGalaxiesMenu(galaxyTypes: CollectionEntry<"galaxy-types">[], galaxies: CollectionEntry<"galaxies">[]): NavMenuLink {
+
+    const typesAndGalaxies: NavMenuLink[] = [];
+
+    galaxyTypes.map((type) => {
+        const { data, slug } = type;
+
+        const galaxiesInType = galaxies.filter((galaxy) => galaxy.data.type.id === slug);
+
+        const navMenu: NavMenuLink = {
+            title: data.name,
+            url: GALAXIES.url + slug,
+            subMenu: galaxiesInType.map((galaxy) => {
+                const galaxyData = galaxy.data;
+                const name = galaxyData.name;
+                const galaxySlug = galaxy.slug;
+                
+                return {
+                    title: name,
+                    url: GALAXIES.url + slug + "/" + galaxySlug,
+                };
+            })
+        }
+
+        typesAndGalaxies.push(navMenu);
+    });
+
+    GALAXIES.subMenu = typesAndGalaxies;
+
+    return GALAXIES;
+}

@@ -21,7 +21,7 @@ const { Content } = await render(mission);
 ---
 
 <article class="md:w-4/5 flex flex-col md:flex-row justify-between gap-4 bg-gray-900 p-4">
-    <div class="w-full md:w-3/4 flex flex-col gap-4 mission-description">
+    <div class="w-full md:w-3/4 flex flex-col gap-4 article-description">
         <h2 class="text-4xl font-bold border-b border-slate-700 p-2">{title}</h2>
         <Content />
         {
@@ -39,7 +39,7 @@ const { Content } = await render(mission);
         }
     </div>
     <aside class="w-full md:w-1/4 bg-gray-700 p-4 rounded-md">
-        <dl class="flex flex-col gap-4 mission-data">
+        <dl class="flex flex-col gap-4 article-data">
             {
                 mainImage && (
                     <ImageCard image={mainImage}/>

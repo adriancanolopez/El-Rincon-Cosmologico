@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import GalaxyTypeCard from "../../components/galaxies/GalaxyTypeCard.astro";
+
+const galaxyTypes = await getCollection("galaxy-types");
+const typesSorted = galaxyTypes.sort((a, b) => a.data.order - b.data.order);
+const allGalaxies = await getCollection("galaxies");
+---
+
+<Layout title="Galaxias">
+    <main class="flex flex-col items-center gap-4 mt-4 px-8">
+        <h1 class="text-3xl font-bold text-center">Galaxias</h1>
+        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                typesSorted.map((type) => {
+                    const { slug } = type;
+                    const galaxies = allGalaxies.filter((galaxy) => galaxy.data.type.id === slug);
+                    return (
+                        <GalaxyTypeCard galaxyType={type} galaxies={galaxies}/>
+                    )
+                })
+            }
+        </section>
+    </main>
+</Layout>

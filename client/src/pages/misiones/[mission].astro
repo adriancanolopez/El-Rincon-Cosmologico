@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import MissionContent from "../../components/missions/Mission.astro";
-import "../../styles/missions.css";
+import "../../styles/articles.css";
 
 export async function getStaticPaths() {
     const independentMissions = await getCollection("missions", ({ data }) => {

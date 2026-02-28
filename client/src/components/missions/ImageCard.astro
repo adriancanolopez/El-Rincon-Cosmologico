@@ -4,13 +4,14 @@ import { Image } from "astro:assets";
 type Props = {
     image: any,
     width?: number,
+    className?: string
 }
 
-const { image, width } = Astro.props;
+const { image, width, className } = Astro.props;
 
 ---
 
-<figure>
+<figure class={`${className || ''}`}>
     <Image src={image.url} alt={image.description} width={width}/>
     <figcaption>
         {image.description} | <span class="font-bold">Créditos:</span> {image.credits}

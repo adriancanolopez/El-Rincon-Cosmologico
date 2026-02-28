@@ -4,10 +4,10 @@ figcaption {
     @apply text-sm italic py-1;
 }
 
-.mission-data > div > dt {
+.article-data > div > dt {
     @apply uppercase font-bold;
 }
 
-.mission-description {
+.article-description {
     @apply leading-relaxed text-slate-200;
 }

@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+type Props = {
+    galaxyType: CollectionEntry<"galaxy-types">,
+    galaxies: CollectionEntry<"galaxies">[]
+}
+
+const { galaxyType, galaxies } = Astro.props;
+const { data, slug } = galaxyType;
+const { name, description } = data;
+
+const galaxiesWithImage = galaxies.filter((galaxy) => galaxy.data.images);
+
+let galaxyImage;
+if (galaxiesWithImage.length > 0) {
+    const galaxyRandom = galaxiesWithImage[Math.floor(Math.random() * galaxiesWithImage.length)];
+
+    galaxyImage = galaxyRandom.data.images?.filter((image) => image.main)[0]; // Obtenemos la imagen principal.
+}
+---
+
+<article class="bg-gray-600 rounded-sm h-max">
+    <div class="flex flex-col items-start gap-4 p-4">
+        <h2 class="text-2xl font-bold">{name}</h2>
+        <p>{description}</p>
+        <a href={`/galaxias/${slug}`} class="bg-blue-500 px-4 py-2 rounded-md transition-colors hover:bg-blue-700 hover:cursor-pointer">
+            <button type="button" class="hover:cursor-pointer">Ver galaxias</button>
+        </a>
+    </div>
+    {
+        
+        galaxyImage && (
+            <Image src={galaxyImage.url} alt={`Imagen de una galaxia del tipo: ${name}`} class="object-cover w-full h-64" title={`Imagen de una galaxia del tipo: ${name}. Créditos: ${galaxyImage.credits}`}/>
+        )
+    }
+</article>
