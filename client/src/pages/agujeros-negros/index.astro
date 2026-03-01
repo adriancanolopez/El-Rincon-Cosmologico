@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import BlackHoleCard from "../../components/black-holes/BlackHoleCard.astro";
+
+const blackHoles = await getCollection("black-holes");
+---
+
+<Layout title="Agujeros negros">
+    <main class="flex flex-col items-center gap-4 px-8 mt-4">
+        <h2 class="text-3xl font-bold text-center">Agujeros negros</h2>
+        <p class="text-center">
+            Los agujeros negros son regiones del espacio donde se concentra una gran cantidad de materia en un 
+            espacio diminuto llamado <i>singularidad</i>. Su densidad es tal que genera una gravedad extremadamente fuerte;
+            tanto que, a partir de cierta distancia, hay una región denominada <i>horizonte de sucesos</i>, 
+            que, al atravesarla, ni siquiera la luz puede escapar. Es por ello que un agujero negro no se puede observar a simple vista; 
+            solo es visible su <i>disco de acreación</i>, compuesto por gas y polvo caliente que gira alrededor.
+            <br><br>Existen tres tipos de agujeros negros:
+        </p>
+        <ul class="list-disc">
+            <li><span class="font-bold italic">Estelares</span>: Se producen por el colapso de estrellas.</li>
+            <li><span class="font-bold italic">Intermedios</span>: Tienen una masa entre 100 y 100,000 veces la masa del Sol.</li>
+            <li><span class="font-bold italic">Supermasivos</span>: Tienen millones o miles de millones de masas solares.</li>
+        </ul>
+        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                blackHoles.map((blackHole) => {
+                    return (
+                        <BlackHoleCard blackHole={blackHole}/>
+                    )
+                })
+            }
+        </section>
+    </main>
+</Layout>

@@ -14,18 +14,4 @@ export const NavMenuLinks: NavMenuLink[] = [
         url: "/sistema-solar",
         icon: SolarSystem
     },
-    {
-        title: "Agujeros negros",
-        subMenu: [
-            {
-                title: "Sagitario A*"
-            },
-            {
-                title: "TON 618"
-            },
-            {
-                title: "Gaia BH1"
-            }
-        ]
-    }
 ]

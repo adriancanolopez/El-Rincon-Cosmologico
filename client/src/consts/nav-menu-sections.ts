@@ -23,3 +23,8 @@ export const GALAXIES: NavMenuLink = {
     url: "/galaxias/",
     icon: Galaxy
 };
+
+export const BLACK_HOLES: NavMenuLink = {
+    title: "Agujeros negros",
+    url: "/agujeros-negros/"
+}

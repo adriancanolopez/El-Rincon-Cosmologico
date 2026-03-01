@@ -1,0 +1,104 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+import ImageCard from "../../components/missions/ImageCard.astro";
+import "../../styles/articles.css";
+
+export async function getStaticPaths() {
+    const blackHoles = await getCollection("black-holes");
+
+    return blackHoles.map((blackHole) => ({
+        params: { slug: blackHole.slug },
+        props: { blackHole }
+    }));
+}
+
+const { blackHole } = Astro.props;
+const { data, slug } = blackHole;
+const { name, designations, type, mass_solar_masses, diameter_km, 
+    earth_distance_ly, constellation, apparent_magnitude, images } = data;
+
+const { Content } = await render(blackHole);
+
+const mainImage = images?.filter((image) => image.main)[0];
+
+const LOCAL = "en-EN";
+---
+
+<Layout title={name}>
+    <article class="w-full md:w-4/5 flex flex-col md:flex-row justify-between gap-4 bg-gray-900 p-4 mx-auto mt-4 rounded-sm">
+        <div class="w-full md:w-4/6 flex flex-col gap-4 article-description">
+            <h2 class="text-3xl md:text-4xl text-center md:text-left font-bold border-b border-slate-700 p-2">{name}</h2>
+            <Content />
+            {
+                images && (
+                    <div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {
+                        images.map((image) => {
+                            return (
+                                <ImageCard image={image} width={400}/>
+                            )
+                        })
+                    }
+                    </div>
+                )
+            }
+        </div>
+        <aside class="w-full md:w-1/3 bg-gray-700 p-4 rounded-md">
+            {
+                mainImage && (
+                    <ImageCard image={mainImage} className="mb-4"/>
+                )
+            }
+            <dl class="flex flex-col gap-4 article-data">
+                {
+                    designations && (
+                        <div>
+                            <dt>Otras designaciones</dt>
+                            <dd>
+                                {
+                                    designations.join(", ")
+                                }
+                            </dd>
+                        </div>
+                    )
+                }
+
+                <div>
+                    <dt>Tipo</dt>
+                    <dd>{type}</dd>
+                </div>
+
+                <div>
+                    <dt>Masa</dt>
+                    <dd>{mass_solar_masses} Masas solares</dd>
+                </div>
+
+                <div>
+                    <dt>Diámetro y Radio</dt>
+                    <dd>Diámetro: {diameter_km.toLocaleString(LOCAL)} km <br> Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</dd>
+                </div>
+
+                <div>
+                    <dt>Distancia a la Tierra</dt>
+                    <dd>{earth_distance_ly.toLocaleString(LOCAL)} años luz</dd>
+                </div>
+
+                <div>
+                    <dt>Constelación</dt>
+                    <dd>{constellation}</dd>
+                </div>
+
+                {
+                    apparent_magnitude && (
+                        <div>
+                            <dt>Magnitud aparente</dt>
+                            <dd>{apparent_magnitude}</dd>
+                        </div>
+                    )
+                }
+            </dl>
+        </aside>
+    </article>
+</Layout>

@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+type Props = {
+    blackHole: CollectionEntry<"black-holes">
+}
+
+const { blackHole } = Astro.props;
+const { data, slug } = blackHole;
+const { name, type, images } = data;
+
+const mainImage = images?.filter((image) => image.main)[0];
+---
+
+<article class="bg-gray-600 rounded-sm h-max">
+    <div class="flex flex-col items-start gap-4 p-4">
+        <div>
+            <h2 class="text-2xl font-bold">{name}</h2>
+            <span class="italic text-sm">{type}</span>
+        </div>
+        <a href={`/agujeros-negros/${slug}`} class="bg-blue-500 px-4 py-2 rounded-md transition-colors hover:bg-blue-700 hover:cursor-pointer">
+            <button type="button" class="hover:cursor-pointer">Ver agujero negro</button>
+        </a>
+    </div>
+    {
+        mainImage && (
+            <Image src={mainImage.url} alt={`Imagen del agujero negro ${name}`} class="object-cover w-full h-64" title={`Imagen del agujero negro ${name}. Créditos: ${mainImage.credits}`}/>
+        )
+    }
+</article>

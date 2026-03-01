@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getMissionsMenu, getArticlesMenu, getDiscoveriesMenu, getGalaxiesMenu } from "../../utils/nav-menu/getCollectionMenu";
+import { getMissionsMenu, getArticlesMenu, getDiscoveriesMenu, getGalaxiesMenu, getBlackHolesMenu } from "../../utils/nav-menu/getCollectionMenu";
 import { NavMenuLinks } from "../../data/NavMenu";
 import LinksList from "./LinksList.astro";
 
@@ -17,10 +17,13 @@ const galaxyTypes = await getCollection("galaxy-types");
 const galaxyTypesSorted = galaxyTypes.sort((a, b) => a.data.order - b.data.order);
 const galaxies = await getCollection("galaxies");
 
+const blackHoles = await getCollection("black-holes");
+
 const spaceMissions = getMissionsMenu(programs, missions, independentMissions);
 const articlesMenu = getArticlesMenu(categories, articles);
 const discoveries = getDiscoveriesMenu(categories);
 const galaxiesMenu = getGalaxiesMenu(galaxyTypesSorted, galaxies);
+const blackHolesMenu = getBlackHolesMenu(blackHoles);
 
 const allMenuLinks = [
     ...NavMenuLinks.slice(0, 1), // Obtenemos la primera posición (la 1 no se incluye).
@@ -29,7 +32,7 @@ const allMenuLinks = [
     spaceMissions, // Añadimos el menú de las misiones espaciales en la cuarta posición.
     articlesMenu, // Menú de los artículos y sus categorías en la quinta posición.
     galaxiesMenu, // Menú de las galaxias en la sexta posición.
-    ...NavMenuLinks.slice(2) // Desde la segunda posición en adelante.
+    blackHolesMenu,
 ];
 ---
 

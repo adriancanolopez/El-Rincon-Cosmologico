@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import type { NavMenuLink } from "../../types/nav-menu-link";
-import { MISSIONS, ARTICLES, DISCOVERIES, GALAXIES } from "../../consts/nav-menu-sections";
+import { MISSIONS, ARTICLES, DISCOVERIES, GALAXIES, BLACK_HOLES } from "../../consts/nav-menu-sections";
 
 export function getMissionsMenu(programs: CollectionEntry<"programs">[], missions: CollectionEntry<"missions">[], independentMissions: CollectionEntry<"missions">[]): NavMenuLink {
 
@@ -109,4 +109,24 @@ export function getGalaxiesMenu(galaxyTypes: CollectionEntry<"galaxy-types">[], 
     GALAXIES.subMenu = typesAndGalaxies;
 
     return GALAXIES;
+}
+
+export function getBlackHolesMenu(blackHolesCollection: CollectionEntry<"black-holes">[]): NavMenuLink {
+    const blackHolesMenu: NavMenuLink[] = [];
+
+    blackHolesCollection.map((blackHole) => {
+        const { data, slug } = blackHole;
+        const { name } = data;
+
+        const link: NavMenuLink = {
+            title: name,
+            url: BLACK_HOLES.url + slug,
+        }
+
+        blackHolesMenu.push(link);
+    });
+
+    BLACK_HOLES.subMenu = blackHolesMenu;
+
+    return BLACK_HOLES;
 }

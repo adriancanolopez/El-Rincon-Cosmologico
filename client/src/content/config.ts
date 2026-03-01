@@ -68,6 +68,28 @@ const galaxies = defineCollection({
     })
 });
 
+const blackHoles = defineCollection({
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        designations: z.array(z.string()).optional(),
+        type: z.enum(["Estelar", "Supermasivo", "Intermedio"]),
+        mass_solar_masses: z.string(),
+        diameter_km: z.number(),
+        earth_distance_ly: z.number(),
+        constellation: z.string(),
+        apparent_magnitude: z.number().optional(),
+        images: z.array(
+            z.object({
+                main: z.boolean().default(false),
+                url: image(),
+                description: z.string(),
+                alt: z.string(),
+                credits: z.string(),
+            })
+        ).optional(),
+    })
+});
+
 const programs = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
@@ -124,4 +146,4 @@ const articles = defineCollection({
     })
 });
 
-export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, programs, missions, categories, articles };
+export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, 'black-holes': blackHoles, programs, missions, categories, articles };
