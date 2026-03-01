@@ -4,6 +4,7 @@ import "../../../styles/articles.css";
 import ImageCard from "../../../components/missions/ImageCard.astro";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
+import formatNumber from "../../../utils/formatNumber";
 
 export async function getStaticPaths() {
     const galaxies = await getCollection("galaxies");
@@ -96,7 +97,7 @@ const mainImage = images?.filter((image) => image.main)[0];
 
                 <div>
                     <dt>Diámetro y Radio</dt>
-                    <dd>Diámetro: {diameter_ly.toLocaleString('en-EN')} años luz <br> Radio: {(diameter_ly / 2).toLocaleString('en-EN')} años luz</dd>
+                    <dd>Diámetro: {formatNumber(diameter_ly)} años luz <br> Radio: {formatNumber(diameter_ly / 2)} años luz</dd>
                 </div>
 
                 {

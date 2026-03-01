@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import formatNumber from "../../utils/formatNumber";
 import { UA } from "../../consts/units";
-import { LOCAL } from "../../consts/general";
 
 type Props = {
     properties: CollectionEntry<"celestial-bodies">["data"]
@@ -20,7 +20,7 @@ const { type, mass, diameter_km, gravity,
     <dd><span set:html={mass}></span> kg</dd>
 
     <dt>Diámetro y radio:</dt>
-    <dd>Diámetro: {diameter_km.toLocaleString(LOCAL)} km | Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</dd> {/* Con toLocaleString formateamos a: 4,856.36 */}
+    <dd>Diámetro: {formatNumber(diameter_km)} km | Radio: {formatNumber(diameter_km / 2)} km</dd>
     
     <dt>Gravedad:</dt>
     <dd>{gravity} m/s<sup>2</sup></dd>
@@ -29,10 +29,10 @@ const { type, mass, diameter_km, gravity,
     <dd>{orbital_period}</dd>
 
     <dt>Velocidad orbital:</dt>
-    <dd>{orbital_velocity_kms.toLocaleString(LOCAL, {maximumFractionDigits: 4})} km/s = {(orbital_velocity_kms * 3600).toLocaleString(LOCAL, {maximumFractionDigits: 2})} km/h</dd>
+    <dd>{formatNumber(orbital_velocity_kms, 4)} km/s = {formatNumber(orbital_velocity_kms * 3600, 2)} km/h</dd>
 
     <dt>Velocidad de escape:</dt>
-    <dd>{escape_velocity_kms.toLocaleString(LOCAL, {maximumFractionDigits: 4})} km/s = {(escape_velocity_kms * 3600).toLocaleString(LOCAL, {maximumFractionDigits: 2})} km/h</dd>
+    <dd>{formatNumber(escape_velocity_kms, 4)} km/s = {formatNumber(escape_velocity_kms * 3600, 2)} km/h</dd>
 
     <dt>Edad:</dt>
     <dd>{age}</dd>
@@ -61,13 +61,13 @@ const { type, mass, diameter_km, gravity,
         {
             temperature.surface && (
                 <dt>Superfície:</dt>
-                <dd>{(temperature.surface).toLocaleString(LOCAL)} ºC</dd>
+                <dd>{formatNumber(temperature.surface)} ºC</dd>
             )
         }
         {
             temperature.core && (
                 <dt>Núcleo:</dt>
-                <dd>{(temperature.core).toLocaleString(LOCAL)} ºC</dd>
+                <dd>{formatNumber(temperature.core)} ºC</dd>
             )
         }
         </dl>
@@ -79,21 +79,19 @@ const { type, mass, diameter_km, gravity,
         {
             periapsis_km && (
                 <dt>{type !== "satélite" ? "Perihelio" : "Periastro"}:</dt>
-                <dd>{periapsis_km.toLocaleString(LOCAL)} km</dd>
+                <dd>{formatNumber(periapsis_km)} km</dd>
             )
         }
         {
             apoapsis_km && (
                 <dt>{type !== "satélite" ? "Afelio" : "Apoastro"}:</dt>
-                <dd>{apoapsis_km.toLocaleString(LOCAL)} km</dd>
+                <dd>{formatNumber(apoapsis_km)} km</dd>
             )
         }
         {
             mean_earth_distance_AU && (
                 <dt>Distancia media a la Tierra:</dt>
-                <dd>{mean_earth_distance_AU} UA = {((mean_earth_distance_AU * UA).toLocaleString(LOCAL, {
-                    maximumFractionDigits: 0}))} km
-                </dd>
+                <dd>{mean_earth_distance_AU} UA = {formatNumber(mean_earth_distance_AU * UA, 0)} km</dd>
             )
         }
     </dd>

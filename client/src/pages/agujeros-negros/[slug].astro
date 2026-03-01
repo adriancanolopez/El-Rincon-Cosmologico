@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
 import ImageCard from "../../components/missions/ImageCard.astro";
-import { LOCAL } from "../../consts/general";
+import formatNumber from "../../utils/formatNumber";
 import "../../styles/articles.css";
 
 export async function getStaticPaths() {
@@ -76,12 +76,12 @@ const mainImage = images?.filter((image) => image.main)[0];
 
                 <div>
                     <dt>Diámetro y Radio</dt>
-                    <dd>Diámetro: {diameter_km.toLocaleString(LOCAL)} km <br> Radio: {(diameter_km / 2).toLocaleString(LOCAL)} km</dd>
+                    <dd>Diámetro: {formatNumber(diameter_km)} km <br> Radio: {formatNumber(diameter_km / 2)} km</dd>
                 </div>
 
                 <div>
                     <dt>Distancia a la Tierra</dt>
-                    <dd>{earth_distance_ly.toLocaleString(LOCAL)} años luz</dd>
+                    <dd>{formatNumber(earth_distance_ly)} años luz</dd>
                 </div>
 
                 <div>
