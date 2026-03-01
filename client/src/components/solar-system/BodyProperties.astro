@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { UA } from "../../consts/units";
+import { LOCAL } from "../../consts/general";
 
 type Props = {
     properties: CollectionEntry<"celestial-bodies">["data"]
@@ -11,9 +13,6 @@ const { type, mass, diameter_km, gravity,
         escape_velocity_kms, age, temperature, 
         periapsis_km, apoapsis_km, mean_earth_distance_AU
     } = properties;
-
-const LOCAL: string = 'en-EN';
-const UA = 149597870.7
 ---
 
 <dl class="properties">

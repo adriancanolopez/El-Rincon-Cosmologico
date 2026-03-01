@@ -1,0 +1,1 @@
+export const UA = 149597870.7;

@@ -1,0 +1,1 @@
+export const LOCAL = 'en-EN'; // Para que el separador de millares sea una coma.

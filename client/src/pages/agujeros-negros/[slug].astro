@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
 import ImageCard from "../../components/missions/ImageCard.astro";
+import { LOCAL } from "../../consts/general";
 import "../../styles/articles.css";
 
 export async function getStaticPaths() {
@@ -22,8 +23,6 @@ const { name, designations, type, mass_solar_masses, diameter_km,
 const { Content } = await render(blackHole);
 
 const mainImage = images?.filter((image) => image.main)[0];
-
-const LOCAL = "en-EN";
 ---
 
 <Layout title={name}>
