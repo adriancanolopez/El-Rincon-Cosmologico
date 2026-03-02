@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
-import { Image } from "astro:assets";
 import BodyProperties from "./BodyProperties.astro";
+import ImageCard from "./ImageCard.astro";
 
 type Props = {
     moon: CollectionEntry<"celestial-bodies">
@@ -31,13 +31,7 @@ const { Content } = await render(moon);
                     <div class="images">
                     {
                         images.map((image) => (
-                            <figure>
-                                <Image src={image.url} alt={`Imagen de ${name}`}/>
-                                <figcaption>
-                                    <p>{image.description}</p>
-                                    <p class="credits">(Créditos: {image.credits})</p>
-                                </figcaption>
-                            </figure>
+                            <ImageCard image={image} bodyName={name}/>
                         ))
                     }
                     </div>

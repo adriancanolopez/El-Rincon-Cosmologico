@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+
+type Props = {
+    image: any,
+    bodyName: string,
+}
+
+const { image, bodyName} = Astro.props;
+---
+
+<figure>
+    <Image src={image.url} alt={`Imagen de ${bodyName}`}/>
+    <figcaption>
+        <p>{image.description}</p>
+        <p class="credits">(Créditos: {image.credits})</p>
+    </figcaption>
+</figure>
