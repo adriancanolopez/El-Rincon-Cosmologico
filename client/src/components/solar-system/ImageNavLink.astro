@@ -1,14 +1,24 @@
 ---
+import { Image } from 'astro:assets';
+
 type Props = {
     link: string,
-    urlImage: string | undefined,
+    image: any,
     bodyName: string
 }
 
-const { link, urlImage, bodyName } = Astro.props;
+const { link, image, bodyName } = Astro.props;
+
+const className = "w-16 h-12 object-contain transition-transform duration-300 hover:scale-110";
 ---
 
 
-<a href={link} title=`Ir a ${bodyName}`>
-    <img src={`solar-system/images/${urlImage}`} alt=`Ir a ${bodyName}` class="w-16 h-12 object-contain transition-transform duration-300 hover:scale-110"/>
+<a href={link} title={`Ir a ${bodyName}`}>
+    {
+        typeof image !== "string" ? (
+            <Image src={image} alt={`Ir a ${bodyName}`} class={className}/>
+        ) : ( // En caso de que sea una imagen externa a un miembro de la colección
+            <img src={`solar-system/images/${image}`} alt={`Ir a ${bodyName}`} class={className}/>
+        )
+    }
 </a>

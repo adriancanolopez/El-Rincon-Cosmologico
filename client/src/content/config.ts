@@ -1,7 +1,7 @@
 import { defineCollection, reference, z } from "astro:content";
 
 const celestialBodies = defineCollection({
-    schema : z.object({
+    schema: ({ image }) => z.object({
         name: z.string(),
         type: z.enum(["estrella", "planeta", "planeta enano", "satélite"]),
         parent_planet: z.string().optional(),
@@ -25,12 +25,12 @@ const celestialBodies = defineCollection({
         mean_earth_distance_AU: z.number().optional(),
         images: z.array(
             z.object({
-                url: z.string(),
+                url: image(),
                 description: z.string(),
                 credits: z.string(),
             })
         ).optional(),
-        iconImage: z.string().optional()
+        iconImage: image().optional()
     })
 });
 

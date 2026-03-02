@@ -19,7 +19,7 @@ const { celestialBodies, id } = Astro.props;
             const name = data.name;
             return (
                 <li>
-                    <ImageNavLink link={`#${slug}`} urlImage={image} bodyName={name}/>
+                    <ImageNavLink link={`#${slug}`} image={image} bodyName={name}/>
                 </li>
             )
         })

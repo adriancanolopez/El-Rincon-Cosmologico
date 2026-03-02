@@ -42,7 +42,7 @@ const dwarfPlanets = bodiesSorted.filter((celestialBody) => celestialBody.data.t
         <button class="md:hidden absolute right-full top-1/2 -translate-y-1/2 bg-black pl-2 py-6 rounded-l-xl hover:cursor-pointer" id="btn-sidebar"></button>
         <SidebarContent celestialBodies={bodiesInSidebar} id="planet-links">
             <li>
-                <ImageNavLink link={"#pluton"} urlImage={"planetas-enanos.webp"} bodyName={"planetas enanos"}/>
+                <ImageNavLink link={"#pluton"} image={"planetas-enanos.webp"} bodyName={"planetas enanos"}/>
                 <SidebarContent celestialBodies={dwarfPlanets} id="dwarf-planet-links" />
             </li>
         </SidebarContent>
