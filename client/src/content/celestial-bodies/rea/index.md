@@ -18,7 +18,9 @@ apoapsis_km: 527600
 images:
   - url: "rea.jpg"
     description: "Fotografía realizada por la sonda Cassini el 21 de noviembre de 2009, a una distancia de 30,000 km de Rea."
-    credits: "NASA/JPL/Space Science Institute"
+    alt: "Fotografía de Rea realizada por la sonda Cassini. Son visibles sus cráteres y su superficie blanco-grisácea."
+    credits:
+        author: "NASA/JPL/Space Science Institute"
 ---
 
 La segunda luna más grande del planeta.

@@ -18,9 +18,13 @@ mean_earth_distance_AU: 29.1
 images:
   - url: "neptuno-1.jpg"
     description: "Imagen creada a partir de unas fotografías completas del planeta tomadas por la sonda Voyager 2 a una distancia de 7 millones de km del mismo."
-    credits: "NASA/JPL"
+    alt: "Imagen de Neptuno de la Voyager 2 en la que es visible su Gran Mancha Oscura y el color azul oscuro de su superficie."
+    credits:
+        author: "NASA/JPL"
   - url: "neptuno-2.jpg"
     description: "Imagen creada a partir de dos imágenes tomadas por la sonda Voyager 2."
-    credits: "NASA/JPL"
+    alt: "Imagen de un costado de Neptuno de la Voyager 2 en la que es visible con más detalle su Gran Mancha Oscura."
+    credits:
+        author: "NASA/JPL"
 iconImage: "neptuno-1.jpg"
 ---

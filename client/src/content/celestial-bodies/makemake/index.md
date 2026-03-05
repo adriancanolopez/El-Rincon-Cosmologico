@@ -17,7 +17,9 @@ mean_earth_distance_AU: 33.8
 images:
   - url: "makemake.jpg"
     description: "Imagen realizada por el telescopio espacial Hubble en abril de 2015, gracias a la cual se descubrió su luna S/2015 (136472) 1, también llamada MK2."
-    credits: "NASA, ESA, and A. Parker and M. Buie (Southwest Research Institute)"
+    alt: "Imagen de Makemake realizada por el telescopio espacial Hubble gracias a la cual se descubrió su luna S/2015 (136472) 1, también llamada MK2. Se encuentra justo encima de Makemake."
+    credits:
+        author: "NASA, ESA, and A. Parker and M. Buie (Southwest Research Institute)"
 iconImage: "makemake-2.jpg"
 ---
 

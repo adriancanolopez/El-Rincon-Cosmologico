@@ -18,7 +18,9 @@ apoapsis_km: 295049
 images:
   - url: "tetis.jpg"
     description: "Imagen creada a partir de nueve imágenes tomadas por la sonda Cassini el 24 de septiembre de 2005, a una distancia de 62,400 - 71,600 km de Tetis."
-    credits: "NASA/JPL/Space Science Institute"
+    alt: "Imagen de Tetis tomada por la sonda Cassini en la que se muestran cráteres y su tonalidad blanco-grisácea."
+    credits:
+        author: "NASA/JPL/Space Science Institute"
 ---
 
 La quinta luna más grande del planeta.

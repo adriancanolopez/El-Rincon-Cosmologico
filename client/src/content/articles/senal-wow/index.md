@@ -5,7 +5,7 @@ images:
     - main: true
       url: "./wow-signal.jpg"
       description: "Impresión por computadora en papel continuo donde se grabó la secuencia alfanumérica: 6EQUJ5."
-      credits: "Libre de uso"
+      alt: "Fotografía de una hoja donde se grabó la secuencia alfanumérica '6EQUJ5' rodeada por un círculo rojo y la anotación 'Wow!' a su izquierda."
 ---
 
 La *Señal Wow!* fue una señal de radio recibida por el radiotelescopio *Big Ear* de la Universidad Estatal de Ohio el 15 de agosto de 1977 a las 23:16 hora española, durante 72 segundos.

@@ -18,7 +18,9 @@ apoapsis_km: 191130
 images:
   - url: "ariel.jpg"
     description: "Fotografía tomada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de unos 130,000 km de Ariel."
-    credits: "NASA/JPL"
+    alt: "Fotografía de Ariel tomada por la sonda Voyager 2 en la que se ve la superficie de Ariel densamente surcada por cráteres, numerosos valles y escarpes de fallas."
+    credits:
+        author: "NASA/JPL"
 ---
 
 La cuarta luna más grande del planeta.

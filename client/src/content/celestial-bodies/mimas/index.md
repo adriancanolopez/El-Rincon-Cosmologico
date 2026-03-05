@@ -18,7 +18,9 @@ apoapsis_km: 189176
 images:
   - url: "mimas.jpg"
     description: "Imagen tomada por la sonda Cassini el 2 de agosto de 2005, a una distancia de 228,000 km de Mimas."
-    credits: "NASA/JPL/Space Science Institute"
+    alt: "Imagen tomada por la sonda Cassini. Se muestra el disco densamente cubierto de cráteres de impacto, destacando en la parte superior derecha el enorme cráter Herschel."
+    credits:
+        author: "NASA/JPL/Space Science Institute"
 ---
 
 La séptima luna más grande del planeta.

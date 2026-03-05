@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from "astro:assets";
+import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
     program: CollectionEntry<"programs">
@@ -14,7 +14,7 @@ const { title, description, image } = program.data;
 
 ---
 
-<article class="flex flex-col justify-between gap-4 bg-gray-700 rounded-lg">
+<article class="flex flex-col justify-between gap-4 bg-gray-700 rounded-sm">
     <div class="flex flex-col items-start gap-4 p-4">
         <h3 class="text-2xl font-bold">{title}</h3>
         <p>{description}</p>
@@ -24,7 +24,7 @@ const { title, description, image } = program.data;
     </div>
     {
         image && (
-            <Image src={image.url} alt={`Imagen del programa ${title}`} class="object-cover w-full h-64" title={`Imagen del programa ${title}. Créditos: ${image.credits}`}/>
+            <CoverImage image={image} title={`Imagen del programa ${title}`}/>
         )
     }
 </article>

@@ -18,6 +18,8 @@ mean_earth_distance_AU: 0.6
 images:
   - url: "mercurio.jpg"
     description: "Imagen tomada por la sonda MESSENGER el 6 de octubre de 2008, a una distancia de 27,000 km de Mercurio, durante su segundo sobrevuelo."
-    credits: "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington"
+    alt: "Imagen de Mercurio en la que no se encuentra en fase total y muestra un hemisferio iluminado con numerosos cráteres y un prominente sistema de rayos brillantes."
+    credits:
+        author: "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington"
 iconImage: "mercurio-2.jpg"
 ---

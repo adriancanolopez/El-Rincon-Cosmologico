@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import type { ImageData } from "../../content/config";
+
+type Props = {
+    image: ImageData,
+    width?: number,
+    className?: string
+}
+
+const { image, width, className } = Astro.props;
+
+const license = image.credits?.license;
+---
+
+<figure class={`${className || ''}`}>
+    <Image src={image.url} alt={image.alt} width={width}/>
+    <figcaption>
+        <p>{image.description}</p>
+        {
+            image.credits && (
+                <p>
+                    <span class="font-bold"> Créditos: </span>
+                    {
+                        !license ? (
+                            image.credits.author
+                        ) : (
+                            <span>"{image.credits.title}" de {image.credits.author} bajo licencia <a href={image.credits.license_link} target="_blank" class="underline">{license}</a> .
+                                Fuente: <a href={image.credits.source_url} target="_blank" class="underline">{image.credits.author}</a>
+                            </span>
+                        )
+                    }
+                </p>
+            )
+        }
+    </figcaption>
+</figure>

@@ -20,5 +20,6 @@ images:
       url: "./galaxia-andromeda.jpg"
       description: "La Galaxia de Andrómeda revelada en luz ultravioleta por el satélite Galaxy Evolution Explorer (GALEX) de la NASA. Los brillantes anillos azules trazan la intensa formación de estrellas jóvenes y masivas a lo largo de sus brazos espirales."
       alt: "Vista panorámica de la Galaxia de Andrómeda en luz ultravioleta, destacando anillos de color azul brillante formados por estrellas jóvenes y masivas sobre un fondo oscuro."
-      credits: "NASA/JPL-Caltech"
+      credits:
+            author: "NASA/JPL-Caltech"
 ---

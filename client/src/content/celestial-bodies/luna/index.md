@@ -18,7 +18,9 @@ apoapsis_km: 405500
 images:
   - url: "luna.jpg"
     description: "Imagen de la Luna tomada por la sonda Galileo el 7 de diciembre de 1992."
-    credits: "NASA/JPL/USGS"
+    alt: "Imagen de la cara visible de la Luna tomada por la sonda Galileo."
+    credits:
+        author: "NASA/JPL/USGS"
 ---
 
 La Luna es el único satélite natural de la Tierra.

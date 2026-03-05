@@ -20,5 +20,6 @@ images:
       url: "./galaxia-del-sombrero.jpg"
       description: "La Galaxia del Sombrero tomada por el telescopio espacial Hubble (HST) en octubre de 2003."
       alt: "La Galaxia del Sombrero vista casi de canto con su núcleo muy luminoso y rodeado de densas franjas de polvo."
-      credits: "NASA, The Hubble Heritage Team (STScI/AURA)"
+      credits:
+            author: "NASA, The Hubble Heritage Team (STScI/AURA)"
 ---

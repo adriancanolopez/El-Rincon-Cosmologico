@@ -17,7 +17,9 @@ apoapsis_km: 152098232
 images:
   - url: "tierra.jpg"
     description: "La Tierra fotografiada por la sonda Galileo el 11 de diciembre de 1990, a una distancia de 2.4 millones de km del planeta."
-    credits: "NASA/JPL"
+    alt: "El planeta Tierra fotografiado a 2.4 millones de km por la sonda Galileo."
+    credits:
+        author: "NASA/JPL"
 iconImage: "tierra-2.jpg"
 ---
 
@@ -25,8 +27,8 @@ La Tierra es el tercer planeta más cercano al Sol. Tiene un satélite natural, 
 
 **Composición**
 
-Un 70% de la superfície de la Tierra es agua y un 30% es masa continental. La atmósfera de nuestro planeta está compuesta principalmente de un 78,08 % de nitrógeno, un 20,95 % de oxígeno, un 0,93 % de Argón y un 0,035 % de dióxido de carbono (CO2).
-Tiene capas externas (o superficiales) y internas. Sus capas externas son: la litosfera, la hidrosfera y la atmósfera. Y la atmósfera tiene diferentes capas: la troposfera, la estratosfera, la mesosfera, la termosfera y la exosfera. Desde la superfície de la Tierra hasta el espacio exterior hay unos 100 km. Sus capas internas se pueden clasificar químicamente o mecánicamente. Químicamente: corteza, manto superior, manto inferior, núcleo externo y núcleo interno. Mecánicamente: litosfera, astenosfera, mesosfera, núcleo externo y núcleo interno.
+Un 70% de la superficie de la Tierra es agua y un 30% es masa continental. La atmósfera de nuestro planeta está compuesta principalmente de un 78,08 % de nitrógeno, un 20,95 % de oxígeno, un 0,93 % de Argón y un 0,035 % de dióxido de carbono (CO2).
+Tiene capas externas (o superficiales) y internas. Sus capas externas son: la litosfera, la hidrosfera y la atmósfera. Y la atmósfera tiene diferentes capas: la troposfera, la estratosfera, la mesosfera, la termosfera y la exosfera. Desde la superficie de la Tierra hasta el espacio exterior hay unos 100 km. Sus capas internas se pueden clasificar químicamente o mecánicamente. Químicamente: corteza, manto superior, manto inferior, núcleo externo y núcleo interno. Mecánicamente: litosfera, astenosfera, mesosfera, núcleo externo y núcleo interno.
 De manera general, la Tierra está compuesta por la litosfera (capa superficial sólida), la hidrosfera (sistema constituido por el agua que se encuentra en la Tierra) y la atmósfera (capa de gases que rodea la Tierra). Y gracias a estos tres elementos hay vida en nuestro planeta.
 
 
@@ -34,9 +36,9 @@ De manera general, la Tierra está compuesta por la litosfera (capa superficial 
 
 Hace unos 4,543 miles de millones años, después de la formación del Sol, una nebulosa solar (nube de gas y polvo) que se contrajo gravitacionalmente, formó un disco protoplanterario alrededor del Sol. Pequeñas partículas del disco se agruparon y colisionaron debido a la fuerza gravitatoria y formaron protoplanetas, uno de los cuales fue la Tierra. En aquel momento era una bola muy caliente de roca fundida.
 Un planeta del tamaño de Marte, llamado Theia, colisionó con la Tierra. Los escombros que provocó aquella colisión se quedaron orbitando alrededor de la Tierra formando anillos como los de Saturno, hasta que después de algunos millones de años acabaron formando un satélite natural de la Tierra, la Luna.
-Hace unos 3600 millones de años apareció la vida en los océanos y con el tiempo se fue diversificando. Tiempo después, la atmósfera comenzó a contar con las características necesarias para la existencia de vida en la superfície del planeta, debido a la aparición de la capa de ozono, que nos protege de la radiación solar ultravioleta. Además, la atmósfera regula la Temperatura y el ingreso de meteoritos. Fue entonces cuando aparecieron animales y plantas en la superfície terrestre.
+Hace unos 3600 millones de años apareció la vida en los océanos y con el tiempo se fue diversificando. Tiempo después, la atmósfera comenzó a contar con las características necesarias para la existencia de vida en la superficie del planeta, debido a la aparición de la capa de ozono, que nos protege de la radiación solar ultravioleta. Además, la atmósfera regula la Temperatura y el ingreso de meteoritos. Fue entonces cuando aparecieron animales y plantas en la superficie terrestre.
 
 
 **Curiosidades**
-- Es el único planeta del Sistema solar que presenta agua en estado líquido en su superfície.
+- Es el único planeta del Sistema solar que presenta agua en estado líquido en su superficie.
 - La Tierra es el único planeta conocido que tiene vida.

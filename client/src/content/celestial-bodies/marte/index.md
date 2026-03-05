@@ -18,7 +18,9 @@ mean_earth_distance_AU: 1.5
 images:
   - url: "marte.jpg"
     description: "Fotografía de Marte tomada por el telescopio espacial Hubble entre el 27 de abril y 6 de mayo de 1997, cuando el planeta se encontraba a 87 millones de km de la Tierra."
-    credits: "Steve Lee University of Colorado, Jim Bell Cornell University, Mike Wolff Space Science Institute, and NASA"
+    alt: "Fotografía de Marte tomada por el telescopio espacial Hubble."
+    credits:
+        author: "Steve Lee University of Colorado, Jim Bell Cornell University, Mike Wolff Space Science Institute, and NASA"
 iconImage: "marte.jpg"
 ---
 
@@ -27,7 +29,7 @@ Marte es el cuarto planeta más cercano al Sol. Tiene dos lunas: Fobos y Deimos.
 **Composición**
 
 La atmósfera de marte está compuesta por un 95,3% de dióxido de carbono, 2,7% de nitrógeno, 1,7% de argón. Y el porcentaje restante de agua, monóxido de carbono, oxígeno molecular y rastros de neón, kriptón y xenón. En Marte hay viento; de hecho, hay ráfagas de viento que pueden alcanzar los 100 km/h.
-Su superfície está cubierta de arena y polvo. Es desértica y fría. Es roja por el hierro oxidado que hay en ella y está compuesta sobre todo de basalto. Abundan muchos cráteres. Presenta montañas y volcanes; asimismo, tiene volcanes muy altas como el Olympus Mons, que tiene entre 22 y 23 km de altura (3 veces la altura del Everest).
+Su superficie está cubierta de arena y polvo. Es desértica y fría. Es roja por el hierro oxidado que hay en ella y está compuesta sobre todo de basalto. Abundan muchos cráteres. Presenta montañas y volcanes; asimismo, tiene volcanes muy altas como el Olympus Mons, que tiene entre 22 y 23 km de altura (3 veces la altura del Everest).
 
 **Formación**
 

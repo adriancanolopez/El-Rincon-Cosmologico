@@ -1,4 +1,19 @@
 import { defineCollection, reference, z } from "astro:content";
+import type { ImageFunction } from "astro:content";
+
+const imagesSchema = (image: ImageFunction) => z.object({
+    main: z.boolean().default(false),
+    url: image(),
+    description: z.string(),
+    alt: z.string(),
+    credits: z.object({
+        author: z.string(),
+        title: z.string().optional(),
+        source_url: z.string().url().optional(),
+        license: z.string().optional(),
+        license_link: z.string().url().optional(),
+    }).optional(), // Opcional por si la imagen es libre de uso
+});
 
 const celestialBodies = defineCollection({
     schema: ({ image }) => z.object({
@@ -23,13 +38,7 @@ const celestialBodies = defineCollection({
         periapsis_km: z.number().optional(), // Distancia mínima entre el cuerpo celeste y el cuerpo primario
         apoapsis_km: z.number().optional(), // Distancia máxima entre el cuerpo celeste y el cuerpo primario
         mean_earth_distance_AU: z.number().optional(),
-        images: z.array(
-            z.object({
-                url: image(),
-                description: z.string(),
-                credits: z.string(),
-            })
-        ).optional(),
+        images: z.array(imagesSchema(image)).optional(),
         iconImage: image().optional()
     })
 });
@@ -56,15 +65,7 @@ const galaxies = defineCollection({
         constellation: z.string(),
         apparent_magnitude: z.number().nullable(),
         stars_count_estimate: z.string().optional(),
-        images: z.array(
-            z.object({
-                main: z.boolean().default(false),
-                url: image(),
-                description: z.string(),
-                alt: z.string(),
-                credits: z.string(),
-            })
-        ).optional(),
+        images: z.array(imagesSchema(image)).optional(),
     })
 });
 
@@ -78,15 +79,7 @@ const blackHoles = defineCollection({
         earth_distance_ly: z.number(),
         constellation: z.string(),
         apparent_magnitude: z.number().optional(),
-        images: z.array(
-            z.object({
-                main: z.boolean().default(false),
-                url: image(),
-                description: z.string(),
-                alt: z.string(),
-                credits: z.string(),
-            })
-        ).optional(),
+        images: z.array(imagesSchema(image)).optional(),
     })
 });
 
@@ -94,10 +87,7 @@ const programs = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
-        image: z.object({
-            url: image(),
-            credits: z.string(),
-        }).optional(),
+        image: imagesSchema(image).optional(),
     })
 });
 
@@ -114,14 +104,7 @@ const missions = defineCollection({
         objective: z.string(),
         launch_vehicle: z.string(),
         crew: z.array(z.string()).optional(),
-        images: z.array(
-            z.object({
-                main: z.boolean().default(false),
-                url: image(),
-                description: z.string(),
-                credits: z.string(),
-            })
-        ).optional(),
+        images: z.array(imagesSchema(image)).optional(),
     })
 });
 
@@ -135,15 +118,10 @@ const articles = defineCollection({
     schema: ({ image }) => z.object({
         title: z.string(),
         category: reference("categories"),
-        images: z.array(
-            z.object({
-                main: z.boolean().default(false),
-                url: image(),
-                description: z.string(),
-                credits: z.string(),
-            })
-        ).optional(),
+        images: z.array(imagesSchema(image)).optional(),
     })
 });
 
 export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, 'black-holes': blackHoles, programs, missions, categories, articles };
+
+export type ImageData = z.infer<ReturnType<typeof imagesSchema>>;

@@ -17,7 +17,9 @@ apoapsis_km: 117709
 images:
   - url: "proteo.webp"
     description: "Fotografía de Proteo realizada por la sonda Voyager 2."
-    credits: "NASA/JPL"
+    alt: "Fotografía de Proteo realizada por la sonda Voyager 2 en la que es visible su color grisáceo y su cráter más grande: Pharos."
+    credits:
+        author: "NASA/JPL"
 ---
 
 La segunda luna más grande del planeta.

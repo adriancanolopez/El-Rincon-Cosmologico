@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
     article: CollectionEntry<"articles">,
@@ -22,7 +22,7 @@ const mainImage = images?.filter((image) => image.main)[0];
     </div>
     {
         mainImage && (
-            <Image src={mainImage.url} alt={`Imagen del artículo ${title}`} class="object-cover w-full h-64" title={`Imagen del artículo ${title}. Créditos: ${mainImage.credits}`}/>
+            <CoverImage image={mainImage} title={`Imagen del artículo ${title}`}/>
         )
     }
 </article>

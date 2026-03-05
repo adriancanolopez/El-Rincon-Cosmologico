@@ -18,5 +18,7 @@ apoapsis_km: 1897000
 images:
   - url: "calisto.jpg"
     description: "Imagen realizada a partir de tres imágenes tomadas por la sonda Voyager 1 el 5 de marzo de 1979, a una distancia de 1.2 millones de km de Calisto."
-    credits: "NASA/JPL"
+    alt: "Imagen del disco completo de Calisto tomada por la sonda Voyager 1. La superficie se muestra de un tono marrón grisáceo uniforme, densamente poblada de puntos brillantes que corresponden a cráteres de impacto."
+    credits:
+        author: "NASA/JPL"
 ---

@@ -18,7 +18,9 @@ apoapsis_km: 423400
 images:
   - url: "io.jpg"
     description: "Imagen creada a partir de fotografías tomadas por la sonda Galileo el 4 de abril de 1997, a una distancia de 600,000 km de Ío."
-    credits: "NASA/JPL/University of Arizona"
+    alt: "Imagen de Ío tomada por la sonda Galileo en la que se ve la superficie con volcanes, montañas y lagos de lava fundida."
+    credits:
+        author: "NASA/JPL/University of Arizona"
 ---
 
 La luna galileana más cercana al planeta.

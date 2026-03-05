@@ -18,6 +18,8 @@ mean_earth_distance_AU: 0.3
 images:
   - url: "venus.jpg"
     description: "Imagen creada a partir de varias fotografías realizadas por la sonda Mariner 10 entre el 7 y 8 de febrero de 1974. La imagen de la derecha es la misma que la de la izquierda, pero con el contraste mejorado."
-    credits: "NASA/JPL-Caltech"
+    alt: "Dos imágenes de Venus. La segunda igual que la primera pero con mayor contraste. Muestran la densa capa de nubes del planeta."
+    credits:
+        author: "NASA/JPL-Caltech"
 iconImage: "venus-2.jpg"
 ---

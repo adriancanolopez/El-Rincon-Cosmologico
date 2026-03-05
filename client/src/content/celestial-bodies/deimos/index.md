@@ -18,7 +18,9 @@ apoapsis_km: 23470.9
 images:
   - url: "deimos.jpg"
     description: "Fotografías de Deimos tomadas por la sonda Mars Reconnaissance Orbiter el 21 de febrero de 2009."
-    credits: "NASA/JPL-Caltech/University of Arizona"
+    alt: "Fotografías de Deimos tomadas por la sonda Mars Reconnaissance Orbiter."
+    credits:
+        author: "NASA/JPL-Caltech/University of Arizona"
 ---
 
 La luna más pequeña y alejada del planeta.

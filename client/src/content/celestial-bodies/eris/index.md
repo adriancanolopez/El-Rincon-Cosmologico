@@ -18,7 +18,9 @@ apoapsis_km: 14587081147.2
 images:
   - url: "eris.jpg"
     description: "Imagen compuesta por varias fotografías tomadas por el telescopio espacial Hubble el 3 de diciembre de 2005 y el 30 de agosto de 2006. A la izquierda de Eris puede verse su luna Disnomia."
-    credits: "NASA, ESA, and M. Brown (California Institute of Technology)"
+    alt: "Imagen de Eris tomada por el telescopio espacial Hubble. A la izquierda puede verse su luna Disnomia."
+    credits:
+        author: "NASA, ESA, and M. Brown (California Institute of Technology)"
 iconImage: "eris-2.jpg"
 ---
 

@@ -18,7 +18,9 @@ apoapsis_km: 446130770
 images:
   - url: "ceres.jpg"
     description: "Imagen realizada por la sonda Dawn el 19 de febrero de 2015, a una distancia de casi 46,000 km de Ceres."
-    credits: "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
+    alt: "Imagen realizada por la sonda Dawn. Muestra la superficie grisácea y con cráteres y su punto más brillante."
+    credits:
+        author: "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
 iconImage: "ceres.jpg"
 ---
 

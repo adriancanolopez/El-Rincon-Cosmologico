@@ -19,7 +19,9 @@ mean_earth_distance_AU: 39
 images:
   - url: "pluton.jpg"
     description: "Imagen tomada por la sonda New Horizons el 13 de julio de 2015, a una distancia de 768,000 km de Plutón."
-    credits: "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute"
+    alt: "Imagen de Plutón tomada por la sonda New Horizons. La superficie presenta llanuras de hielo brillantes y suaves contrastadas con terrenos oscuros y antiguos cubiertos de cráteres y montañas de agua helada."
+    credits:
+        author: "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute"
 iconImage: "pluton.jpg"
 ---
 

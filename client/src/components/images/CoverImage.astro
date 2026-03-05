@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import type { ImageData } from "../../content/config";
+
+type Props = {
+    image: ImageData,
+    title: string,
+}
+
+const { image, title } = Astro.props;
+
+const license = image.credits?.license;
+---
+
+<div class="relative">
+    <Image src={image.url} alt={image.alt} class="object-cover w-full h-64" title={image.credits && !license ? `${title} | Créditos: ${image.credits.author}` : `${title}`}/>
+    {
+        image.credits && license && (
+            <div class="absolute bottom-2 r-0 flex flex-col group">
+                <span class="text-sm italic">{license}</span>
+                <p class="hidden group-hover:block text-sm md:text-md"><span class="font-bold">"{image.credits.title}"</span> de {image.credits.author} bajo licencia <a href={image.credits.license_link} target="_blank" class="underline">{license}</a> .
+                    Fuente: <a href={image.credits.source_url} target="_blank" class="underline">{image.credits.author}</a>
+                </p>
+            </div>
+        )
+    }
+</div>

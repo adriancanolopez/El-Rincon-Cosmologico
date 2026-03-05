@@ -18,7 +18,9 @@ apoapsis_km: 584300
 images:
   - url: "oberon.jpg"
     description: "Fotografía tomada por la sonda Voyager 2 el 24 de enero de 1986, a una distancia de 660,000 km de Oberón."
-    credits: "NASA/JPL"
+    alt: "Fotografía de Oberón tomada por la sonda Voyager 2. Se pueden ver varios cráteres de impacto de gran tamaño en la superficie helada de Oberón, rodeados de rayos brillantes."
+    credits:
+        author: "NASA/JPL"
 ---
 
 La segunda luna más grande del planeta.

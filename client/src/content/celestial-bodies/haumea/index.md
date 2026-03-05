@@ -16,7 +16,9 @@ apoapsis_km: 7718865195.95
 images:
   - url: "haumea.jpg"
     description: "Imagen tomada por el telescopio espacial Hubble el 30 de junio de 2015. Son visibles también sus dos lunas: Namaka y Hiʻiaka."
-    credits: "NASA, ESA, and D. Ragozzine (Brigham Young University); Image Processing: Gladys Kober (NASA/Catholic University of America)"
+    alt: "Imagen de Haumea tomada por el telescopio espacial Hubble. Son visibles también sus dos lunas: Namaka y Hiʻiaka."
+    credits:
+        author: "NASA, ESA, and D. Ragozzine (Brigham Young University); Image Processing: Gladys Kober (NASA/Catholic University of America)"
 iconImage: "haumea-2.jpg"
 ---
 

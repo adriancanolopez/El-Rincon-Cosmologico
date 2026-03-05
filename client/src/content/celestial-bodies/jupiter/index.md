@@ -18,10 +18,14 @@ mean_earth_distance_AU: 4.2
 images:
   - url: "jupiter-1.jpg"
     description: "Imagen creada a partir de cuatro imágenes tomadas por la sonda Cassini el 7 de diciembre del 2000. Se puede observar la sombra proyectada por la luna Europa."
-    credits: "NASA/JPL/University of Arizona"
+    alt: "Imagen del planeta Júpiter en la que se ve la Gran Mancha Roja y la sombra proyectada por la luna Europa."
+    credits:
+        author: "NASA/JPL/University of Arizona"
   - url: "jupiter-2.jpg"
     description: "Fotografía de Júpiter, la Gran Mancha Roja, y tres de las lunas galileanas: Ío, Europa y Calisto. Fue realizada por la sonda Voyager 1 el 5 de febrero de 1979."
-    credits: "NASA/JPL"
+    alt: "Fotografía de Júpiter, la Gran Mancha Roja y tres de las lunas galileanas: Ío, Europa y Calisto. Júpiter se ve con cierta inclinación."
+    credits:
+        author: "NASA/JPL"
 iconImage: "jupiter-1.jpg"
 ---
 
@@ -32,7 +36,7 @@ Júpiter es el quinto planeta y el más grande del Sistema solar. Tiene 79 lunas
 Júpiter es un planeta gaseoso / gigante gaseoso debido a su gran tamaño y a que no está compuesto de materia sólida, sinó de gases y fluidos. Pese a esto, podría tener un núcleo sólido el cual podría tener el tamaño de la Tierra, aproximadamente. Asimismo, en su interior la presión es enorme y el hidrógeno se comprime causando que se vuelva líquido.
 
 Presenta una atmósfera compuesta principalmente de más de un 80% de hidrógeno y una proporción considerable de helio. Y en menos cantidad, por metano, etano, vapor de agua, amoníaco, sulfuro de hidrógeno y fosfano.
-Debido a que es un planeta gaseoso, no presenta superfície como tal.
+Debido a que es un planeta gaseoso, no presenta superficie como tal.
 
 Sus franjas de colores son nubes de amoníaco y agua, que flotan en una atmósfera de hidrógeno y helio.
 Tiene una mancha roja, llamada La Gran Mancha Roja, que es una enorme tormenta anticiclónica en el hemisferio sur del planeta.

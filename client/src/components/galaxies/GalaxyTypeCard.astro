@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
     galaxyType: CollectionEntry<"galaxy-types">,
@@ -30,9 +30,8 @@ if (galaxiesWithImage.length > 0) {
         </a>
     </div>
     {
-        
         galaxyImage && (
-            <Image src={galaxyImage.url} alt={`Imagen de una galaxia del tipo: ${name}`} class="object-cover w-full h-64" title={`Imagen de una galaxia del tipo: ${name}. Créditos: ${galaxyImage.credits}`}/>
+            <CoverImage image={galaxyImage} title={`Imagen de una galaxia del tipo: ${name}.`}/>
         )
     }
 </article>

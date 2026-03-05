@@ -17,6 +17,8 @@ periapsis_km: 664862
 apoapsis_km: 676938
 images:
   - url: "europa.jpg"
-    description: "Imagen de Eruopa creada a partir de unas fotografías realizadas por la sonda Juno el 29 de septiembre de 2022."
-    credits: "NASA/JPL-Caltech/SwRI/MSSS Image processing: Björn Jónsson (CC BY 3.0)"
+    description: "Imagen de la luna Europa creada a partir de unas fotografías realizadas por la sonda Juno el 29 de septiembre de 2022."
+    alt: "Imagen de la luna Europa en una fase no total, realizada por la sonda Juno y en la que se ve su superficie lisa y agrietada."
+    credits:
+        author: "NASA/JPL-Caltech/SwRI/MSSS Image processing: Björn Jónsson (CC BY 3.0)"
 ---

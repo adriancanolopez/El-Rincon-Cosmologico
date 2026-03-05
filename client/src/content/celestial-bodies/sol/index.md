@@ -16,7 +16,9 @@ mean_earth_distance_AU: 1
 images:
   - url: "sol.jpg"
     description: "Imagen creada a partir de la combinación de múltiples imágenes captadas por el Solar Dynamics Observatory (SDO) el 20 de junio de 2013."
-    credits: "NASA Goddard Space Flight Center (GSFC)"
+    alt: "Imagen del Sol en la que se ve la brillante luz de una llamarada solar en el lado izquierdo y una erupción de materia que atraviesa la atmósfera solar."
+    credits:
+        author: "NASA Goddard Space Flight Center (GSFC)"
 iconImage: "sol.jpg"
 ---
 

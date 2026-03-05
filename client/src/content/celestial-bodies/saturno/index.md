@@ -18,10 +18,14 @@ mean_earth_distance_AU: 8.69
 images:
   - url: "saturno-1.jpg"
     description: "Imagen de Saturno tomada por el telescopio espacial Hubble en octubre de 1997."
-    credits: "NASA and The Hubble Heritage Team STScI/AURAAcknowledgment: R.G. French Wellesley College, J. Cuzzi NASA/Ames, L. Dones SwRI, and J. Lissauer NASA/Ames"
+    alt: "Imagen de Saturno tomada por el telescopio espacial Hubble en la que se ve de frente el disco del planeta y sus anillos, junto a la división de Cassini."
+    credits:
+        author: "NASA and The Hubble Heritage Team STScI/AURAAcknowledgment: R.G. French Wellesley College, J. Cuzzi NASA/Ames, L. Dones SwRI, and J. Lissauer NASA/Ames"
   - url: "saturno-2.jpg"
     description: "Fotografía realizada por la sonda Voyager 2 el 21 de julio de 1981. La luna Rea aparece al sur del planeta y Dione al sureste."
-    credits: "NASA/JPL"
+    alt: "Fotografía de Saturno realizada por la sonda Voyager 2. El planeta aparece inclinado, la luna Rea aparece al sur del planeta y Dione al sureste."
+    credits:
+        author: "NASA/JPL"
 iconImage: "saturno-1.jpg"
 ---
 
