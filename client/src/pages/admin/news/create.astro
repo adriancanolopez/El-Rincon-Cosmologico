@@ -2,6 +2,8 @@
 export const prerender = false;
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/forms.css";
+import SuccessPopup from "../../../components/admin/popups/SuccessPopup.astro";
+import ErrorPopup from "../../../components/admin/popups/ErrorPopup.astro";
 ---
 
 <Layout title="Crear Noticia">
@@ -27,18 +29,20 @@ import "../../../styles/forms.css";
             </div>
         </form>
     </section>
+    <SuccessPopup />
+    <ErrorPopup />
 </Layout>
 
 <script>
     import { QUILL } from '../../../utils/QuillEditor';
     import { createNews, createNewsWithImage } from '../../../api/NewsRequests';
+    import { createNewsPopup } from '../../../scripts/admin/popups/confirmAction';
     
     const form = document.querySelector("#createForm") as HTMLFormElement;
 
     form.addEventListener('submit', async function(event: Event) {
         event.preventDefault();
         
-        const messageElement = document.querySelector('#message') as HTMLSpanElement;
         const formData = new FormData(form);
 
         const title = formData.get('title') as string;
@@ -59,15 +63,6 @@ import "../../../styles/forms.css";
             response = await createNews({ title, description, image: null, published });
         }
         
-        if (response.ok) {
-            messageElement.classList.remove('error-message');
-            messageElement.classList.add('success-message');
-            messageElement.innerHTML = "Noticia creada correctamente.";
-        }
-        else {
-            messageElement.classList.remove('success-message');
-            messageElement.classList.add('error-message');
-            messageElement.innerHTML = response.message;
-        }
+        createNewsPopup(response);
     });
 </script>

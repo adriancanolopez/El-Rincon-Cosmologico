@@ -1,0 +1,18 @@
+---
+import ErrorIcon from "../../../assets/icons/error.svg";
+---
+
+<dialog class="m-auto bg-white text-black shadow-lg shadow-gray-400 border-2 border-gray-400 rounded-lg" id="error-popup">
+    <div class="flex flex-col justify-between items-center gap-2 px-12 py-8">
+        <ErrorIcon class="text-red-500"/>
+        <h3 class="text-lg text-center font-semibold" id="error-title">Error al realizar la acción</h3>
+        <p class="text-center" id="error-message"></p>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 mt-4 rounded-sm hover:cursor-pointer" id="error-accept-btn">Aceptar</button>
+    </div>
+</dialog>
+
+<script>
+    import setupPopupClosing from "../../../scripts/admin/popups/setupPopupClosing";
+
+    setupPopupClosing("error-popup", "error-accept-btn");
+</script>

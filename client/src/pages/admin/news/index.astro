@@ -3,6 +3,9 @@ export const prerender = false;
 import Layout from "../../../layouts/Layout.astro";
 import { getNews } from "../../../api/NewsRequests";
 import NewsCard from "../../../components/admin/news/NewsCard.astro";
+import ConfirmPopup from "../../../components/admin/popups/ConfirmPopup.astro";
+import SuccessPopup from "../../../components/admin/popups/SuccessPopup.astro";
+import ErrorPopup from "../../../components/admin/popups/ErrorPopup.astro";
 
 const token  = Astro.cookies.get('token')?.value as string;
 
@@ -34,25 +37,26 @@ const { user } = Astro.locals;
             })
         }
     </section>
+    {
+        user!.role === "admin" && (
+            <ConfirmPopup />
+            <SuccessPopup />
+            <ErrorPopup />
+        )
+    }
 </Layout>
 
 <script>
-    import { deleteNews } from '../../../api/NewsRequests';
-    import type { DeleteResponse } from '../../../types/news.types';
+    import { deleteNewsPopup } from "../../../scripts/admin/popups/confirmAction";
 
     const deleteIcons: NodeListOf<SVGElement> = document.querySelectorAll(".delete-icon");
 
-    deleteIcons.forEach(deleteIcon => {
+    deleteIcons?.forEach(deleteIcon => {
         deleteIcon.addEventListener('click', async function() {
             const idNews = deleteIcon.id.split("-").pop();
-            const response: DeleteResponse = await deleteNews(idNews as string);
-
-            console.log(response);
-
-            if (response.ok) {
-                document.querySelector(`#news-${idNews}`)?.remove();
-            }
-
+            const titleElement = document.querySelector(`#title-${idNews}`) as HTMLTitleElement;
+            const title = titleElement.innerHTML;
+            deleteNewsPopup(`¿Estás seguro de que deseas eliminar la noticia <br>"${title}"?`, idNews as string, () => document.querySelector(`#news-${idNews}`)?.remove());
         });
     });
 </script>

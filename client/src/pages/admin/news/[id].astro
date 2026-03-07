@@ -4,6 +4,9 @@ import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/forms.css";
 import { getNewsById } from "../../../api/NewsRequests";
 import formatDateToString from "../../../utils/formatDateToString";
+import ConfirmPopup from "../../../components/admin/popups/ConfirmPopup.astro";
+import SuccessPopup from "../../../components/admin/popups/SuccessPopup.astro";
+import ErrorPopup from "../../../components/admin/popups/ErrorPopup.astro";
 
 const { id } = Astro.params;
 
@@ -71,21 +74,21 @@ const { user } = Astro.locals;
                         <button type="button" class="delete-button w-1/2 bg-red-400 border-2 border-black p-2 hover:cursor-pointer" id={`delete-${news._id}`}>Eliminar Noticia</button>
                     )
                 }
-                <span id="message" class="text-md"></span>
             </div>
         </form>
     </section>
+    <ConfirmPopup />
+    <SuccessPopup />
+    <ErrorPopup />
 </Layout>
 
 <script>
     import { QUILL } from '../../../utils/QuillEditor';
-    import { updateNews, updateNewsWithImage, deleteNews } from '../../../api/NewsRequests';
-    import type { UpdateResponse, DeleteResponse } from '../../../types/news.types';
+    import type { UpdateNews } from '../../../types/news.types';
+    import { deleteNewsPopup, updateNewsPopup } from '../../../scripts/admin/popups/confirmAction';
 
     const form = document.querySelector('#updateForm') as HTMLFormElement;
     const deleteButton = document.querySelector('.delete-button') as HTMLButtonElement;
-    const messageElement = document.querySelector('#message') as HTMLSpanElement;
-
 
     form.addEventListener('submit', async function(event: Event) {
         event.preventDefault();
@@ -101,42 +104,16 @@ const { user } = Astro.locals;
 
         const image: File | null = imageInput.files && imageInput.files.length > 0 && imageInput.files[0].size > 0 ? imageInput.files[0] : null;
 
-        let response: UpdateResponse;
-
-        if (image) {
-            // Se quiere cambiar la imagen
-            response = await updateNewsWithImage({_id: newsId, title, description, image, published});
-
+        const news: UpdateNews = { _id: newsId, title, description, published };
+        
+        if (image) { // Se quiere cambiar la imagen
+            news.image = image;
         }
-        else {
-            response = await updateNews({_id: newsId, title, description, published});
-        }
-
-        if (response.ok) {
-            messageElement.classList.remove('error-message');
-            messageElement.classList.add('success-message');
-            messageElement.innerHTML = "Noticia editada correctamente.";
-        }
-        else {
-            messageElement.classList.remove('success-message');
-            messageElement.classList.add('error-message');
-            messageElement.innerHTML = response.message;
-        }
-
-    });
+        updateNewsPopup("¿Estás seguro de que deseas editar esta noticia?", news);
+    }); 
 
     deleteButton?.addEventListener('click', async function() {
         const idNews = deleteButton.id.split("-").pop();
-        const response: DeleteResponse = await deleteNews(idNews as string);
-
-        console.log(response);
-
-        if (response.ok) {
-            window.location.href = '/admin/news';
-        } else {
-            messageElement.classList.remove('success-message');
-            messageElement.classList.add('error-message');
-            messageElement.innerHTML = response.message;
-        }
+        deleteNewsPopup("¿Estás seguro de que deseas eliminar esta noticia?", idNews as string, () => window.location.href = '/admin/news');
     });
 </script>

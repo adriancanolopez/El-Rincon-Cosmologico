@@ -36,7 +36,7 @@ const newsData = news;
         )
     }
     <div class="content flex flex-col gap-2 px-5 py-4">
-        <h3 class="text-xl font-semibold text-gray-800 hover:text-blue-500 transition-colors">{newsData.title}</h3>
+        <h3 class="text-xl font-semibold text-gray-800 hover:text-blue-500 transition-colors" id={`title-${newsData._id}`}>{newsData.title}</h3>
         <span class="text-sm text-gray-600 italic">
             <span class="font-bold">Creación: </span>
             {formatDateToString(newsData.createdAt as string)}
