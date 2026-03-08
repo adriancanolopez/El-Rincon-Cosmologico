@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDateOnly } from '../../utils/formatDateToString';
+import { getCollection } from 'astro:content';
+
+type Props = {
+    event: CollectionEntry<"events">,
+    showTypeLabel: boolean,
+    hasBackground?: boolean,
+}
+
+const { event, showTypeLabel, hasBackground } = Astro.props;
+const { data, slug } = event;
+const { title, date, type, description, celestial_bodies } = data;
+
+const eventTypeArray = await getCollection("event-types", ({ slug }) => type.id === slug);
+const eventType = eventTypeArray[0];
+const typeName = eventType.data.name;
+
+const allBodies = await getCollection("celestial-bodies");
+const matchedBodies: CollectionEntry<"celestial-bodies">[] = [];
+
+celestial_bodies?.map((celestialBody) => {
+    const celestialBodyArray = allBodies.filter((body) => celestialBody.id === body.slug);
+
+    if (celestialBodyArray.length > 0) {
+        matchedBodies.push(celestialBodyArray[0]);
+    }
+});
+---
+
+<article class={`${hasBackground ? 'bg-gray-800' : ''} h-max flex flex-col items-start px-8 py-6`}>
+    {
+        showTypeLabel && (
+            <a href={`/eventos/${type.id}`} target="_blank" class="bg-yellow-500 rounded-sm px-4 py-1">{typeName}</a>
+        )
+    }
+    <h3 class="text-xl font-bold mb-1">{title}</h3>
+    <span class="italic mb-2">{formatDateOnly(date.toISOString())}</span>
+    <div class="flex flex-wrap gap-2 mb-2">
+    {
+        matchedBodies.map((celestialBody) => {
+            const name = celestialBody.data.name;
+            const bodySlug = celestialBody.slug;
+            return (
+                <a href={`/sistema-solar#${bodySlug}`} 
+                    target="_blank" 
+                    class="text-xs bg-slate-800 hover:bg-slate-700 text-blue-400 px-2 py-1 rounded border border-slate-700 transition-colors">
+                    {name}
+                </a>
+            )
+        })
+    }
+    </div>
+    {
+        description && (
+            <p class="text-slate-300 text-md">{description}</p>
+        )
+    }
+</article>

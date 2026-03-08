@@ -122,6 +122,24 @@ const articles = defineCollection({
     })
 });
 
-export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, 'black-holes': blackHoles, programs, missions, categories, articles };
+const eventTypes = defineCollection({
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        description: z.string(),
+        images: z.array(imagesSchema(image)).optional(),
+    })
+});
+
+const events = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        date: z.date(),
+        type: reference("event-types"),
+        celestial_bodies: z.array(reference("celestial-bodies")).nullable(), // Nulo por si, por ejemplo, es una lluvia de estrellas.
+        description: z.string().optional(),
+    })
+});
+
+export const collections = { 'celestial-bodies' : celestialBodies, 'galaxy-types': galaxyTypes, galaxies, 'black-holes': blackHoles, programs, missions, categories, articles, 'event-types': eventTypes, events };
 
 export type ImageData = z.infer<ReturnType<typeof imagesSchema>>;

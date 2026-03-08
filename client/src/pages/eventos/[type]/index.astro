@@ -1,0 +1,74 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+import getSortedEvents from "../../../scripts/events/getSortedEvents";
+import EventCard from "../../../components/events/EventCard.astro";
+import ImageCard from "../../../components/images/ImageCard.astro";
+
+export async function getStaticPaths() {
+    const eventTypes = await getCollection("event-types");
+
+    return eventTypes.map((type) => ({
+        params: { type: type.slug },
+        props: { type }
+    }));
+}
+
+const { type } = Astro.props;
+const { data, body, slug } = type;
+const { name, description, images } = data;
+
+const { Content } = await render(type);
+const hasContent = body && body.trim().length > 0;
+const hasImages = images && images.length > 0;
+const showContentSection = hasContent || hasImages;
+
+const events = await getCollection("events", ({ data }) => data.type.id === slug);
+const sortedEvents = getSortedEvents(events);
+---
+
+<Layout title={name}>
+    <main class="flex flex-col items-center gap-4 mt-4">
+        <section class="w-full md:w-3/4 pb-6 border-b-2 border-gray-300">
+            <h2 class="text-2xl font-bold text-center mb-4">{name}</h2>
+            <p class="text-center">{description}</p>
+        </section>
+        {
+            showContentSection && (
+                <section class="w-full md:w-3/4 px-4 pb-6 border-b-2 border-gray-300">
+                    {
+                        hasContent && (
+                            <Content />
+                        )
+                    }
+                    {
+                        hasImages && (
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
+                                {
+                                    images.map((image) => {
+                                        return (
+                                            <ImageCard image={image}/>
+                                        )
+                                    })
+                                }
+                            </div>
+                        )
+                    }
+                </section>
+            )
+        }
+        <section class="flex flex-col gap-4">
+            <h3 class="text-xl font-bold text-center">Próximos eventos</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 px-4">
+                {
+                    sortedEvents.map((event) => {
+                        return (
+                            <EventCard event={event} showTypeLabel={false} hasBackground/>
+                        )
+                    })
+                }
+            </div>
+        </section>
+    </main>
+</Layout>

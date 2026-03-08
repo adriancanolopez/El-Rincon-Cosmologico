@@ -3,10 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/news.css';
 import { getNewsPublished } from '../api/NewsRequests';
 import NewsCard from '../components/news/NewsCard.astro';
+import { getCollection } from 'astro:content';
+import getSortedEvents from '../scripts/events/getSortedEvents';
+import EventCard from '../components/events/EventCard.astro';
 
 const newsRequest = await getNewsPublished(4);
 
 const allNews = newsRequest.ok ? newsRequest.data : [];
+
+const events = await getCollection("events");
+const sortedEvents = getSortedEvents(events, 4);
+
 ---
 
 <Layout title="El Rincón Cosmológico">
@@ -21,4 +28,59 @@ const allNews = newsRequest.ok ? newsRequest.data : [];
         }
         <a href="/noticias" class="col-span-full justify-self-end border-2 border-white p-2 transition-colors hover:bg-gray-900 hover:cursor-pointer">Ver más noticias</a>
     </section>
+    <section class="flex flex-col items-center gap-4">
+        <h2 class="text-2xl text-center font-bold">Próximos eventos astronómicos</h2>
+        <div class="relative w-full md:w-3/4" id="events-timeline">
+            {
+                sortedEvents.map((event) => {
+                    return (
+                        <div class="relative w-full md:w-1/2 md:odd:left-0 md:even:left-1/2 odd:bg-gray-800 even:bg-gray-500 mb-4 event">
+                            <EventCard event={event} showTypeLabel={true}/>
+                        </div>
+                    )
+                })
+            }
+        </div>
+        <div class="w-full md:w-3/4 flex flex-row justify-center">
+            <a href="/eventos" class="border-2 border-white p-2 transition-colors hover:bg-gray-900 hover:cursor-pointer">Ver todos los próximos eventos</a>
+        </div>
+    </section>
 </Layout>
+
+<style>
+    @media screen and (min-width: 768px) {
+        #events-timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ffff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            margin: auto;
+        }
+
+        .event:nth-child(odd)::after, .event:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            bottom: 0;
+            width: 0px;
+            height: 0px;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #ffff;
+        }
+
+        .event:nth-child(odd)::after {
+            right: 0px;
+            transform: rotate(90deg);
+        }
+
+        .event:nth-child(even)::after {
+            left: 5px;
+            transform: rotate(-90deg);
+        }
+    }
+</style>
