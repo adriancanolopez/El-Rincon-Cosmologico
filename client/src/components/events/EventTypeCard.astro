@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import getMainImage from '../../utils/getMainImage';
 import CoverImage from '../images/CoverImage.astro';
-
 
 type Props = {
     eventType: CollectionEntry<"event-types">
@@ -11,7 +11,7 @@ const { eventType } = Astro.props;
 const { data, slug } = eventType;
 const { name, description, images } = data;
 
-const mainImage = images?.filter((image) => image.main)[0];
+const mainImage = getMainImage(images);
 ---
 
 <article class="bg-gray-800 h-max flex flex-col gap-4">

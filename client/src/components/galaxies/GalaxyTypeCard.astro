@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import getMainImage from '../../utils/getMainImage';
 import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
@@ -17,7 +18,7 @@ let galaxyImage;
 if (galaxiesWithImage.length > 0) {
     const galaxyRandom = galaxiesWithImage[Math.floor(Math.random() * galaxiesWithImage.length)];
 
-    galaxyImage = galaxyRandom.data.images?.filter((image) => image.main)[0]; // Obtenemos la imagen principal.
+    galaxyImage = getMainImage(galaxyRandom.data.images);
 }
 ---
 

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import getMainImage from '../../utils/getMainImage';
 import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
@@ -10,7 +11,7 @@ const { blackHole } = Astro.props;
 const { data, slug } = blackHole;
 const { name, type, images } = data;
 
-const mainImage = images?.filter((image) => image.main)[0];
+const mainImage = getMainImage(images);
 ---
 
 <article class="bg-gray-600 rounded-sm h-max">

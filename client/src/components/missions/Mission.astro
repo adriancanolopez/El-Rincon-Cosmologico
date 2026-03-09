@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
+import getMainImage from '../../utils/getMainImage';
 import ImageCard from '../images/ImageCard.astro';
 import { formatDateOnly } from '../../utils/formatDateToString';
 import getStatusStyles  from "../../utils/missionStatusStyles";
@@ -13,7 +14,7 @@ const { mission } = Astro.props;
 
 const { title, type, status, destination, objective, launch_date, landing_date, launch_vehicle, crew, images } = mission.data;
 
-const mainImage = images?.filter((image) => image.main)[0];
+const mainImage = getMainImage(images);
 
 let statusColor = getStatusStyles(status);
 

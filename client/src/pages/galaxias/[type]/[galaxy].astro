@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import "../../../styles/articles.css";
+import getMainImage from "../../../utils/getMainImage";
 import ImageCard from "../../../components/images/ImageCard.astro";
 import { getCollection } from "astro:content";
 import { render } from "astro:content";
@@ -26,7 +27,7 @@ const typeName = galaxyTypeObject.data.name;
 
 const { Content } = await render(galaxy);
 
-const mainImage = images?.filter((image) => image.main)[0];
+const mainImage = getMainImage(images);
 ---
 
 <Layout title={name}>

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import getMainImage from '../../utils/getMainImage';
 import CoverImage from '../images/CoverImage.astro';
 
 type Props = {
@@ -11,7 +12,7 @@ const { mission, link } = Astro.props;
 
 const { title, objective, images } = mission.data;
 
-const mainImage = images?.filter((image) => image.main)[0];
+const mainImage = getMainImage(images);
 ---
 
 <article class="w-full h-max md:w-[45%] flex flex-col gap-4 bg-gray-700 rounded-sm">
