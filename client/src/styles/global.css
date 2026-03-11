@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 :root {
     --oscuro: rgb(24, 24, 24);
     --gris-oscuro: rgb(31, 30, 30);
     --gris-intermedio: rgb(45, 45, 45);
+}
+
+h1, h2, h3 {
+    font-family: "Montserrat", sans-serif;
+}
+
+@layer components {
+    .main-heading {
+        @apply text-4xl font-extrabold text-center text-slate-100 tracking-tight p-6;
+    }
+
+    .section-title {
+        @apply text-3xl font-bold text-center bg-gradient-to-r from-slate-200 via-white to-slate-200 bg-clip-text text-transparent p-2;
+    }
+
+    .yellow-button {
+        @apply bg-yellow-500 text-slate-900 font-bold px-4 py-2 rounded-full transition-colors duration-300 hover:bg-amber-300 hover:cursor-pointer;
+    }
 }
 
 #header {

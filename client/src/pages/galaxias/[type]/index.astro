@@ -20,17 +20,15 @@ const galaxies = await getCollection("galaxies", ({ data }) => data.type.id === 
 ---
 
 <Layout title={`Galaxias - ${name}`}>
-    <main class="flex flex-col items-center gap-4 mt-4">
-        <h1 class="text-3xl font-bold text-center">{name}</h1>
-        <p class="text-center">{description}</p>
-        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-8">
-            {
-                galaxies.map((galaxy) => {
-                    return (
-                        <GalaxyCard galaxy={galaxy}/>
-                    )
-                })
-            }
-        </section>
-    </main>
+    <h1 class="main-heading">Galaxias {name}</h1>
+    <p class="max-w-5xl text-center px-4">{description}</p>
+    <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-12 py-6">
+        {
+            galaxies.map((galaxy) => {
+                return (
+                    <GalaxyCard galaxy={galaxy}/>
+                )
+            })
+        }
+    </section>
 </Layout>

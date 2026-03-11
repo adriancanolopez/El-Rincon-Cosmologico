@@ -21,25 +21,23 @@ const { Content } = await render(article);
 ---
 
 <Layout title={title}>
-    <main class="flex flex-col items-center mt-6">
-        <article class="max-w-5xl py-2 flex flex-col gap-4">
-            <h2 class="text-3xl font-bold text-center">{title}</h2>
-            <div class="content">
-                <Content />
-            </div>
-            {
-                images && (
-                    <div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {
-                        images.map((image) => {
-                            return (
-                                <ImageCard image={image} width={500}/>
-                            )
-                        })
-                    }
-                    </div>
-                )
-            }
-        </article>       
-    </main>
+    <article class="max-w-5xl flex flex-col gap-4 px-4 py-6">
+        <h1 class="text-3xl font-bold text-center">{title}</h1>
+        <div class="content">
+            <Content />
+        </div>
+        {
+            images && (
+                <div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+                {
+                    images.map((image) => {
+                        return (
+                            <ImageCard image={image} width={500}/>
+                        )
+                    })
+                }
+                </div>
+            )
+        }
+    </article>
 </Layout>

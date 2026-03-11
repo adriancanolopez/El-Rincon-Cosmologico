@@ -15,7 +15,7 @@ const license = image.credits?.license;
 
 <figure class={`${className || ''}`}>
     <Image src={image.url} alt={image.alt} width={width}/>
-    <figcaption>
+    <figcaption class="text-sm">
         <p>{image.description}</p>
         {
             image.credits && (

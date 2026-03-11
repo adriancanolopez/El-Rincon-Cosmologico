@@ -20,16 +20,14 @@ const articles = await getCollection("articles", ({data}) => { return data.categ
 ---
 
 <Layout title={title}>
-    <main class="flex flex-col items-center gap-8 mt-4 px-8">
-        <h1 class="text-3xl font-bold">{title}</h1>
-        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-            {
-                articles.map((article) => {
-                    return (
-                        <ArticleCard article={article}/>
-                    )
-                })
-            }
-        </section>
-    </main>
+    <h1 class="main-heading">{title}</h1>
+    <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-12 py-6">
+        {
+            articles.map((article) => {
+                return (
+                    <ArticleCard article={article}/>
+                )
+            })
+        }
+    </section>
 </Layout>

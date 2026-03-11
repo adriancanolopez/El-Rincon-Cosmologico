@@ -29,46 +29,44 @@ const sortedEvents = getSortedEvents(events);
 ---
 
 <Layout title={name}>
-    <main class="flex flex-col items-center gap-4 mt-4">
-        <section class="w-full md:w-3/4 pb-6 border-b-2 border-gray-300">
-            <h2 class="text-2xl font-bold text-center mb-4">{name}</h2>
-            <p class="text-center">{description}</p>
-        </section>
-        {
-            showContentSection && (
-                <section class="w-full md:w-3/4 px-4 pb-6 border-b-2 border-gray-300">
-                    {
-                        hasContent && (
-                            <Content />
-                        )
-                    }
-                    {
-                        hasImages && (
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
-                                {
-                                    images.map((image) => {
-                                        return (
-                                            <ImageCard image={image}/>
-                                        )
-                                    })
-                                }
-                            </div>
-                        )
-                    }
-                </section>
-            )
-        }
-        <section class="flex flex-col gap-4">
-            <h3 class="text-xl font-bold text-center">Próximos eventos</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 px-4">
+    <section class="w-full md:w-3/4 pb-6 border-b-2 border-gray-300">
+        <h1 class="main-heading">{name}</h1>
+        <p class="text-center">{description}</p>
+    </section>
+    {
+        showContentSection && (
+            <section class="w-full md:w-3/4 px-4 py-6 border-b-2 border-gray-300">
                 {
-                    sortedEvents.map((event) => {
-                        return (
-                            <EventCard event={event} showTypeLabel={false} hasBackground/>
-                        )
-                    })
+                    hasContent && (
+                        <Content />
+                    )
                 }
-            </div>
-        </section>
-    </main>
+                {
+                    hasImages && (
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
+                            {
+                                images.map((image) => {
+                                    return (
+                                        <ImageCard image={image}/>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                }
+            </section>
+        )
+    }
+    <section class="flex flex-col gap-4 px-4 md:px-8 py-6">
+        <h2 class="section-title">Próximos eventos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {
+                sortedEvents.map((event) => {
+                    return (
+                        <EventCard event={event} showTypeLabel={false} hasBackground/>
+                    )
+                })
+            }
+        </div>
+    </section>
 </Layout>

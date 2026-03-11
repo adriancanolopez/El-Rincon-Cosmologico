@@ -21,18 +21,18 @@ const missionsSorted = missions.sort((a, b) => a.data.order - b.data.order); // 
 ---
 
 <Layout title={title}>
-    <main class="flex flex-col items-center gap-6">
-        <h1 class="text-3xl font-bold">{title}</h1>
+    <section class="flex flex-col items-center pb-4">
+        <h1 class="main-heading">{title}</h1>
         <p class="text-center">{description}</p>
-        <section class="flex flex-row flex-wrap justify-center gap-8">
-            {
-                missionsSorted.map((mission) => {
-                    const missionSlug = mission.slug;
-                    return (
-                        <MissionCard mission={mission} link={`/misiones/${slug}/${missionSlug}`}/>
-                    )
-                })
-            }
-        </section>
-    </main>
+    </section>
+    <section class="flex flex-row flex-wrap justify-center gap-8 px-4 md:px-12 py-4">
+        {
+            missionsSorted.map((mission) => {
+                const missionSlug = mission.slug;
+                return (
+                    <MissionCard mission={mission} link={`/misiones/${slug}/${missionSlug}`}/>
+                )
+            })
+        }
+    </section>
 </Layout>

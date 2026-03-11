@@ -17,24 +17,26 @@ const sortedEvents = getSortedEvents(events, 4);
 ---
 
 <Layout title="El Rincón Cosmológico">
-    <h1 class="text-2xl text-center my-2">Últimas Novedades</h1>
-	<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4" id="news">
-        {
-            allNews.map(news => {
-                return (
-                    <NewsCard news={news}/>
-                )
-            })
-        }
-        <a href="/noticias" class="col-span-full justify-self-end border-2 border-white p-2 transition-colors hover:bg-gray-900 hover:cursor-pointer">Ver más noticias</a>
+	<section class="flex flex-col items-center gap-8 px-4 py-6">
+        <h2 class="section-title">Últimas Novedades</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8" id="news">
+            {
+                allNews.map(news => {
+                    return (
+                        <NewsCard news={news}/>
+                    )
+                })
+            }
+        </div>
+        <a href="/noticias" class="yellow-button ml-auto">Ver más noticias</a>
     </section>
-    <section class="flex flex-col items-center gap-4">
-        <h2 class="text-2xl text-center font-bold">Próximos eventos astronómicos</h2>
+    <section class="w-full flex flex-col items-center gap-4 bg-slate-800 px-4 py-8">
+        <h2 class="section-title">Próximos eventos astronómicos</h2>
         <div class="relative w-full md:w-3/4" id="events-timeline">
             {
                 sortedEvents.map((event) => {
                     return (
-                        <div class="relative w-full md:w-1/2 md:odd:left-0 md:even:left-1/2 odd:bg-gray-800 even:bg-gray-500 mb-4 event">
+                        <div class="relative w-full md:w-1/2 md:odd:left-0 md:even:left-1/2 odd:bg-gray-600 even:bg-gray-500 mb-4 rounded-sm md:rounded-none event">
                             <EventCard event={event} showTypeLabel={true}/>
                         </div>
                     )
@@ -42,7 +44,7 @@ const sortedEvents = getSortedEvents(events, 4);
             }
         </div>
         <div class="w-full md:w-3/4 flex flex-row justify-center">
-            <a href="/eventos" class="border-2 border-white p-2 transition-colors hover:bg-gray-900 hover:cursor-pointer">Ver todos los próximos eventos</a>
+            <a href="/eventos" class="yellow-button">Ver todos los próximos eventos</a>
         </div>
     </section>
 </Layout>
@@ -53,34 +55,32 @@ const sortedEvents = getSortedEvents(events, 4);
             content: '';
             position: absolute;
             width: 6px;
-            background-color: #ffff;
+            background-color: white;
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -3px;
-            margin: auto;
+            transform: translateX(-50%);
         }
 
         .event:nth-child(odd)::after, .event:nth-child(even)::after {
             content: '';
             position: absolute;
-            top: 40%;
+            top: 0%;
             bottom: 0;
-            width: 0px;
-            height: 0px;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 30px solid #ffff;
+            width: 17px;
+            height: 17px;
+            background-color: white;
+            border-radius: 50%;
         }
 
         .event:nth-child(odd)::after {
             right: 0px;
-            transform: rotate(90deg);
+            transform: translateX(50%);
         }
 
         .event:nth-child(even)::after {
-            left: 5px;
-            transform: rotate(-90deg);
+            left: 0px;
+            transform: translateX(-50%);
         }
     }
 </style>

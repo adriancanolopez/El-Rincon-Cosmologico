@@ -7,8 +7,8 @@ const blackHoles = await getCollection("black-holes");
 ---
 
 <Layout title="Agujeros negros">
-    <main class="flex flex-col items-center gap-4 px-8 mt-4">
-        <h2 class="text-3xl font-bold text-center">Agujeros negros</h2>
+    <h1 class="main-heading">Agujeros negros</h1>
+    <div class="max-w-5xl flex flex-col items-center px-4">
         <p class="text-center">
             Los agujeros negros son regiones del espacio donde se concentra una gran cantidad de materia en un 
             espacio diminuto llamado <i>singularidad</i>. Su densidad es tal que genera una gravedad extremadamente fuerte;
@@ -17,19 +17,19 @@ const blackHoles = await getCollection("black-holes");
             solo es visible su <i>disco de acreación</i>, compuesto por gas y polvo caliente que gira alrededor.
             <br><br>Existen tres tipos de agujeros negros:
         </p>
-        <ul class="list-disc">
+        <ul class="list-disc list-inside">
             <li><span class="font-bold italic">Estelares</span>: Se producen por el colapso de estrellas.</li>
             <li><span class="font-bold italic">Intermedios</span>: Tienen una masa entre 100 y 100,000 veces la masa del Sol.</li>
             <li><span class="font-bold italic">Supermasivos</span>: Tienen millones o miles de millones de masas solares.</li>
         </ul>
-        <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-            {
-                blackHoles.map((blackHole) => {
-                    return (
-                        <BlackHoleCard blackHole={blackHole}/>
-                    )
-                })
-            }
-        </section>
-    </main>
+    </div>
+    <section class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-12 py-6">
+        {
+            blackHoles.map((blackHole) => {
+                return (
+                    <BlackHoleCard blackHole={blackHole}/>
+                )
+            })
+        }
+    </section>
 </Layout>

@@ -32,7 +32,7 @@ celestial_bodies?.map((celestialBody) => {
 <article class={`${hasBackground ? 'bg-gray-800' : ''} h-max flex flex-col items-start px-8 py-6`}>
     {
         showTypeLabel && (
-            <a href={`/eventos/${type.id}`} target="_blank" class="bg-yellow-500 rounded-sm px-4 py-1">{typeName}</a>
+            <a href={`/eventos/${type.id}`} target="_blank" class="bg-yellow-500 text-slate-900 font-semibold rounded-sm px-4 py-1">{typeName}</a>
         )
     }
     <h3 class="text-xl font-bold mb-1">{title}</h3>
