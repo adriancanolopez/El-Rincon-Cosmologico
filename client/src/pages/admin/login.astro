@@ -1,23 +1,25 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import '../../styles/forms.css';
+import '../../styles/admin/auth.css';
+import MailIcon from "../../assets/icons/mail.svg";
+import PasswordIcon from "../../assets/icons/password.svg";
 ---
 
 <Layout title="Iniciar sesión">
-    <section class="flex flex-col items-center">
+    <section id="form-section">
         <h1 id="form-title">Iniciar sesión</h1>
         <form action="" method="POST" class="form" id="loginForm">
-            <div class="form-field">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
+            <div class="form-field-row">
+                <MailIcon/>
+                <input type="email" name="email" id="email" placeholder="Email..." required>
             </div>
-            <div class="form-field">
-                <label for="password">Contraseña:</label>
-                <input type="password" name="password" id="password" required>
+            <div class="form-field-row">
+                <PasswordIcon />
+                <input type="password" name="password" id="password" placeholder="Contraseña..." required>
             </div>
-            <div class="form-field items-center">
-                <input type="submit" value="Iniciar Sesión" id="submit">
+            <div class="submit-message">
                 <span id="error-message"></span>
+                <button type="submit" id="submit">Iniciar sesión</button>
             </div>
         </form>
     </section>

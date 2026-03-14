@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 import Layout from "../../../layouts/Layout.astro";
-import "../../../styles/forms.css";
+import "../../../styles/admin/news-forms.css";
 import { getNewsById } from "../../../api/NewsRequests";
 import formatDateToString from "../../../utils/formatDateToString";
 import ConfirmPopup from "../../../components/admin/popups/ConfirmPopup.astro";
@@ -31,47 +31,53 @@ const { user } = Astro.locals;
 ---
 
 <Layout title={`Noticia - ${news.title}`}>
-    <div class="grid grid-cols-[1fr_auto_1fr] items-center">
-        <h1 class="col-start-2 text-xl text-center" id="form-title">{news.title}</h1>
-        <a href="/admin/news/" class="col-start-3 justify-self-end mr-4 mt-2 p-2 bg-blue-600 rounded-md hover:cursor-pointer">
-            <button class="hover:cursor-pointer">Volver</button>
-        </a>
-    </div>
-    <section class="flex flex-col items-center">
-        <div class="flex flex-col items-center mb-2">
+    <a href="/admin/news/" class="mt-4 md:mt-2 mb-4 md:mb-2 mr-auto ml-2 px-5 py-2 bg-blue-600 rounded-md hover:cursor-pointer">
+        <button class="hover:cursor-pointer">Volver</button>
+    </a>
+    <section class="form-section">
+        <h1 id="form-title">{news.title}</h1>
+        <div class="flex flex-col items-center text-center text-slate-700 pt-8">
             <span>
                 <span class="font-bold">Creación: </span>
                 {formatDateToString(news.createdAt as string)}
             </span>
-            <span>
-                <span class="font-bold">Última modificación: </span>
-                {formatDateToString(news.updatedAt as string)}
-            </span>
+            {
+                news.updatedAt !== news.createdAt && (
+                    <span>
+                        <span class="font-bold">Última modificación: </span>
+                        {formatDateToString(news.updatedAt as string)}
+                    </span>
+                )
+            }
         </div>
         <form action="" method="post" class="form" id="updateForm" enctype="multipart/form-data">
             <div class="form-field">
                 <label for="title">Título:</label>
-                <input type="text" name="title" id="title" value={news.title} placeholder="Título de la noticia..."/>
+                <input type="text" name="title" id="title" value={news.title} placeholder="Título de la noticia..." class="input"/>
             </div>
             <div id="editor">
                 <Fragment set:html={news.description}/>
             </div>
-            <div class="flex flex-col items-center">
-                <img src={`http://localhost:3000/uploads/news/${news.imageUrl}`} alt="Imagen de la noticia" class="w-2/5 rounded-sm"/>
-            </div>
+            {
+                news.imageUrl && (
+                    <div class="flex flex-col items-center">
+                        <img src={`http://localhost:3000/uploads/news/${news.imageUrl}`} alt="Imagen de la noticia" class="w-2/5 rounded-sm"/>
+                    </div>
+                )
+            }
             <div class="form-field">
-                <label for="image">Cambiar imagen:</label>
-                <input type="file" name="image" id="image">
+                <label for="image">{news.imageUrl ? 'Cambiar imagen:' : 'Subir Imagen'}</label>
+                <input type="file" name="image" id="image" class="input">
             </div>
-            <div class="flex flex-row gap-2 p-2">
+            <div class="form-field-checkbox">
                 <label for="published">Publicar:</label>
                 <input type="checkbox" name="published" class="checkbox" id="published" checked={news.published}>
             </div>
-            <div class="form-field items-center">
-                <input type="submit" value="Actualizar Noticia" id="submit">
+            <div class="form-field items-center gap-2">
+                <input type="submit" value="Actualizar Noticia" id="submit" class="button">
                 {
                     user!.role === "admin" && (
-                        <button type="button" class="delete-button w-1/2 bg-red-400 border-2 border-black p-2 hover:cursor-pointer" id={`delete-${news._id}`}>Eliminar Noticia</button>
+                        <button type="button" class="delete-button button font-medium border-2 border-red-500 py-2 text-red-500 hover:bg-red-500 hover:text-white" id={`delete-${news._id}`}>Eliminar Noticia</button>
                     )
                 }
             </div>

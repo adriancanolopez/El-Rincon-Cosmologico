@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer components {
+    .form-section {
+        @apply w-full md:w-3/4 lg:w-3/5 flex flex-col items-center bg-slate-200 text-slate-900 p-4 md:p-10 rounded-sm;
+    }
+
+    #form-title {
+        @apply text-3xl font-bold text-center;
+    }
+
+    .form {
+        @apply w-full flex flex-col gap-4 pt-8;
+    }
+
+    .form-field {
+        @apply w-full flex flex-col items-start gap-1 p-2;
+    }
+
+    label {
+        @apply text-lg font-semibold;
+    }
+
+    .input {
+        @apply w-full border border-slate-400 outline-none focus:ring-2 focus:ring-slate-700 transition-all duration-300 rounded-sm p-2;
+    }
+
+    #editor {
+        @apply max-h-52 overflow-y-auto;
+    }
+
+    .form-field-checkbox {
+        @apply flex flex-row gap-2 p-2;
+    }
+
+    .checkbox {
+        @apply w-5;
+    }
+
+    .button {
+        @apply text-lg px-20 py-2 rounded-sm transition-colors duration-300 hover:cursor-pointer;
+    }
+
+    #submit {
+        @apply bg-blue-500 font-semibold text-white py-3 hover:bg-slate-800;
+    }
+}

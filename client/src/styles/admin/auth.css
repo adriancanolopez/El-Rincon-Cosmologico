@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer components {
+
+    body {
+        background-image: url("/images/earth-space.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    #form-section {
+        @apply w-full md:max-w-md lg:max-w-lg bg-slate-200 text-slate-900 p-10 mt-8 rounded-xl shadow-lg;
+    }
+
+    #form-title {
+        @apply text-3xl text-slate-900 font-bold text-center;
+    }
+
+    .form {
+        @apply w-full flex flex-col items-center pt-8;
+    }
+
+    .form-field-row {
+        @apply flex flex-row items-center gap-2 p-2 w-full;
+    }
+
+    .form-field-col {
+        @apply flex flex-col items-start gap-1 p-2 w-full;
+    }
+
+    label {
+        @apply text-slate-800;
+    }
+
+    input, textarea {
+        @apply w-full border-b-1 border-slate-400 outline-none focus:ring-2 focus:ring-slate-700 transition-all duration-300 rounded-sm p-2;
+    }
+
+    .checkbox {
+        @apply hover:cursor-pointer;
+    }
+
+    #submit {
+        @apply bg-blue-500 text-lg text-white font-semibold px-20 py-3 rounded-sm transition-colors duration-300 hover:bg-slate-800 hover:cursor-pointer;
+    }
+
+    .submit-message {
+        @apply flex flex-col items-center p-2 mt-4;
+    }
+
+    .success-message {
+        @apply text-green-400 font-semibold py-2;
+    }
+
+    .error-message {
+        @apply text-red-500 font-semibold py-2;
+    }
+}
+
